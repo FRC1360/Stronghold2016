@@ -1,8 +1,8 @@
 language: java
 install:
-  - gradle wpi
+  - ./gradlew wpi
 script:
-  - gradle
+  - ./gradlew
 jdk:
   - oraclejdk8
 notifications:
