@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1360.robot;
+package org.usfirst.frc.team1360.robot
 
 /**
  * This class is the glue that binds the controls on the physical operator
