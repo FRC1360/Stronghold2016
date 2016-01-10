@@ -1,6 +1,4 @@
 language: java
-#install:
-#  - gradle wpi
 script:
   - gradle
 jdk:
