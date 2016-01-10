@@ -1,6 +1,6 @@
 language: java
-install:
-  - ./gradlew wpi
+#install:
+#  - ./gradlew wpi
 script:
   - ./gradlew
 jdk:
