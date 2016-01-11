@@ -1,5 +1,5 @@
-[![Stories in Ready](https://badge.waffle.io/FRC1360/Stronghold2016.png?label=ready&title=Ready)](https://waffle.io/FRC1360/Stronghold2016)
-# Stronghold2016 [![Build Status](https://travis-ci.org/FRC1360/Stronghold2016.svg)](https://travis-ci.org/FRC1360/Stronghold2016)
+
+# Stronghold2016 [![Build Status](https://travis-ci.org/FRC1360/Stronghold2016.svg)](https://travis-ci.org/FRC1360/Stronghold2016) [![Stories in Ready](https://badge.waffle.io/FRC1360/Stronghold2016.png?label=ready&title=Ready)](https://waffle.io/FRC1360/Stronghold2016)
 
 If using Eclipse: Import the Eclipse project or the Gradle project.
 
