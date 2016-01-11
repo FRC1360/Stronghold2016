@@ -9,9 +9,9 @@ import java.lang.reflect.InvocationTargetException;
 
 public class AutonomousManager
 {
-    private final static String AUTONOMOUSPACKAGE = AutonomousManager.class.getCanonicalName().replace("AutonomousManager", "");
+    private final String AUTONOMOUSPACKAGE = AutonomousManager.class.getCanonicalName().replace("AutonomousManager", "");
 
-    public static Command getAction(String name, CommandData commandData)
+    public  Command getAction(String name, CommandData commandData)
     {
         Class<?> clazz;
         try
@@ -28,7 +28,7 @@ public class AutonomousManager
         return null;
     }
 
-    public static CommandGroup getGroup(String name, CommandData commandData)
+    public CommandGroup getGroup(String name, CommandData commandData)
     {
         return (CommandGroup) getAction(name, commandData);
     }
