@@ -8,9 +8,25 @@ import org.usfirst.frc.team1360.robot.util.CommandData;
  */
 public class AutonomousExampleCommand extends Command
 {
-    private CommandData commandData;
+    private double left;
+    private double right;
+    private boolean toggle;
 
-    public AutonomousExampleCommand(CommandData commandData) {this.commandData = commandData;}
+    public AutonomousExampleCommand(CommandData commandData)
+    {
+        left = commandData.getDoubles().get(0);
+        right = commandData.getDoubles().get(1);
+        toggle = commandData.getBooleans().get(0);
+    }
+
+    public AutonomousExampleCommand(double left, double right, boolean toggle)
+    {
+
+    }
+    public AutonomousExampleCommand()
+    {
+
+    }
 
     @Override
     protected void initialize()

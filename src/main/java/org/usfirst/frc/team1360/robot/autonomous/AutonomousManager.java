@@ -9,17 +9,20 @@ import java.lang.reflect.InvocationTargetException;
 
 public class AutonomousManager
 {
-    private final String AUTONOMOUSPACKAGE = AutonomousManager.class.getCanonicalName().replace("AutonomousManager", "");
+    private static final String AUTONOMOUSPACKAGE = AutonomousManager.class.getCanonicalName().replace("AutonomousManager", "");
 
-    public  Command getAction(String name, CommandData commandData)
+    public static Command getAction(String name, CommandData commandData)
     {
         Class<?> clazz;
+        String path = AUTONOMOUSPACKAGE + name;
+        if(!name.contains("groups.") && !name.contains("actions."))
+            path = AUTONOMOUSPACKAGE + "actions." + name;
+
         try
         {
-            clazz = Class.forName(AUTONOMOUSPACKAGE + name);
+            clazz = Class.forName(path);
             Constructor<?> constructor = clazz.getConstructor(CommandData.class);
             return (Command) constructor.newInstance(commandData);
-
         }
         catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e)
         {
@@ -28,8 +31,9 @@ public class AutonomousManager
         return null;
     }
 
-    public CommandGroup getGroup(String name, CommandData commandData)
+    public static CommandGroup getGroup(String name, CommandData commandData)
     {
-        return (CommandGroup) getAction(name, commandData);
+        return (CommandGroup) getAction("groups." + name, commandData);
     }
+
 }
