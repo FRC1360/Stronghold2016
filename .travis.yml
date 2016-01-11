@@ -8,3 +8,6 @@ jdk:
 notifications:
   slack: frc1360:Mtibpb4AQyefRMzQb2VEiB8J
   email: false
+addons:
+    code_climate:
+        repo_token: b039e2f1dc1f9337524d32261f42259634f4689d36db5b39e403fc962afeb62b
