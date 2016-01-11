@@ -30,6 +30,7 @@ public class Robot extends IterativeRobot
     {
         oi = new OI();
         // instantiate the command used for the autonomous period
+        //TODO: This will be changed to be using a Livewindow and selector once the Manager is complete.
         autonomousCommand = new ExampleCommand();
     }
 
