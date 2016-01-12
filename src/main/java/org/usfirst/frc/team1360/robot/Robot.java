@@ -4,8 +4,13 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import org.usfirst.frc.team1360.robot.commands.ExampleCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import org.usfirst.frc.team1360.robot.autonomous.AutonomousGroupBuilder;
+import org.usfirst.frc.team1360.robot.autonomous.actions.AutonomousExampleCommand;
 import org.usfirst.frc.team1360.robot.subsystems.ExampleSubsystem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -16,11 +21,12 @@ import org.usfirst.frc.team1360.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends IterativeRobot
 {
+    private List<SendableChooser> choices = new ArrayList<>();
+    private Command autonomousCommand;
 
     public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
     public static OI oi;
 
-    Command autonomousCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -28,10 +34,13 @@ public class Robot extends IterativeRobot
      */
     public void robotInit()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            SendableChooser c = new SendableChooser();
+            choices.add(c);
+        }
         oi = new OI();
-        // instantiate the command used for the autonomous period
-        //TODO: This will be changed to be using a Livewindow and selector once the Manager is complete.
-        autonomousCommand = new ExampleCommand();
+        initAutonomousActions();
     }
 
     public void disabledPeriodic()
@@ -42,7 +51,8 @@ public class Robot extends IterativeRobot
     public void autonomousInit()
     {
         // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+        autonomousCommand = getAutonomousChoice();
+        autonomousCommand.start();
     }
 
     /**
@@ -85,5 +95,50 @@ public class Robot extends IterativeRobot
     public void testPeriodic()
     {
         LiveWindow.run();
+    }
+
+    private void initAutonomousActions()
+    {
+        List<Command[]> sections = new ArrayList<>();
+
+        Command nothing = new AutonomousExampleCommand(0, 0, true);
+        Command[] section1 =
+                {
+                        nothing,
+                        new AutonomousExampleCommand(),
+                        new AutonomousExampleCommand()
+                };
+        Command[] section2 =
+                {
+                        nothing,
+                        new AutonomousExampleCommand()
+                };
+        Command[] section3 =
+                {
+                        nothing,
+                        new AutonomousExampleCommand()
+                };
+
+        sections.add(section1);
+        sections.add(section2);
+        sections.add(section3);
+
+        for(int i = 0; i < 3; i++)
+        {
+            SendableChooser s = choices.get(i);
+            for(Command c : sections.get(i))
+                if (i == 0)
+                    s.addDefault(c.getName(), c);
+                else
+                    s.addObject(c.getName(), c);
+        }
+    }
+
+    private Command getAutonomousChoice()
+    {
+        List<Command> actions = new ArrayList<>();
+        for (SendableChooser s : choices)
+            actions.add((Command) s.getSelected());
+        return new AutonomousGroupBuilder(actions);
     }
 }

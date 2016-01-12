@@ -102,4 +102,14 @@ public class CommandData
     {
         this.floats = floats;
     }
+
+    /**
+     * Reset all values.
+     */
+    public void clear()
+    {
+        floats.clear();
+        booleans.clear();
+        doubles.clear();
+    }
 }
