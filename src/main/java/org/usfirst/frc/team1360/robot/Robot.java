@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import org.usfirst.frc.team1360.robot.autonomous.AutonomousGroupBuilder;
 import org.usfirst.frc.team1360.robot.autonomous.actions.AutonomousExampleCommand;
-import org.usfirst.frc.team1360.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1360.robot.subsystems.ExampleSubsystem;
 
 import java.util.ArrayList;
@@ -41,11 +40,7 @@ public class Robot extends IterativeRobot
             choices.add(c);
         }
         oi = new OI();
-        // instantiate the command used for the autonomous period
-        //TODO: This will be changed to be using a Livewindow and selector once the Manager is complete.
-        autonomousCommand = new ExampleCommand();
-
-
+        initAutonomousActions();
     }
 
     public void disabledPeriodic()
@@ -131,18 +126,12 @@ public class Robot extends IterativeRobot
         for(int i = 0; i < 3; i++)
         {
             SendableChooser s = choices.get(i);
-            for(int j = 0; j < 3; j++)
-            {
-
-            }
+            for(Command c : sections.get(i))
+                if (i == 0)
+                    s.addDefault(c.getName(), c);
+                else
+                    s.addObject(c.getName(), c);
         }
-
-        for(SendableChooser s : choices)
-            for (Command[] commands : sections)
-                for (Command c : commands)
-                {
-
-                }
     }
 
     private Command getAutonomousChoice()
