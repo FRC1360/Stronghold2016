@@ -22,7 +22,7 @@ public class DriveSubsystem extends Subsystem
     /**
      * RightMotor Back on the Drive Subsystem
      */
-    private final Victor DRIVE_RIght_2 = new Victor(RobotMap.DRIVESUBSYSTEM_RIGHT_2);
+    private final Victor DRIVE_RIGHT_2 = new Victor(RobotMap.DRIVESUBSYSTEM_RIGHT_2);
 
 
     @Override
