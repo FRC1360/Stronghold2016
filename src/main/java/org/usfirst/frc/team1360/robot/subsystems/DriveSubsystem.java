@@ -24,10 +24,22 @@ public class DriveSubsystem extends Subsystem
      */
     private final Victor DRIVE_RIGHT_2 = new Victor(RobotMap.DRIVESUBSYSTEM_RIGHT_2);
 
-
     @Override
     protected void initDefaultCommand()
     {
 
+    }
+
+    /**
+     * sets speeds of left and right motors
+     * @param speedLeft Left motor front and back speed
+     * @param speedRight Right motor front and back speed
+     */
+    public void tankDrive(double speedLeft, double speedRight)
+    {
+        DRIVE_LEFT_1.set(-speedLeft);
+        DRIVE_LEFT_2.set(-speedLeft);
+        DRIVE_RIGHT_1.set(speedRight);
+        DRIVE_RIGHT_2.set(speedRight);
     }
 }
