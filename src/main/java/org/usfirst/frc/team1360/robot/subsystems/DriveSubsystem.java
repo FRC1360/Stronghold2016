@@ -44,9 +44,9 @@ public class DriveSubsystem extends Subsystem
     }
 
     /**
-     *
-     * @param speed 
-     * @param turn
+     * The function for arcade drive
+     * @param speed Port for speed
+     * @param turn Port for turn
      */
     public void arcadeDrive(double speed, double turn)
     {
