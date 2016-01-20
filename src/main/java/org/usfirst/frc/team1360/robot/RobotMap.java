@@ -9,14 +9,24 @@ package org.usfirst.frc.team1360.robot;
 public class RobotMap
 {
     /**
-     * Example - Left Motor on the XXY Subsystem
+     * LeftMotor Front on the Drive Subsystem
      * CAN: No
      */
-    public static final int EXAMPLE =           0;
+    public static final int DRIVESUBSYSTEM_LEFT_1 =             0;
     /**
-     * PDB - Left Motor on the XXY Subsystem
+     * LeftMotor Back on the Drive Subsystem
      * CAN: No
      */
-    public static final int PDB_EXAMPLE =       0;
+    public static final int DRIVESUBSYSTEM_LEFT_2 =             1;
+    /**
+    * RightMotor Front on the Drive Subsystem
+    * CAN: No
+     */
+    public static final int DRIVESUBSYSTEM_RIGHT_1 =            2;
+    /**
+    * RightMotor Back on the Drive Subsystem
+    * CAN: No
+    */
+    public static final int DRIVESUBSYSTEM_RIGHT_2 =            3;
 
 }
