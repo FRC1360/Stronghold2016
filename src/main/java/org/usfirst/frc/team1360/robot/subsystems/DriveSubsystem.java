@@ -42,4 +42,17 @@ public class DriveSubsystem extends Subsystem
         DRIVE_RIGHT_1.set(speedRight);
         DRIVE_RIGHT_2.set(speedRight);
     }
+
+    /**
+     *
+     * @param speed 
+     * @param turn
+     */
+    public void arcadeDrive(double speed, double turn)
+    {
+        double left = (-turn) - speed;
+        double right = (-turn) + speed;
+
+        tankDrive(left, right);
+    }
 }
