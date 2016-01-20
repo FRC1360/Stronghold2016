@@ -29,4 +29,13 @@ public class RobotMap
     */
     public static final int DRIVESUBSYSTEM_RIGHT_2 =            3;
 
+    /**
+     * Driver Controller
+     */
+    public static final int JOYSTICK_DRIVER =                   0;
+    /**
+     * Operator Controller
+     */
+    public static final int JOYSTICK_OPERATOR =                 1;
+
 }
