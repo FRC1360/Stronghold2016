@@ -1,6 +1,6 @@
 package org.usfirst.frc.team1360.robot.util;
 
-import java.util.List;
+import java.util.HashMap;
 
 /**
  * CommandData - Used so that Commands can be used with reflection. This allows dynamic loading of the Autonomous Tasks
@@ -12,39 +12,40 @@ public class CommandData
     /**
      * All doubles used.
      */
-    private List<Double> doubles;
+    private HashMap<String, Double> doubles;
     /**
      * All booleans used.
      */
-    private List<Boolean> booleans;
+    private HashMap<String, Boolean> booleans;
     /**
      * All floats used.
      */
-    private List<Float> floats;
+    private HashMap<String, Float> floats;
 
     /**
      * Get the list of all doubles
      * @return all doubles.
      */
-    public List<Double> getDoubles()
+    public HashMap<String, Double> getDoubles()
     {
         return doubles;
     }
 
     /**
      * Add a double to the list.
-     * @param d to add
+     * @param key Key
+     * @param v Value
      */
-    public void addDouble(double d)
+    public void addDouble(String key, double v)
     {
-        doubles.add(d);
+        doubles.put(key, v);
     }
 
     /**
      * Set what the list is. Not used much.
      * @param doubles List to override current one
      */
-    public void setDoubles(List<Double> doubles)
+    public void setDoubles(HashMap<String, Double> doubles)
     {
         this.doubles = doubles;
     }
@@ -53,25 +54,26 @@ public class CommandData
      * Get all booleans.
      * @return all booleans
      */
-    public List<Boolean> getBooleans()
+    public HashMap<String, Boolean> getBooleans()
     {
         return booleans;
     }
 
     /**
      * Add a boolean.
-     * @param b to add
+     * @param k key
+     * @param v to add
      */
-    public void addBoolean(boolean b)
+    public void addBoolean(String k, boolean v)
     {
-        booleans.add(b);
+        booleans.put(k, v);
     }
 
     /**
      * Set what the list is. Not used much.
      * @param booleans List to override current one
      */
-    public void setBooleans(List<Boolean> booleans)
+    public void setBooleans(HashMap<String, Boolean> booleans)
     {
         this.booleans = booleans;
     }
@@ -80,25 +82,26 @@ public class CommandData
      * Get all floats
      * @return all floats
      */
-    public List<Float> getFloats()
+    public HashMap<String, Float> getFloats()
     {
         return floats;
     }
 
     /**
      * Adds a float
+     * @param k key
      * @param f to add
      */
-    public void addFloat(float f)
+    public void addFloat(String k, float f)
     {
-        floats.add(f);
+        floats.put(k, f);
     }
 
     /**
      * Set what the list is. Not used much.
      * @param floats List to override current one
      */
-    public void setFloats(List<Float> floats)
+    public void setFloats(HashMap<String, Float> floats)
     {
         this.floats = floats;
     }
