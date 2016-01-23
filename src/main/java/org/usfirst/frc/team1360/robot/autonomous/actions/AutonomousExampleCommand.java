@@ -21,7 +21,7 @@ public class AutonomousExampleCommand extends Command
 
     public AutonomousExampleCommand(double left, double right, boolean toggle)
     {
-    
+
     }
     public AutonomousExampleCommand()
     {
