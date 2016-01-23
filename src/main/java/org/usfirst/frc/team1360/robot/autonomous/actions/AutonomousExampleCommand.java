@@ -14,14 +14,14 @@ public class AutonomousExampleCommand extends Command
 
     public AutonomousExampleCommand(CommandData commandData)
     {
-        left = commandData.getDoubles().get(0);
-        right = commandData.getDoubles().get(1);
-        toggle = commandData.getBooleans().get(0);
+        left = commandData.getDoubles().get("left");
+        right = commandData.getDoubles().get("right");
+        toggle = commandData.getBooleans().get("toggle");
     }
 
     public AutonomousExampleCommand(double left, double right, boolean toggle)
     {
-
+    
     }
     public AutonomousExampleCommand()
     {
