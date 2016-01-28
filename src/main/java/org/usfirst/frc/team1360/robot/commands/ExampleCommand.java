@@ -1,7 +1,7 @@
-package main.java.org.usfirst.frc.team1360.robot.commands;
+package org.usfirst.frc.team1360.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import main.java.org.usfirst.frc.team1360.robot.Robot;
+import org.usfirst.frc.team1360.robot.Robot;
 
 /**
  *
