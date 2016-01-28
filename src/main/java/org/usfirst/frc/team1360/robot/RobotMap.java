@@ -38,4 +38,9 @@ public class RobotMap
      */
     public static final int JOYSTICK_OPERATOR =                 1;
 
+    /**
+     * Intake motor
+     */
+    public static final int INTAKE_MOTOR =                      5;
+
 }
