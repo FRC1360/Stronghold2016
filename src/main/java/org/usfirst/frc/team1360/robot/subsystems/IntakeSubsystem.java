@@ -20,7 +20,8 @@ public class IntakeSubsystem extends Subsystem {
 
     public void intakeBoulder(double motor)
     {
+    	if(Math.abs(motor) < 0.15) motor = 0;
+    	
         INTAKE_1.set(motor);
     }
-
 }
