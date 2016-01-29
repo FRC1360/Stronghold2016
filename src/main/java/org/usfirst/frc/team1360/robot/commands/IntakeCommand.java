@@ -1,6 +1,8 @@
 package main.java.org.usfirst.frc.team1360.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import main.java.org.usfirst.frc.team1360.robot.OI;
+import main.java.org.usfirst.frc.team1360.robot.Robot;
 
 /**
  *
@@ -10,6 +12,7 @@ public class IntakeCommand extends Command {
     public IntakeCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.intakeSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -18,6 +21,7 @@ public class IntakeCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.intakeSubsystem.intakeBoulder(OI.getOperatorLeftStickXAxis());
     }
 
     // Make this return true when this Command no longer needs to run execute()
