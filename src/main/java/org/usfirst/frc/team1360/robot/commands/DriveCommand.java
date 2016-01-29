@@ -1,10 +1,10 @@
-package org.usfirst.frc.team1360.robot.commands;
+package main.java.org.usfirst.frc.team1360.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import org.usfirst.frc.team1360.robot.subsystems.DriveSubsystem;
-import org.usfirst.frc.team1360.robot.util.CommandData;
-import org.usfirst.frc.team1360.robot.util.Subsystems;
+import main.java.org.usfirst.frc.team1360.robot.subsystems.DriveSubsystem;
+import main.java.org.usfirst.frc.team1360.robot.util.CommandData;
+import main.java.org.usfirst.frc.team1360.robot.util.Subsystems;
 
 public class DriveCommand extends Command
 {

@@ -1,9 +1,9 @@
-package org.usfirst.frc.team1360.robot.subsystems;
+package main.java.org.usfirst.frc.team1360.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import org.usfirst.frc.team1360.robot.RobotMap;
+import main.java.org.usfirst.frc.team1360.robot.RobotMap;
 
 public class DriveSubsystem extends Subsystem
 {
