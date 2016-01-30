@@ -41,4 +41,12 @@ public class RobotMap
      * Operator Controller
      */
     public static final int SHOOTER_MOTOR = 					5;
+    /**
+     * Shooter Encoder channel 1
+     */
+    public static final int SHOOTER_ENCODER_CH1 = 				1;
+    /**
+     *  Shooter Encoder channel 2
+     */
+    public static final int SHOOTER_ENCODER_CH2 = 				2;
 }
