@@ -37,5 +37,8 @@ public class RobotMap
      * Operator Controller
      */
     public static final int JOYSTICK_OPERATOR =                 1;
-
+    /**
+     * Operator Controller
+     */
+    public static final int SHOOTER_MOTOR = 					5;
 }
