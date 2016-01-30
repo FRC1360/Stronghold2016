@@ -1,6 +1,8 @@
 package org.usfirst.frc.team1360.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team1360.robot.util.Subsystems;
+import org.usfirst.frc.team1360.robot.OI;
 
 /**
  *
@@ -13,11 +15,15 @@ public class IntakeCommand extends Command {
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
+    protected void initialize()
+    {
+        requires(Subsystems.INTAKE_SUBSYSTEM);
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    protected void execute()
+    {
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
