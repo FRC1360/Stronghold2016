@@ -12,165 +12,165 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 public class OI 
 {
 
-	public static final Joystick JS_DRIVER = new Joystick(RobotMap.JOYSTICK_DRIVER);
-	public static final Joystick JS_OPERATOR = new Joystick(RobotMap.JOYSTICK_OPERATOR);
+	private static final Joystick JS_DRIVER = new Joystick(RobotMap.JOYSTICK_DRIVER);
+	private static final Joystick JS_OPERATOR = new Joystick(RobotMap.JOYSTICK_OPERATOR);
 
-	public static double getDriverLeftXAxis()
+	private static double getDriverLeftXAxis()
     {
     	return JS_DRIVER.getRawAxis(0); //Driver controller, left stick X axis
     }
     
-    public static double getDriverLeftYAxis() //Driver controller, left stick Y axis
+    private static double getDriverLeftYAxis() //Driver controller, left stick Y axis
     {
     	return JS_DRIVER.getRawAxis(1);
     }
     
-    public static double getDriverLeftTrigger() //Driver controller, left trigger
+    private static double getDriverLeftTrigger() //Driver controller, left trigger
     {
     	return JS_DRIVER.getRawAxis(2);
     }
     
-    public static double getDriverRightTrigger() //Driver controller, right trigger
+    private static double getDriverRightTrigger() //Driver controller, right trigger
     {
     	return JS_DRIVER.getRawAxis(3);
     }
     
-    public static double getDriverRightXAxis() //Driver controller, right stick X axis
+    private static double getDriverRightXAxis() //Driver controller, right stick X axis
     {
     	return JS_DRIVER.getRawAxis(4);
     }
     
-    public static double getDriverRightYAxis() //Driver controller, right stick Y axis
+    private static double getDriverRightYAxis() //Driver controller, right stick Y axis
     {
     	return JS_DRIVER.getRawAxis(5);
     }
 	
-    public static boolean getDriverButtonA()
+    private static boolean getDriverButtonA()
     {
     	return JS_DRIVER.getRawButton(0);
     }
     
-    public static boolean getDriverButtonB()
+    private static boolean getDriverButtonB()
     {
     	return JS_DRIVER.getRawButton(1);
     }
     
-    public static boolean getDriverButtonX()
+    private static boolean getDriverButtonX()
     {
     	return JS_DRIVER.getRawButton(2);
     }
     
-    public static boolean getDriverButtonY()
+    private static boolean getDriverButtonY()
     {
     	return JS_DRIVER.getRawButton(3);
     }
     
-    public static boolean getDriverButtonLB()
+    private static boolean getDriverButtonLB()
     {
     	return JS_DRIVER.getRawButton(4);
     }
     
-    public static boolean getDriverButtonRB()
+    private static boolean getDriverButtonRB()
     {
     	return JS_DRIVER.getRawButton(5);
     }
     
-    public static boolean getDriverButtonBack()
+    private static boolean getDriverButtonBack()
     {
     	return JS_DRIVER.getRawButton(6);
     }
     
-    public static boolean getDriverButtonStart()
+    private static boolean getDriverButtonStart()
     {
     	return JS_DRIVER.getRawButton(7);
     }
     
-    public static boolean getDriverClickLeftStick()
+    private static boolean getDriverClickLeftStick()
     {
     	return JS_DRIVER.getRawButton(8);
     }
     
-    public static boolean getDriverClickRightStick()
+    private static boolean getDriverClickRightStick()
     {
     	return JS_DRIVER.getRawButton(9);
     }
     
-    public static double getOperatorLeftStickXAxis()
+    private static double getOperatorLeftStickXAxis()
     {
     	return JS_OPERATOR.getRawAxis(0);
     }
     
-    public static double getOperatorLeftStickYAxis()
+    private static double getOperatorLeftStickYAxis()
     {
     	return JS_OPERATOR.getRawAxis(1);
     }
     
-    public static double getOperatorLeftTrigger()
+    private static double getOperatorLeftTrigger()
     {
     	return JS_OPERATOR.getRawAxis(2);
     }
     
-    public static double getOperatorRightTrigger()
+    private static double getOperatorRightTrigger()
     {
     	return JS_OPERATOR.getRawAxis(3);
     }
     
-    public static double getOperatorRightStickXAxis()
+    private static double getOperatorRightStickXAxis()
     {
     	return JS_OPERATOR.getRawAxis(4);
     }
     
-    public static double getOperatorRightStickYAxis()
+    private static double getOperatorRightStickYAxis()
     {
     	return JS_OPERATOR.getRawAxis(5);
     }
     
-    public static boolean getOperatorButtonA()
+    private static boolean getOperatorButtonA()
     {
     	return JS_OPERATOR.getRawButton(0);
     }
     
-    public static boolean getOperatorButtonB()
+    private static boolean getOperatorButtonB()
     {
     	return JS_OPERATOR.getRawButton(1);
     }
     
-    public static boolean getOperatorButtonX()
+    private static boolean getOperatorButtonX()
     {
     	return JS_OPERATOR.getRawButton(2);
     }
     
-    public static boolean getOperatorButtonY()
+    private static boolean getOperatorButtonY()
     {
     	return JS_OPERATOR.getRawButton(3);
     }
     
-    public static boolean getOperatorButtonLB()
+    private static boolean getOperatorButtonLB()
     {
     	return JS_OPERATOR.getRawButton(4);
     }
     
-    public static boolean getOperatorButtonRB()
+    private static boolean getOperatorButtonRB()
     {
     	return JS_OPERATOR.getRawButton(5);
     }
     
-    public static boolean getOperatorButtonBack()
+    private static boolean getOperatorButtonBack()
     {
     	return JS_OPERATOR.getRawButton(6);
     }
     
-    public static boolean getOperatorButtonStart()
+    private static boolean getOperatorButtonStart()
     {
     	return JS_OPERATOR.getRawButton(7);
     }
     
-    public static boolean getOperatorClickLeftStick()
+    private static boolean getOperatorClickLeftStick()
     {
     	return JS_OPERATOR.getRawButton(8);
     }
     
-    public static boolean getOperatorClickRightStick()
+    private static boolean getOperatorClickRightStick()
     {
     	return JS_OPERATOR.getRawButton(9);
     }

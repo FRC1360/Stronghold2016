@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import main.java.org.usfirst.frc.team1360.robot.autonomous.AutonomousGroupBuilder;
 import main.java.org.usfirst.frc.team1360.robot.autonomous.actions.AutonomousExampleCommand;
 import main.java.org.usfirst.frc.team1360.robot.subsystems.ExampleSubsystem;
-import main.java.org.usfirst.frc.team1360.robot.subsystems.IntakeSubsystem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +23,7 @@ public class Robot extends IterativeRobot
 {
     private List<SendableChooser> choices = new ArrayList<>();
     private Command autonomousCommand;
-    private Command IntakeCommand;
 
-    public static final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
     public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
     public static OI oi;
 
@@ -73,7 +70,6 @@ public class Robot extends IterativeRobot
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        IntakeCommand.start();
     }
 
     /**
