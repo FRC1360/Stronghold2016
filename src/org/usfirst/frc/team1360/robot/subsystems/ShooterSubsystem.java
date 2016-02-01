@@ -18,7 +18,7 @@ public class ShooterSubsystem extends Subsystem {
     /**
      * Shooter encoder
      */
-    public Encoder SHOOTER_ENCODER = new Encoder(RobotMap.SHOOTER_ENCODER_CH1, RobotMap.SHOOTER_ENCODER_CH2, true, Encoder.EncodingType.k4X);
+    Encoder SHOOTER_ENCODER = new Encoder(RobotMap.SHOOTER_ENCODER_CH1, RobotMap.SHOOTER_ENCODER_CH2, true, Encoder.EncodingType.k4X);
 
     boolean isMoving = false;
     int targetPos = 0;

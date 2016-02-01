@@ -20,13 +20,13 @@ public class ShooterCommand extends Command {
     // Called just before this Command runs the first time
     protected void initialize() 
     {
-    	Subsystems.SHOOTER_SUBSYSTEM.SHOOTER_ENCODER.reset();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	Subsystems.SHOOTER_SUBSYSTEM.changeShintakePosition(OI.getOperatorRightStickYAxis());
+    	//Subsystems.SHOOTER_SUBSYSTEM.changeShintakePosition(OI.getOperatorRightStickYAxis());
+    	//until OI is fixed this stays commented
     }
 
     // Make this return true when this Command no longer needs to run execute()
