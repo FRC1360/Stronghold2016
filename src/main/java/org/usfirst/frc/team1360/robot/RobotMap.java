@@ -37,5 +37,17 @@ public class RobotMap
      * Operator Controller
      */
     public static final int JOYSTICK_OPERATOR =                 1;
+    /**
+     *  Motor for the shintake
+     */
+    public static final int SHOOTER_MOTOR = 					5;
+    /**
+    *   Encoder for the shintake angle channel 1
+    */
+    public static final int SHOOTER_ENCODER_CH1 = 				1;
+    /**
+     *  Encoder for the shintake angle channel 1
+     */
+    public static final int SHOOTER_ENCODER_CH2 = 				2;
 
 }
