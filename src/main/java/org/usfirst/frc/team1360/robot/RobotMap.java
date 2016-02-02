@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1360.robot;
+package main.java.org.usfirst.frc.team1360.robot;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into

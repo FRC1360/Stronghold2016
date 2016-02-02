@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1360.robot.util;
+package main.java.org.usfirst.frc.team1360.robot.util;
 import edu.wpi.first.wpilibj.Joystick;
 
 public class Xbox360Controller extends Joystick

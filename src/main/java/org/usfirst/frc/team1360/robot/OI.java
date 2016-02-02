@@ -1,10 +1,10 @@
-package org.usfirst.frc.team1360.robot;
+package main.java.org.usfirst.frc.team1360.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
-import org.usfirst.frc.team1360.robot.util.Xbox360Controller;
+import main.java.org.usfirst.frc.team1360.robot.util.Xbox360Controller;
 
 /**
  * This class is the glue that binds the controls on the physical operator
