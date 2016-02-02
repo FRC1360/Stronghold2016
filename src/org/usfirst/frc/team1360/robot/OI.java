@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
  */
 public class OI 
 {
-
+	
 	private static final Joystick JS_DRIVER = new Joystick(RobotMap.JOYSTICK_DRIVER);
 	private static final Joystick JS_OPERATOR = new Joystick(RobotMap.JOYSTICK_OPERATOR);
 
