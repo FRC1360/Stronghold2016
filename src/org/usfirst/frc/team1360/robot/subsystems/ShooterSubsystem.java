@@ -70,5 +70,16 @@ public class ShooterSubsystem extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    //TASK LIST FOR SHOOTER
+    //
+    // 1. Change to D-PAD for position changes
+    // 2. Add intake functionality 
+    // 3. Limit intake modes based position
+    // 4. Remove set point restrictions 
+    // 5. figure out why Michael doesn't sync his code
+    // 6. PID
+    // 7.
+    // 8.
+    //
 }
 
