@@ -20,6 +20,41 @@ public class OI
 	{
 		return 0;
 	}
+	
+	public static double getDriverTurn()
+	{
+		return 0;
+	}
+	
+	public static boolean getDriverRearTilt()
+	{
+		return false;
+	}
+	
+	public static boolean getDriverFrontTilt()
+	{
+		return false;
+	}
+	
+	public static boolean getDriverDoubleTilt()
+	{
+		return false;
+	}
+	
+	public static boolean getOperatorShooterSetpointUp()
+	{
+		return false;
+	}
+	
+	public static boolean getOperatorShooterSetpointDown()
+	{
+		return false;
+	}
+	
+	public static boolean getOperatorShootShoot()
+	{
+		return false;
+	}
 
 }
 
