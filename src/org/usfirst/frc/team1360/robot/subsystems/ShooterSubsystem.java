@@ -70,7 +70,8 @@ public class ShooterSubsystem extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    //TASK LIST FOR SHOOTER
+    
+    //TASK LIST FOR SHINTAKE
     //
     // 1. Change to D-PAD for position changes
     // 2. Add intake functionality 
@@ -81,5 +82,6 @@ public class ShooterSubsystem extends Subsystem {
     // 7.
     // 8.
     //
+    
 }
 
