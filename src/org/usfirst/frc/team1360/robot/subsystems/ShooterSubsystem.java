@@ -40,14 +40,14 @@ public class ShooterSubsystem extends Subsystem {
      * Changes the shintake position based on two presets
      * @param Joystick from the operator that changes the shintake position
      */
-    public void changeShintakePosition(double Joystick)
+    public void changeShintakePosition(double Dpad)
     {
-    		if(Joystick > 0.9)
+    		if(Dpad == 90)
     		{
     			SHOOTER_1.set(10);
     			targetPos = 500;
     		}
-    		if(Joystick < -0.9)
+    		if(Dpad == 180)
     		{
     			SHOOTER_1.set(-10);
     			targetPos = 0;
