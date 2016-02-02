@@ -79,7 +79,7 @@ public class ShooterSubsystem extends Subsystem {
     // 4. Remove set point restrictions 
     // 5. figure out why Michael doesn't sync his code
     // 6. PID
-    // 7.
+    // 7. Request OI changes
     // 8.
     //
     
