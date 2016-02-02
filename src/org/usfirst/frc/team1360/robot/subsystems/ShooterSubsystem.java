@@ -22,6 +22,10 @@ public class ShooterSubsystem extends Subsystem {
 
     boolean isMoving = false;
     int targetPos = 0;
+    //Shooter position 0 = bottom
+    //
+    //
+    int ShooterPositions = 0;
     
     /**
      * sets the motor speed
@@ -56,6 +60,7 @@ public class ShooterSubsystem extends Subsystem {
     	{
     		if(SHOOTER_ENCODER.get() > targetPos - 5 && SHOOTER_ENCODER.get() < targetPos + 5)
     		{
+    			
     			SHOOTER_1.set(0);
     		}
     	}
