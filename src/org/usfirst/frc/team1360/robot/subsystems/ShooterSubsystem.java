@@ -20,7 +20,6 @@ public class ShooterSubsystem extends Subsystem {
      */
     Encoder SHOOTER_ENCODER = new Encoder(RobotMap.SHOOTER_ENCODER_CH1, RobotMap.SHOOTER_ENCODER_CH2, true, Encoder.EncodingType.k4X);
 
-    boolean isMoving = false;
     int targetPos = 0;
     //Shooter position 0 = bottom
     //
@@ -43,8 +42,6 @@ public class ShooterSubsystem extends Subsystem {
      */
     public void changeShintakePosition(double Joystick)
     {
-    	if(!isMoving)
-    	{
     		if(Joystick > 0.9)
     		{
     			SHOOTER_1.set(10);
@@ -55,16 +52,9 @@ public class ShooterSubsystem extends Subsystem {
     			SHOOTER_1.set(-10);
     			targetPos = 0;
     		}
-    	}
-    	else
-    	{
-    		if(SHOOTER_ENCODER.get() > targetPos - 5 && SHOOTER_ENCODER.get() < targetPos + 5)
-    		{
-    			
-    			SHOOTER_1.set(0);
-    		}
-    	}
+    		if(SHOOTER_ENCODER.get() > targetPos - 5 && SHOOTER_ENCODER.get() < targetPos + 5) SHOOTER_1.set(0);		
     }
+    
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -80,8 +70,8 @@ public class ShooterSubsystem extends Subsystem {
     // 5. figure out why Michael doesn't sync his code
     // 6. PID
     // 7. Request OI changes
-    // 8.
-    //
+    // 8. Ensure that POV hat is added
+    // 9. 
     
 }
 
