@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
-import org.usfirst.frc.team1360.robot.util.Controller;
+import org.usfirst.frc.team1360.robot.util.Xbox360Controller;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -13,8 +13,8 @@ import org.usfirst.frc.team1360.robot.util.Controller;
 public class OI 
 {
 
-	private static final Controller JS_DRIVER = new Controller(RobotMap.JOYSTICK_DRIVER);
-	private static final Controller JS_OPERATOR = new Controller(RobotMap.JOYSTICK_OPERATOR);
+	private static final Xbox360Controller JS_DRIVER = new Xbox360Controller(RobotMap.JOYSTICK_DRIVER);
+	private static final Xbox360Controller JS_OPERATOR = new Xbox360Controller(RobotMap.JOYSTICK_OPERATOR);
 	
 	public static double getDriverThrottle()
 	{
