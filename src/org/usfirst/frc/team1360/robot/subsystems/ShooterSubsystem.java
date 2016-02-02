@@ -21,19 +21,26 @@ public class ShooterSubsystem extends Subsystem {
     Encoder SHOOTER_ENCODER = new Encoder(RobotMap.SHOOTER_ENCODER_CH1, RobotMap.SHOOTER_ENCODER_CH2, true, Encoder.EncodingType.k4X);
 
     int targetPos = 0;
-    //Shooter position 0 = bottom
-    //
-    //
-    int ShooterPositions = 0;
+    // 0 = bottom
+    // 1 = moving
+    // 2 = top
+    int ShootPos = 0;
     
     /**
      * sets the motor speed
      * @param speed for the motor
      */
-    public void setShooterSpeed(double speed)
+    public void setShooterSpeed(double joySpeed)
     {
-    	if(Math.abs(speed) < 0.1) speed = 0;
-    	SHOOTER_1.set(speed);
+    	if(ShootPos == 2)
+    	{
+    		if(joySpeed > 0) SHOOTER_1.set(1);
+    	}
+    	if(ShootPos == 0)
+    	{
+    		if(joySpeed > 0) SHOOTER_1.set(0.3);
+    		if(joySpeed < 0) SHOOTER_1.set(-0.3);
+    	}
     }
     
     /**
@@ -44,15 +51,22 @@ public class ShooterSubsystem extends Subsystem {
     {
     		if(Dpad == 90)
     		{
-    			SHOOTER_1.set(10);
+    			SHOOTER_1.set(0.1);
     			targetPos = 500;
+    			ShootPos = 1;
     		}
     		if(Dpad == 180)
     		{
-    			SHOOTER_1.set(-10);
+    			SHOOTER_1.set(-0.1);
     			targetPos = 0;
+    			ShootPos = 1;
     		}
-    		if(SHOOTER_ENCODER.get() > targetPos - 5 && SHOOTER_ENCODER.get() < targetPos + 5) SHOOTER_1.set(0);		
+    		if(SHOOTER_ENCODER.get() > targetPos - 5 && SHOOTER_ENCODER.get() < targetPos + 5) 
+    		{
+    			SHOOTER_1.set(0);
+    			if(targetPos == 500) ShootPos = 2;
+    			else ShootPos = 0;
+    		}
     }
     
     
@@ -63,15 +77,16 @@ public class ShooterSubsystem extends Subsystem {
     
     //TASK LIST FOR SHINTAKE
     //
-    // 1. Change to D-PAD for position changes
-    // 2. Add intake functionality 
-    // 3. Limit intake modes based position
-    // 4. Remove set point restrictions 
+    // 1. Change to POV hat for position changes
+    // 2. Add intake functionality - DONE
+    // 3. Limit intake modes based position - DONE
+    // 4. Remove set point restrictions  - DONE
     // 5. figure out why Michael doesn't sync his code
     // 6. PID
-    // 7. Request OI changes
+    // 7. Request dead zone in OI
     // 8. Ensure that POV hat is added
-    // 9. 
+    // 9. Fix comments
+    // 10. Fix Encoder and victor names
     
 }
 
