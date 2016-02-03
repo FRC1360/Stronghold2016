@@ -29,6 +29,29 @@ public class RobotMap
     */
     public static final int DRIVESUBSYSTEM_RIGHT_2 =            3;
 
+
+    public static final int INTAKESUBSYSTEM_INTAKE_1 =          4;
+
+
+    public static final int SHOOTERSUBSYSTEM_SHOOTER_1 = INTAKESUBSYSTEM_INTAKE_1;
+
+
+    public static final int SHOOTERSUBSYSTEM_TILTER =           5;
+
+
+    // Solenoids
+
+    public static final int DRIVESUBSYSTEM_LEFT_SOLENOID_1 =    0;
+
+    public static final int DRIVESUBYSTEM_LEFT_SOLENOID_2 =     1;
+
+    public static final int DRIVESUBSYSTEM_RIGHT_SOLENOID_1 =   2;
+
+    public static final int DRIVESUBSYSTEM_RIGHT_SOLENOID_2 =   3;
+
+    public static final int SHOOTERSUBSYSTEM_SHOOTER_SOLENOID = 4;
+
+
     /**
      * Driver Controller
      */
