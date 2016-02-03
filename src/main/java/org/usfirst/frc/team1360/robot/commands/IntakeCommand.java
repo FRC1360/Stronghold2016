@@ -12,12 +12,13 @@ public class IntakeCommand extends Command {
     public IntakeCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        requires(Subsystems.INTAKE_SUBSYSTEM);
     }
 
     // Called just before this Command runs the first time
     protected void initialize()
     {
-        requires(Subsystems.INTAKE_SUBSYSTEM);
+
     }
 
     // Called repeatedly when this Command is scheduled to run
