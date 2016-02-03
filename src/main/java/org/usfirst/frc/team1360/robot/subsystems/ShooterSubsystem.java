@@ -39,7 +39,6 @@ public class ShooterSubsystem extends Subsystem {
     	if(ShootPos == 0)
     	{
     		if(joySpeed > 0) SHOOTER_1.set(0.3);
-    		if(joySpeed < 0) SHOOTER_1.set(-0.3);
     	}
     }
     
