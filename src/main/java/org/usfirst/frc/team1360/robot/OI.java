@@ -1,5 +1,7 @@
 package org.usfirst.frc.team1360.robot;
 
+import org.usfirst.frc.team1360.robot.RobotMap;
+
 import org.usfirst.frc.team1360.robot.util.Xbox360Controller;
 
 /**
