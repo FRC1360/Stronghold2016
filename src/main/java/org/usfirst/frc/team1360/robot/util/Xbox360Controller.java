@@ -7,33 +7,57 @@ public class Xbox360Controller extends Joystick
 	public Xbox360Controller(int port) 
 	{
 		super(port);
-	}	
-	
+	}
+
+    /**
+     * Left Stick X Axis
+     * @return value
+     */
 	public double getLeftXAxis()
     {
     	return this.getRawAxis(0);
     }
 
+    /**
+     * Left Stick Y Axis
+     * @return value
+     */
     public double getLeftYAxis()
     {
     	return this.getRawAxis(1);
     }
-    
+
+    /**
+     * Left Trigger
+     * @return value
+     */
     public double getLeftTrigger()
     {
     	return this.getRawAxis(2);
     }
 
+    /**
+     * Right Trigger
+     * @return value
+     */
     public double getRightTrigger()
     {
     	return this.getRawAxis(3);
     }
 
+    /**
+     * Right Stick X Axis
+     * @return value
+     */
     public double getRightXAxis()
     {
     	return this.getRawAxis(4);
     }
-    
+
+    /**
+     * Right Stick Y Axis
+     * @return value
+     */
     public double getRightYAxis()
     {
     	return this.getRawAxis(5);

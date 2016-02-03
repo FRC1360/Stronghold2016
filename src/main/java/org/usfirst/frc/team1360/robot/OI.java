@@ -1,10 +1,6 @@
-package main.java.org.usfirst.frc.team1360.robot;
+package org.usfirst.frc.team1360.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.buttons.Trigger;
-import main.java.org.usfirst.frc.team1360.robot.util.Xbox360Controller;
+import org.usfirst.frc.team1360.robot.util.Xbox360Controller;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -18,7 +14,42 @@ public class OI
 	
 	public static double getDriverThrottle()
 	{
-		return 0;
+		return JS_DRIVER.getLeftTrigger() - JS_DRIVER.getRightTrigger();
+	}
+	
+	public static double getDriverTurn()
+	{
+		return JS_DRIVER.getLeftXAxis();
+	}
+	
+	public static boolean getDriverRearTilt()
+	{
+		return JS_DRIVER.getButtonA();
+	}
+	
+	public static boolean getDriverFrontTilt()
+	{
+		return JS_DRIVER.getButtonB();
+	}
+	
+	public static boolean getDriverDoubleTilt()
+	{
+		return JS_DRIVER.getButtonY();
+	}
+	
+	public static boolean getOperatorShooterSetpointUp()
+	{
+		return JS_OPERATOR.getButtonRB();
+	}
+	
+	public static boolean getOperatorShooterSetpointDown()
+	{
+		return JS_OPERATOR.getButtonLB();
+	}
+	
+	public static boolean getOperatorShootShoot()
+	{
+		return JS_OPERATOR.getButtonA();
 	}
 
 }
