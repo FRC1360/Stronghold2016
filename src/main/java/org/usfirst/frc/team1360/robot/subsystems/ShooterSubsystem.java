@@ -22,8 +22,9 @@ public class ShooterSubsystem extends Subsystem {
 
     int targetPos = 0;
     // 0 = bottom
-    // 1 = moving
-    // 2 = top
+    // 1 = moving up
+    // 2 = moving down
+    // 3 = top
     int ShootPos = 0;
     
     /**
@@ -58,13 +59,21 @@ public class ShooterSubsystem extends Subsystem {
     		{
     			SHOOTER_1.set(-0.1);
     			targetPos = 0;
-    			ShootPos = 1;
+    			ShootPos = 2;
     		}
     		if(SHOOTER_ENCODER.get() > targetPos - 5 && SHOOTER_ENCODER.get() < targetPos + 5) 
     		{
     			SHOOTER_1.set(0);
-    			if(targetPos == 500) ShootPos = 2;
+    			if(targetPos == 500) ShootPos = 3;
     			else ShootPos = 0;
+    		}
+    		if(ShootPos == 1)
+    		{
+    			SHOOTER_1.set((2*(SHOOTER_ENCODER.get()*SHOOTER_ENCODER.get()))/0.0005);
+    		}
+    		if(ShootPos == 2)
+    		{
+    			SHOOTER_1.set(((2*(SHOOTER_ENCODER.get()*SHOOTER_ENCODER.get()))/0.0005)*-1);
     		}
     }
     
