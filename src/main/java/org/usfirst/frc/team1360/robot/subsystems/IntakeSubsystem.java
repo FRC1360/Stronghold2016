@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1360.robot.subsystems;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -11,7 +12,15 @@ public class IntakeSubsystem extends PIDSubsystem
     /**
      * Motor for intake
      */
-	private final Victor INTAKE_1 = new Victor(RobotMap.INTAKE_MOTOR);
+	private final Victor INTAKE_1 = new Victor(RobotMap.INTAKESUBSYSTEM_INTAKE_1);
+
+    /**
+     * *IMPORTANT*
+     * This AnalogInput is not complete.
+     * It should not map to INTAKE_MOTOR.
+     * I need something in RobotMap
+     */
+    private final AnalogInput INPUT_1 = new AnalogInput(RobotMap.INTAKE_MOTOR);
 
 
     public IntakeSubsystem()
@@ -43,7 +52,7 @@ public class IntakeSubsystem extends PIDSubsystem
     @Override
     protected double returnPIDInput()
     {
-        return 0;
+        return INPUT_1.getAverageValue();
     }
 
     @Override
