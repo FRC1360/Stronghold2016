@@ -17,10 +17,12 @@ public class IntakeSubsystem extends PIDSubsystem
     /**
      * *IMPORTANT*
      * This AnalogInput is not complete.
-     * It should not map to INTAKE_MOTOR.
+     * It should not map to INTAKE_ENCODER.
      * I need something in RobotMap
+     *
+     * Plz Jaime-wan.  You're my only hope
      */
-    private final AnalogInput INPUT_1 = new AnalogInput(RobotMap.INTAKE_MOTOR);
+    private final AnalogInput INPUT_1 = new AnalogInput(RobotMap.INTAKE_ENCODER);
 
 
     public IntakeSubsystem()

@@ -64,6 +64,6 @@ public class RobotMap
     /**
      * Intake motor
      */
-    public static final int INTAKE_MOTOR =                      5;
+    public static final int INTAKE_ENCODER =                      5;
 
 }
