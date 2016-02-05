@@ -44,8 +44,8 @@ public class ShooterSubsystem extends Subsystem {
     }
     
     /**
-     * Changes the shintake position based on two presets
-     * @param Joystick from the operator that changes the shintake position
+     * Changes the shooter/intake position based on two presets
+     * @param Joystick from the operator that changes the shooter/intake position
      */
     public void changeShintakePosition(double Dpad)
     {
@@ -77,13 +77,20 @@ public class ShooterSubsystem extends Subsystem {
     		}
     }
     
+    public void getSpeed() //Work in progress
+    {
+    	double period = 0.5;
+    	SHOOTER_ENCODER.setDistancePerPulse(period);
+    	double speed = SHOOTER_ENCODER.getDistance(); //based off of period
+    	double speed2 = SHOOTER_ENCODER.getRaw(); //unaffected by the modifier
+    }
     
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    //TASK LIST FOR SHINTAKE
+    //TASK LIST FOR SHOOTER/INTAKE
     //
     // 1. Change to POV hat for position changes
     // 2. Add intake functionality - DONE
