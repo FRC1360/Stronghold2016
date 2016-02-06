@@ -51,13 +51,13 @@ public class ShooterSubsystem extends Subsystem {
     {
     		if(Dpad == 90)
     		{
-    			SHOOTER_1.set(0.1);
+    			SHOOTER_1.set((2*(SHOOTER_ENCODER.get()*SHOOTER_ENCODER.get()))/0.005);
     			targetPos = 500;
     			ShootPos = 1;
     		}
     		if(Dpad == 180)
     		{
-    			SHOOTER_1.set(-0.1);
+    			SHOOTER_1.set(((2*(SHOOTER_ENCODER.get()*SHOOTER_ENCODER.get()))/0.005)*-1);
     			targetPos = 0;
     			ShootPos = 2;
     		}
