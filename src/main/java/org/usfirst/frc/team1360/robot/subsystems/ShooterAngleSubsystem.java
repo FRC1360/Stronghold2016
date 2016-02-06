@@ -1,6 +1,6 @@
-package main.java.org.usfirst.frc.team1360.robot.subsystems;
+package org.usfirst.frc.team1360.robot.subsystems;
 
-import main.java.org.usfirst.frc.team1360.robot.RobotMap;
+import org.usfirst.frc.team1360.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Victor;
@@ -28,22 +28,6 @@ public class ShooterAngleSubsystem extends Subsystem {
     int ShootPos = 0;
     
     /**
-     * sets the motor speed
-     * @param speed for the motor
-     */
-    public void setShooterSpeed(double joySpeed)
-    {
-    	if(ShootPos == 2)
-    	{
-    		if(joySpeed > 0) SHOOTER_1.set(1);
-    	}
-    	if(ShootPos == 0)
-    	{
-    		if(joySpeed > 0) SHOOTER_1.set(0.3);
-    	}
-    }
-    
-    /**
      * Changes the shooter/intake position based on two presets
      * @param Joystick from the operator that changes the shooter/intake position
      */
@@ -51,13 +35,13 @@ public class ShooterAngleSubsystem extends Subsystem {
     {
     		if(Dpad == 90)
     		{
-    			SHOOTER_1.set((2*(SHOOTER_ENCODER.get()*SHOOTER_ENCODER.get()))/0.005);
+    			SHOOTER_1.set(Math.sqrt(Math.sqrt(SHOOTER_ENCODER.get()/500)));
     			targetPos = 500;
     			ShootPos = 1;
     		}
     		if(Dpad == 180)
     		{
-    			SHOOTER_1.set(((2*(SHOOTER_ENCODER.get()*SHOOTER_ENCODER.get()))/0.005)*-1);
+    			SHOOTER_1.set(Math.sqrt(Math.sqrt(((SHOOTER_ENCODER.get()-500)/500)*-1)));
     			targetPos = 0;
     			ShootPos = 2;
     		}
@@ -69,11 +53,11 @@ public class ShooterAngleSubsystem extends Subsystem {
     		}
     		if(ShootPos == 1)
     		{
-    			SHOOTER_1.set((2*(SHOOTER_ENCODER.get()*SHOOTER_ENCODER.get()))/0.005);
+    			SHOOTER_1.set(Math.sqrt(Math.sqrt(SHOOTER_ENCODER.get()/500)));
     		}
     		if(ShootPos == 2)
     		{
-    			SHOOTER_1.set(((2*(SHOOTER_ENCODER.get()*SHOOTER_ENCODER.get()))/0.005)*-1);
+    			SHOOTER_1.set(Math.sqrt(Math.sqrt(((SHOOTER_ENCODER.get()-500)/500)*-1)));
     		}
     }
     

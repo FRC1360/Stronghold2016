@@ -1,13 +1,13 @@
-package main.java.org.usfirst.frc.team1360.robot;
+package org.usfirst.frc.team1360.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import main.java.org.usfirst.frc.team1360.robot.autonomous.AutonomousGroupBuilder;
-import main.java.org.usfirst.frc.team1360.robot.autonomous.actions.AutonomousExampleCommand;
-import main.java.org.usfirst.frc.team1360.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team1360.robot.autonomous.AutonomousGroupBuilder;
+import org.usfirst.frc.team1360.robot.autonomous.actions.AutonomousExampleCommand;
+import org.usfirst.frc.team1360.robot.subsystems.ExampleSubsystem;
 
 import java.util.ArrayList;
 import java.util.List;

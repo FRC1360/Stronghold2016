@@ -1,6 +1,6 @@
-package main.java.org.usfirst.frc.team1360.robot.subsystems;
+package org.usfirst.frc.team1360.robot.subsystems;
 
-import main.java.org.usfirst.frc.team1360.robot.RobotMap;
+import org.usfirst.frc.team1360.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Victor;

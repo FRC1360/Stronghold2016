@@ -1,7 +1,7 @@
-package main.java.org.usfirst.frc.team1360.robot.autonomous.actions;
+package org.usfirst.frc.team1360.robot.autonomous.actions;
 
 import edu.wpi.first.wpilibj.command.Command;
-import main.java.org.usfirst.frc.team1360.robot.util.CommandData;
+import org.usfirst.frc.team1360.robot.util.CommandData;
 
 /**
  * AutonomousExampleCommand - Does XXY Function on XXY Subsystem
