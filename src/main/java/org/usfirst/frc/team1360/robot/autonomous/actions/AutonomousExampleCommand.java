@@ -11,6 +11,7 @@ public class AutonomousExampleCommand extends Command
     private double left;
     private double right;
     private boolean toggle;
+    
 
     public AutonomousExampleCommand(CommandData commandData)
     {
@@ -37,7 +38,7 @@ public class AutonomousExampleCommand extends Command
     @Override
     protected void execute()
     {
-
+    	
     }
 
     @Override

@@ -69,11 +69,11 @@ public class ShooterSubsystem extends Subsystem {
     		}
     		if(ShootPos == 1)
     		{
-    			SHOOTER_1.set((2*(SHOOTER_ENCODER.get()*SHOOTER_ENCODER.get()))/0.0005);
+    			SHOOTER_1.set((2*(SHOOTER_ENCODER.get()*SHOOTER_ENCODER.get()))/0.005);
     		}
     		if(ShootPos == 2)
     		{
-    			SHOOTER_1.set(((2*(SHOOTER_ENCODER.get()*SHOOTER_ENCODER.get()))/0.0005)*-1);
+    			SHOOTER_1.set(((2*(SHOOTER_ENCODER.get()*SHOOTER_ENCODER.get()))/0.005)*-1);
     		}
     }
     
