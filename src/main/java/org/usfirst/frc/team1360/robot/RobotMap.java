@@ -41,15 +41,11 @@ public class RobotMap
 
     // Solenoids
 
-    public static final int DRIVESUBSYSTEM_LEFT_SOLENOID_1 =    0;
+    public static final int DRIVESUBSYSTEM_SOLENOID_BACK =    0;
 
-    public static final int DRIVESUBYSTEM_LEFT_SOLENOID_2 =     1;
+    public static final int DRIVESUBSYSTEM_SOLENOID_MID =       1;
 
-    public static final int DRIVESUBSYSTEM_RIGHT_SOLENOID_1 =   2;
-
-    public static final int DRIVESUBSYSTEM_RIGHT_SOLENOID_2 =   3;
-
-    public static final int SHOOTERSUBSYSTEM_SHOOTER_SOLENOID = 4;
+    public static final int SHOOTERSUBSYSTEM_SHOOTER_SOLENOID = 2;
 
 
     /**
@@ -60,10 +56,4 @@ public class RobotMap
      * Operator Controller
      */
     public static final int JOYSTICK_OPERATOR =                 1;
-
-    /**
-     * Intake motor
-     */
-    public static final int INTAKE_MOTOR =                      5;
-
 }

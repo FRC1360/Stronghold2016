@@ -10,7 +10,7 @@ public class IntakeSubsystem extends Subsystem
     /**
      * Motor for intake
      */
-	private final Victor INTAKE_1 = new Victor(RobotMap.INTAKE_MOTOR);
+	private final Victor INTAKE_1 = new Victor(RobotMap.INTAKESUBSYSTEM_INTAKE_1);
 	
     @Override
     protected void initDefaultCommand()
