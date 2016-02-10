@@ -22,7 +22,7 @@ public class IntakeSubsystem extends PIDSubsystem
      *
      * Plz Jaime-wan.  You're my only hope
      */
-    private final AnalogInput INPUT_1 = new AnalogInput(RobotMap.INTAKE_ENCODER);
+    private final AnalogInput INPUT_1 = new AnalogInput(RobotMap.INTAKESUBSYSTEM_ENCODER);
 
 
     public IntakeSubsystem()

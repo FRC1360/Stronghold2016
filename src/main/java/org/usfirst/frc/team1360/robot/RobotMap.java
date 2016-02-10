@@ -39,9 +39,15 @@ public class RobotMap
     public static final int SHOOTERSUBSYSTEM_TILTER =           5;
 
 
+    // Encoders
+
+    public static final int INTAKESUBSYSTEM_ENCODER =           0;
+
+    public static final int SHOOTERSUBSYSTEM_ENCODER = INTAKESUBSYSTEM_ENCODER;
+
     // Solenoids
 
-    public static final int DRIVESUBSYSTEM_SOLENOID_BACK =    0;
+    public static final int DRIVESUBSYSTEM_SOLENOID_BACK =      0;
 
     public static final int DRIVESUBSYSTEM_SOLENOID_MID =       1;
 
