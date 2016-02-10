@@ -39,17 +39,23 @@ public class RobotMap
     public static final int SHOOTERSUBSYSTEM_TILTER =           5;
 
 
+    // Encoders
+
+    public static final int INTAKESUBSYSTEM_ENCODERA =          0;
+
+    public static final int SHOOTERSUBSYSTEM_ENCODERA = INTAKESUBSYSTEM_ENCODERA;
+
+    public static final int INTAKESUBSYSTEM_ENCODERB =          1;
+
+    public static final int SHOOTERSUBSYSTEM_ENCODERB = INTAKESUBSYSTEM_ENCODERB;
+
     // Solenoids
 
-    public static final int DRIVESUBSYSTEM_LEFT_SOLENOID_1 =    0;
+    public static final int DRIVESUBSYSTEM_SOLENOID_BACK =      0;
 
-    public static final int DRIVESUBYSTEM_LEFT_SOLENOID_2 =     1;
+    public static final int DRIVESUBSYSTEM_SOLENOID_MID =       1;
 
-    public static final int DRIVESUBSYSTEM_RIGHT_SOLENOID_1 =   2;
-
-    public static final int DRIVESUBSYSTEM_RIGHT_SOLENOID_2 =   3;
-
-    public static final int SHOOTERSUBSYSTEM_SHOOTER_SOLENOID = 4;
+    public static final int SHOOTERSUBSYSTEM_SHOOTER_SOLENOID = 2;
 
 
     /**
@@ -60,17 +66,4 @@ public class RobotMap
      * Operator Controller
      */
     public static final int JOYSTICK_OPERATOR =                 1;
-    /**
-     *  Motor for the shintake
-     */
-    public static final int SHOOTER_MOTOR = 					5;
-    /**
-    *   Encoder for the shintake angle channel 1
-    */
-    public static final int SHOOTER_ENCODER_CH1 = 				1;
-    /**
-     *  Encoder for the shintake angle channel 1
-     */
-    public static final int SHOOTER_ENCODER_CH2 = 				2;
-
 }

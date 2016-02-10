@@ -1,13 +1,14 @@
 package org.usfirst.frc.team1360.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import org.usfirst.frc.team1360.robot.autonomous.AutonomousGroupBuilder;
-import org.usfirst.frc.team1360.robot.autonomous.actions.AutonomousExampleCommand;
-import org.usfirst.frc.team1360.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team1360.robot.autonomous.actions.AutonomousDriveCommand;
+import org.usfirst.frc.team1360.robot.util.CommandData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +23,10 @@ import java.util.List;
 public class Robot extends IterativeRobot
 {
     private List<SendableChooser> choices = new ArrayList<>();
-    private Command autonomousCommand;
+    private List<SendableChooser> variables = new ArrayList<>();
 
-    public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+    private Command autonomousCommand;
+    
     public static OI oi;
 
 
@@ -40,6 +42,9 @@ public class Robot extends IterativeRobot
             choices.add(c);
         }
         oi = new OI();
+
+        LiveWindow.addActuator("IntakeSubsystem", "INTAKE_1", new Victor(1) );
+
         initAutonomousActions();
     }
 
@@ -53,6 +58,19 @@ public class Robot extends IterativeRobot
         // schedule the autonomous command (example)
         autonomousCommand = getAutonomousChoice();
         autonomousCommand.start();
+    }
+
+    /**
+     * Populate the command data for autonomous
+     * @param data to populate
+     * @return populated
+     */
+    private CommandData populateCommandData(CommandData data)
+    {
+        // Autonomous commands only; as the data is put once
+        // Only use for pre-programmed autonomous, not the driver inputted ones.
+        //TODO: Make this retrieve values from dashboard
+        return data;
     }
 
     /**
@@ -101,22 +119,21 @@ public class Robot extends IterativeRobot
     {
         List<Command[]> sections = new ArrayList<>();
 
-        Command nothing = new AutonomousExampleCommand(0, 0, true);
+        CommandData data = new CommandData();
+        data = populateCommandData(data);
+
+        Command nothing = new AutonomousDriveCommand(data);
         Command[] section1 =
                 {
-                        nothing,
-                        new AutonomousExampleCommand(),
-                        new AutonomousExampleCommand()
+                        nothing
                 };
         Command[] section2 =
                 {
-                        nothing,
-                        new AutonomousExampleCommand()
+                        nothing
                 };
         Command[] section3 =
                 {
-                        nothing,
-                        new AutonomousExampleCommand()
+                        nothing
                 };
 
         sections.add(section1);
