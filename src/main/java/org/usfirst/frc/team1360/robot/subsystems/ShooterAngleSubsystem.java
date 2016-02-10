@@ -29,17 +29,18 @@ public class ShooterAngleSubsystem extends Subsystem {
     
     /**
      * Changes the shooter/intake position based on two presets
-     * @param Joystick from the operator that changes the shooter/intake position
+     * @param upIsPressed boolean from a button on the controller
+	 * @param downIsPressed boolean from a button on the controller
      */
-    public void changeShintakePosition(double Dpad)
+    public void changeShintakePosition(boolean upIsPressed, boolean downIsPressed)
     {
-    		if(Dpad == 90)
+    		if(upIsPressed)
     		{
     			SHOOTER_1.set(Math.sqrt(Math.sqrt(SHOOTER_ENCODER.get()/500)));
     			targetPos = 500;
     			ShootPos = 1;
     		}
-    		if(Dpad == 180)
+    		if(downIsPressed)
     		{
     			SHOOTER_1.set(Math.sqrt(Math.sqrt(((SHOOTER_ENCODER.get()-500)/500)*-1)));
     			targetPos = 0;
