@@ -18,7 +18,7 @@ public class IntakeSubsystem extends PIDSubsystem
     /**
      * Encoder for PID loop
      */
-    private final Encoder ENCODER_1 = new Encoder(RobotMap.INTAKE_ENCODERA, RobotMap.INTAKE_ENCODERB);
+    private final Encoder ENCODER_1 = new Encoder(RobotMap.INTAKESUBSYSTEM_ENCODERA, RobotMap.INTAKESUBSYSTEM_ENCODERB);
 
 
     public IntakeSubsystem()

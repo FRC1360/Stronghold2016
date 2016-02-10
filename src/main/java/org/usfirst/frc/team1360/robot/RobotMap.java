@@ -41,9 +41,13 @@ public class RobotMap
 
     // Encoders
 
-    public static final int INTAKESUBSYSTEM_ENCODER =           0;
+    public static final int INTAKESUBSYSTEM_ENCODERA =          0;
 
-    public static final int SHOOTERSUBSYSTEM_ENCODER = INTAKESUBSYSTEM_ENCODER;
+    public static final int SHOOTERSUBSYSTEM_ENCODERA = INTAKESUBSYSTEM_ENCODERA;
+
+    public static final int INTAKESUBSYSTEM_ENCODERB =          1;
+
+    public static final int SHOOTERSUBSYSTEM_ENCODERB = INTAKESUBSYSTEM_ENCODERB;
 
     // Solenoids
 
