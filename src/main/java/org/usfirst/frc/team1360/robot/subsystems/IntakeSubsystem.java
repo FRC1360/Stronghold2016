@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1360.robot.subsystems;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -15,14 +16,9 @@ public class IntakeSubsystem extends PIDSubsystem
 	private final Victor INTAKE_1 = new Victor(RobotMap.INTAKESUBSYSTEM_INTAKE_1);
 
     /**
-     * *IMPORTANT*
-     * This AnalogInput is not complete.
-     * It should not map to INTAKE_ENCODER.
-     * I need something in RobotMap
-     *
-     * Plz Jaime-wan.  You're my only hope
+     * Encoder for PID loop
      */
-    private final AnalogInput INPUT_1 = new AnalogInput(RobotMap.INTAKE_ENCODER);
+    private final Encoder ENCODER_1 = new Encoder(RobotMap.INTAKE_ENCODERA, RobotMap.INTAKE_ENCODERB);
 
 
     public IntakeSubsystem()
@@ -54,7 +50,7 @@ public class IntakeSubsystem extends PIDSubsystem
     @Override
     protected double returnPIDInput()
     {
-        return INPUT_1.getAverageValue();
+        return ENCODER_1.pidGet();
     }
 
     @Override

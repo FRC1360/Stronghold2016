@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1360.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -42,6 +43,9 @@ public class Robot extends IterativeRobot
             choices.add(c);
         }
         oi = new OI();
+
+        LiveWindow.addActuator("IntakeSubsystem", "INTAKE_1", new Victor(1) );
+
         initAutonomousActions();
     }
 
