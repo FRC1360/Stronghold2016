@@ -14,11 +14,11 @@ public class ShooterSubsystem extends Subsystem {
     /**
      * Shooter motor
      */
-    Victor SHOOTER_1 = new Victor(RobotMap.SHOOTER_MOTOR);
+    Victor SHOOTER_1 = new Victor(RobotMap.SHOOTERSUBSYSTEM_SHOOTER_1);
     /**
      * Shooter encoder
      */
-    Encoder SHOOTER_ENCODER = new Encoder(RobotMap.SHOOTER_ENCODER_CH1, RobotMap.SHOOTER_ENCODER_CH2, true, Encoder.EncodingType.k4X);
+    Encoder SHOOTER_ENCODER = new Encoder(RobotMap.SHOOTERSUBSYSTEM_ENCODERA, RobotMap.SHOOTERSUBSYSTEM_ENCODERB, true, Encoder.EncodingType.k4X);
 
     int targetPos = 0;
     // 0 = bottom
