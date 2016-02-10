@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import org.usfirst.frc.team1360.robot.autonomous.AutonomousGroupBuilder;
 import org.usfirst.frc.team1360.robot.autonomous.actions.AutonomousExampleCommand;
 import org.usfirst.frc.team1360.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team1360.robot.util.CommandData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class Robot extends IterativeRobot
     private Command autonomousCommand;
 
     public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+    
     public static OI oi;
 
 
@@ -53,6 +55,19 @@ public class Robot extends IterativeRobot
         // schedule the autonomous command (example)
         autonomousCommand = getAutonomousChoice();
         autonomousCommand.start();
+    }
+
+    /**
+     * Populate the command data for autonomous
+     * @param data to populate
+     * @return populated
+     */
+    private CommandData populateCommandData(CommandData data)
+    {
+        // Autonomous commands only; as the data is put once
+        // Only use for pre-programmed autonomous, not the driver inputted ones.
+
+        return data;
     }
 
     /**
