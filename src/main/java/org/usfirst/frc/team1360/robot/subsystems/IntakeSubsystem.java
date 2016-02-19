@@ -1,10 +1,8 @@
 package org.usfirst.frc.team1360.robot.subsystems;
 
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team1360.robot.RobotMap;
 
 public class IntakeSubsystem extends PIDSubsystem
@@ -36,15 +34,11 @@ public class IntakeSubsystem extends PIDSubsystem
 
     /**
      *
-     * @param motor The motor that will be spinning for the intake
+     * @param speed Speed
      */
-    public void intakeBoulder(double motor)
+    public void intakeBoulder(double speed)
     {
-        /**
-         * This is a deadzone to stop drift of the intake motor
-         */
-    	if(Math.abs(motor) < 0.15) motor = 0;
-        INTAKE_1.set(motor);
+        INTAKE_1.set(speed);
     }
 
     @Override

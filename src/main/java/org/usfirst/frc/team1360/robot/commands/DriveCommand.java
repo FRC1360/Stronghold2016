@@ -1,9 +1,7 @@
 package org.usfirst.frc.team1360.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import org.usfirst.frc.team1360.robot.subsystems.DriveSubsystem;
-import org.usfirst.frc.team1360.robot.util.CommandData;
+import org.usfirst.frc.team1360.robot.OI;
 import org.usfirst.frc.team1360.robot.util.Subsystems;
 
 public class DriveCommand extends Command
@@ -11,15 +9,11 @@ public class DriveCommand extends Command
 
     private double drive_throttle;
     private double drive_turn;
-    private boolean solenoid_middle;
     private boolean solenoid_back;
 
-    public DriveCommand(CommandData data)
+    public DriveCommand()
     {
-        this.drive_throttle = data.getDoubles().get("drive_throttle");
-        this.drive_turn = data.getDoubles().get("drive_turn");
-        this.solenoid_back = data.getBooleans().get("drive_sback");
-        this.solenoid_middle = data.getBooleans().get("drive_smiddle");
+        requires(Subsystems.DRIVE_SUBSYSTEM);
     }
 
     @Override
@@ -31,7 +25,8 @@ public class DriveCommand extends Command
     @Override
     protected void execute()
     {
-
+        Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(OI.getDriverThrottle(), OI.getDriverTurn());
+        Subsystems.DRIVE_SUBSYSTEM.changePosition(OI.getDriverRearTilt());
     }
 
 
