@@ -41,6 +41,14 @@ public class RobotMap
 
     // Encoders
 
+    public static final int DRIVESUBSYSTEM_ENCODERLA =      0;
+
+    public static final int DRIVESUBSYSTEM_ENCODERLB =      1;
+
+    public static final int DRIVESUBSYSTEM_ENCODERRA =      0;
+
+    public static final int DRIVESUBSYSTEM_ENCODERRB =      1;
+
     public static final int INTAKESUBSYSTEM_ENCODERA =          0;
 
     public static final int SHOOTERSUBSYSTEM_ENCODERA = INTAKESUBSYSTEM_ENCODERA;
