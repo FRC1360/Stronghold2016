@@ -1,10 +1,12 @@
 package org.usfirst.frc.team1360.robot.subsystems;
 
-<<<<<<< HEAD
+import org.usfirst.frc.team1360.robot.util.FRCMath;
+
+
 import edu.wpi.first.wpilibj.Encoder;
-=======
+
 import edu.wpi.first.wpilibj.Solenoid;
->>>>>>> origin/master
+
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team1360.robot.RobotMap;
@@ -28,21 +30,19 @@ public class DriveSubsystem extends Subsystem
      */
     private final Victor DRIVE_RIGHT_2 = new Victor(RobotMap.DRIVESUBSYSTEM_RIGHT_2);
 
-<<<<<<< HEAD
+
     private final Encoder DRIVE_RIGHT = new Encoder(RobotMap.DRIVESUBSYSTEM_ENCODERRA,RobotMap.DRIVESUBSYSTEM_ENCODERRB, true);
 
     private final Encoder DRIVE_LEFT = new Encoder(RobotMap.DRIVESUBSYSTEM_ENCODERLA,RobotMap.DRIVESUBSYSTEM_ENCODERLB, false);
-    /**
-     * Used as a multiplier to 'Encoder.getRaw()' to get distance travelled in meters
-     */
-    public final double ENCODER_TICK_RATIO = (20 * Math.PI)/(100 * 1024);
-=======
+
+
+
     /**
      * Back solenoid for the lowrider system.
      */
     private final Solenoid SOLENOID_BACK = new Solenoid(RobotMap.DRIVESUBSYSTEM_SOLENOID_BACK);
 
->>>>>>> origin/master
+
     @Override
     protected void initDefaultCommand()
     {
@@ -60,7 +60,7 @@ public class DriveSubsystem extends Subsystem
      */
     public double Distance(double Encoder)
     {
-        return Encoder*ENCODER_TICK_RATIO;
+        return Encoder* FRCMath.ENCODER_TICK_RATIO;
     }
 
     /**
