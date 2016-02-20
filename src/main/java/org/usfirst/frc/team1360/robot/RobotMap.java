@@ -32,11 +32,11 @@ public class RobotMap
 
     public static final int INTAKESUBSYSTEM_INTAKE_1 =          4;
 
-
-    public static final int SHOOTERSUBSYSTEM_SHOOTER_1 = INTAKESUBSYSTEM_INTAKE_1;
-
-
     public static final int SHOOTERSUBSYSTEM_TILTER =           5;
+
+    public static final int SHOOTERSUBSYSTEM_SHOOTER_1 =        6;
+
+
 
 
     // Encoders
@@ -61,9 +61,7 @@ public class RobotMap
 
     public static final int DRIVESUBSYSTEM_SOLENOID_BACK =      0;
 
-    public static final int DRIVESUBSYSTEM_SOLENOID_MID =       1;
-
-    public static final int SHOOTERSUBSYSTEM_SHOOTER_SOLENOID = 2;
+    public static final int SHOOTERSUBSYSTEM_SHOOTER_SOLENOID = 1;
 
 
     /**

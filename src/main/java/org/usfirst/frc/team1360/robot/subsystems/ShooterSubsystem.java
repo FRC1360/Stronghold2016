@@ -1,71 +1,36 @@
 package org.usfirst.frc.team1360.robot.subsystems;
 
-import org.usfirst.frc.team1360.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team1360.robot.RobotMap;
 
 /**
- *
+ * TODO: Needs to be properly done with PID. Currently just a hackey workaround.
  */
-public class ShooterSubsystem extends Subsystem {
+public class ShooterSubsystem extends Subsystem
+{
 
     /**
      * Shooter motor
      */
     Victor SHOOTER_1 = new Victor(RobotMap.SHOOTERSUBSYSTEM_SHOOTER_1);
-    /**
-     * Shooter encoder
-     */
-    Encoder SHOOTER_ENCODER = new Encoder(RobotMap.SHOOTERSUBSYSTEM_ENCODERA, RobotMap.SHOOTERSUBSYSTEM_ENCODERB, true, Encoder.EncodingType.k4X);
-
-    int targetPos = 0;
-    // 0 = bottom
-    // 1 = moving up
-    // 2 = moving down
-    // 3 = top
-    int ShootPos = 0;
 
     /**
-     * Changes the shooter/intake position based on two presets
-     * @param upIsPressed boolean from a button on the controller
-     * @param downIsPressed boolean from a button on the controller
+     * Shooter solenoid
      */
-    public void changeShintakePosition(boolean upIsPressed, boolean downIsPressed)
+    Solenoid SHOOT_SOLENOID = new Solenoid(RobotMap.SHOOTERSUBSYSTEM_SHOOTER_SOLENOID);
+
+
+    public void shoot(boolean pressed, double speed)
     {
-        if(upIsPressed)
-        {
-            SHOOTER_1.set(Math.sqrt(Math.sqrt(SHOOTER_ENCODER.get()/500)));
-            targetPos = 500;
-            ShootPos = 1;
-        }
-        if(downIsPressed)
-        {
-            SHOOTER_1.set(Math.sqrt(Math.sqrt(((SHOOTER_ENCODER.get()-500)/500)*-1)));
-            targetPos = 0;
-            ShootPos = 2;
-        }
-        if(SHOOTER_ENCODER.get() > targetPos - 5 && SHOOTER_ENCODER.get() < targetPos + 5)
-        {
-            SHOOTER_1.set(0);
-            if(targetPos == 500) ShootPos = 3;
-            else ShootPos = 0;
-        }
-        if(ShootPos == 1)
-        {
-            SHOOTER_1.set(Math.sqrt(Math.sqrt(SHOOTER_ENCODER.get()/500)));
-        }
-        if(ShootPos == 2)
-        {
-            SHOOTER_1.set(Math.sqrt(Math.sqrt(((SHOOTER_ENCODER.get()-500)/500)*-1)));
-        }
+        SHOOTER_1.set(speed);
+        SHOOT_SOLENOID.set(pressed);
     }
 
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    }
+    public void initDefaultCommand()
+    {
 
+    }
 }
 
