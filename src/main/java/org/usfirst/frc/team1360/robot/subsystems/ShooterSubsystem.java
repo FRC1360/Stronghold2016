@@ -67,18 +67,5 @@ public class ShooterSubsystem extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
 
-    //TASK LIST FOR SHOOTER/INTAKE
-    //
-    // 1. Change to POV hat for position changes
-    // 2. Add intake functionality - DONE
-    // 3. Limit intake modes based position - DONE
-    // 4. Remove set point restrictions  - DONE
-    // 5. figure out why Michael doesn't sync his code
-    // 6. PID
-    // 7. Request dead zone in OI
-    // 8. Ensure that POV hat is added
-    // 9. Fix comments
-    // 10. Fix Encoder and victor names
-
 }
 

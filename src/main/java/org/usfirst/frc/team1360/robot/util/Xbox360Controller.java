@@ -1,115 +1,140 @@
 package org.usfirst.frc.team1360.robot.util;
+
 import edu.wpi.first.wpilibj.Joystick;
 
 public class Xbox360Controller extends Joystick
 {
 
-	public Xbox360Controller(int port) 
-	{
-		super(port);
-	}
+    private double deadzone = 0.15;
+
+    public Xbox360Controller(int port)
+    {
+        super(port);
+    }
+
+    public Xbox360Controller(int port, double deadzone)
+    {
+        super(port);
+        this.deadzone = deadzone;
+    }
 
     /**
      * Left Stick X Axis
+     *
      * @return value
      */
-	public double getLeftXAxis()
+    public double getLeftXAxis()
     {
-    	return this.getRawAxis(0);
+        return deadzone(this.getRawAxis(0));
     }
 
     /**
      * Left Stick Y Axis
+     *
      * @return value
      */
     public double getLeftYAxis()
     {
-    	return this.getRawAxis(1);
+        return deadzone(this.getRawAxis(1));
     }
 
     /**
      * Left Trigger
+     *
      * @return value
      */
     public double getLeftTrigger()
     {
-    	return this.getRawAxis(2);
+        return deadzone(this.getRawAxis(2));
     }
 
     /**
      * Right Trigger
+     *
      * @return value
      */
     public double getRightTrigger()
     {
-    	return this.getRawAxis(3);
+        return deadzone(this.getRawAxis(3));
     }
 
     /**
      * Right Stick X Axis
+     *
      * @return value
      */
     public double getRightXAxis()
     {
-    	return this.getRawAxis(4);
+        return deadzone(this.getRawAxis(4));
     }
 
     /**
      * Right Stick Y Axis
+     *
      * @return value
      */
     public double getRightYAxis()
     {
-    	return this.getRawAxis(5);
+        return deadzone(this.getRawAxis(5));
     }
-	
+
     public boolean getButtonA()
     {
-    	return this.getRawButton(0);
+        return this.getRawButton(0);
     }
-    
+
     public boolean getButtonB()
     {
-    	return this.getRawButton(1);
+        return this.getRawButton(1);
     }
-    
+
     public boolean getButtonX()
     {
-    	return this.getRawButton(2);
+        return this.getRawButton(2);
     }
-    
+
     public boolean getButtonY()
     {
-    	return this.getRawButton(3);
+        return this.getRawButton(3);
     }
-    
+
     public boolean getButtonLB()
     {
-    	return this.getRawButton(4);
+        return this.getRawButton(4);
     }
 
     public boolean getButtonRB()
     {
-    	return this.getRawButton(5);
+        return this.getRawButton(5);
     }
 
     public boolean getButtonBack()
     {
-    	return this.getRawButton(6);
+        return this.getRawButton(6);
     }
-    
+
     public boolean getButtonStart()
     {
-    	return this.getRawButton(7);
+        return this.getRawButton(7);
     }
-    
+
     public boolean getClickLeftStick()
     {
-    	return this.getRawButton(8);
+        return this.getRawButton(8);
     }
-    
+
     public boolean getClickRightStick()
     {
-    	return this.getRawButton(9);
+        return this.getRawButton(9);
+    }
+
+    private double deadzone(double in, double deadzone)
+    {
+        return ((Math.abs(in) <= deadzone) ? 0 : in);
+    }
+
+    private double deadzone(double in)
+    {
+        return deadzone(in, this.deadzone);
     }
 }

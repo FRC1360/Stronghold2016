@@ -1,6 +1,10 @@
 package org.usfirst.frc.team1360.robot.subsystems;
 
+<<<<<<< HEAD
 import edu.wpi.first.wpilibj.Encoder;
+=======
+import edu.wpi.first.wpilibj.Solenoid;
+>>>>>>> origin/master
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team1360.robot.RobotMap;
@@ -24,6 +28,7 @@ public class DriveSubsystem extends Subsystem
      */
     private final Victor DRIVE_RIGHT_2 = new Victor(RobotMap.DRIVESUBSYSTEM_RIGHT_2);
 
+<<<<<<< HEAD
     private final Encoder DRIVE_RIGHT = new Encoder(RobotMap.DRIVESUBSYSTEM_ENCODERRA,RobotMap.DRIVESUBSYSTEM_ENCODERRB, true);
 
     private final Encoder DRIVE_LEFT = new Encoder(RobotMap.DRIVESUBSYSTEM_ENCODERLA,RobotMap.DRIVESUBSYSTEM_ENCODERLB, false);
@@ -31,6 +36,13 @@ public class DriveSubsystem extends Subsystem
      * Used as a multiplier to 'Encoder.getRaw()' to get distance travelled in meters
      */
     public final double ENCODER_TICK_RATIO = (20 * Math.PI)/(100 * 1024);
+=======
+    /**
+     * Back solenoid for the lowrider system.
+     */
+    private final Solenoid SOLENOID_BACK = new Solenoid(RobotMap.DRIVESUBSYSTEM_SOLENOID_BACK);
+
+>>>>>>> origin/master
     @Override
     protected void initDefaultCommand()
     {
@@ -75,5 +87,14 @@ public class DriveSubsystem extends Subsystem
         double right = (-turn) + speed;
 
         tankDrive(left, right);
+    }
+
+    /**
+     * Set up/down state of lowrider.
+     * @param state button
+     */
+    public void changePosition(boolean state)
+    {
+        SOLENOID_BACK.set(state);
     }
 }
