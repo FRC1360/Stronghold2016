@@ -46,7 +46,6 @@ public class DriveSubsystem extends Subsystem
 
     /**
      * Returns the value of an inputted encoder, multiplied by the tick ratio.
-     * <p/>
      * USE:
      * Distance(DRIVE_LEFT.getRaw());
      *
