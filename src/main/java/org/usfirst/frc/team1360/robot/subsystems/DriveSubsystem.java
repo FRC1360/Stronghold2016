@@ -50,12 +50,12 @@ public class DriveSubsystem extends Subsystem
      * USE:
      * Distance(DRIVE_LEFT.getRaw());
      *
-     * @param Encoder
-     * @return
+     * @param encoder enc
+     * @return distance
      */
-    public double Distance(double Encoder)
+    public double distance(double encoder)
     {
-        return Encoder * FRCMath.ENCODER_TICK_RATIO;
+        return encoder * FRCMath.ENCODER_TICK_RATIO;
     }
 
     /**
