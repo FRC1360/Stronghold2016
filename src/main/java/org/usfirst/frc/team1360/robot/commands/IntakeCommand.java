@@ -8,7 +8,7 @@ import org.usfirst.frc.team1360.robot.util.Subsystems;
 /**
  *
  */
-public class IntakeCommand extends Command 
+public class IntakeCommand extends Command
 {
 
     private double intake_speed;
@@ -31,20 +31,20 @@ public class IntakeCommand extends Command
 
     protected void execute()
     {
-    	Subsystems.INTAKE_SUBSYSTEM.intakeBoulder(OI.getOperatorIntake());
+        Subsystems.INTAKE_SUBSYSTEM.intakeBoulder(OI.getOperatorIntake());
     }
 
 
-    protected boolean isFinished() 
+    protected boolean isFinished()
     {
         return false;
     }
 
-    protected void end() 
+    protected void end()
     {
     }
 
-    protected void interrupted() 
+    protected void interrupted()
     {
     }
 }

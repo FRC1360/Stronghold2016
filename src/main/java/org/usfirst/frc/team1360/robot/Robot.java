@@ -22,13 +22,10 @@ import java.util.List;
  */
 public class Robot extends IterativeRobot
 {
+    public static OI oi;
     private List<SendableChooser> choices = new ArrayList<>();
     private List<SendableChooser> variables = new ArrayList<>();
-
     private Command autonomousCommand;
-    
-    public static OI oi;
-
 
     /**
      * This function is run when the robot is first started up and should be
@@ -43,7 +40,7 @@ public class Robot extends IterativeRobot
         }
         oi = new OI();
 
-        LiveWindow.addActuator("IntakeSubsystem", "INTAKE_1", new Victor(1) );
+        LiveWindow.addActuator("IntakeSubsystem", "INTAKE_1", new Victor(1));
 
         initAutonomousActions();
     }
@@ -62,6 +59,7 @@ public class Robot extends IterativeRobot
 
     /**
      * Populate the command data for autonomous
+     *
      * @param data to populate
      * @return populated
      */
@@ -140,10 +138,10 @@ public class Robot extends IterativeRobot
         sections.add(section2);
         sections.add(section3);
 
-        for(int i = 0; i < 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             SendableChooser s = choices.get(i);
-            for(Command c : sections.get(i))
+            for (Command c : sections.get(i))
                 if (i == 0)
                     s.addDefault(c.getName(), c);
                 else

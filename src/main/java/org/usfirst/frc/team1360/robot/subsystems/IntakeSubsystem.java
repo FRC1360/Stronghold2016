@@ -10,7 +10,7 @@ public class IntakeSubsystem extends Subsystem
     /**
      * Motor for intake
      */
-	private final Victor INTAKE_1 = new Victor(RobotMap.INTAKESUBSYSTEM_INTAKE_1);
+    private final Victor INTAKE_1 = new Victor(RobotMap.INTAKESUBSYSTEM_INTAKE_1);
 
     @Override
     protected void initDefaultCommand()
@@ -20,6 +20,7 @@ public class IntakeSubsystem extends Subsystem
 
     /**
      * Intake the ball
+     *
      * @param speed Speed
      */
     public void intakeBoulder(double speed)

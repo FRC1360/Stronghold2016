@@ -1,9 +1,8 @@
 package org.usfirst.frc.team1360.robot.util;
 
-import org.usfirst.frc.team1360.robot.subsystems.ShooterSubsystem;
-
 import org.usfirst.frc.team1360.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team1360.robot.subsystems.IntakeSubsystem;
+import org.usfirst.frc.team1360.robot.subsystems.ShooterSubsystem;
 
 
 public class Subsystems

@@ -15,7 +15,7 @@ public class AutonomousManager
     {
         Class<?> clazz;
         String path = AUTONOMOUSPACKAGE + name;
-        if(!name.contains("groups.") && !name.contains("actions."))
+        if (!name.contains("groups.") && !name.contains("actions."))
             path = AUTONOMOUSPACKAGE + "actions." + name;
 
         try

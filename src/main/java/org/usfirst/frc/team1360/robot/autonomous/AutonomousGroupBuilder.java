@@ -32,7 +32,7 @@ public class AutonomousGroupBuilder extends CommandGroup
         for (Command action : raw.keySet())
         {
             String type = raw.get(action);
-            if(type.equals("Parallel"))
+            if (type.equals("Parallel"))
                 addParallel(action);
             else
                 addSequential(action);
@@ -41,7 +41,7 @@ public class AutonomousGroupBuilder extends CommandGroup
 
     private void parseList()
     {
-        for(Command c : commandList)
+        for (Command c : commandList)
             addSequential(c);
     }
 

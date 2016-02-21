@@ -24,6 +24,7 @@ public class CommandData
 
     /**
      * Get the list of all doubles
+     *
      * @return all doubles.
      */
     public HashMap<String, Double> getDoubles()
@@ -32,17 +33,8 @@ public class CommandData
     }
 
     /**
-     * Add a double to the list.
-     * @param key Key
-     * @param v Value
-     */
-    public void addDouble(String key, double v)
-    {
-        doubles.put(key, v);
-    }
-
-    /**
      * Set what the list is. Not used much.
+     *
      * @param doubles List to override current one
      */
     public void setDoubles(HashMap<String, Double> doubles)
@@ -51,7 +43,19 @@ public class CommandData
     }
 
     /**
+     * Add a double to the list.
+     *
+     * @param key Key
+     * @param v   Value
+     */
+    public void addDouble(String key, double v)
+    {
+        doubles.put(key, v);
+    }
+
+    /**
      * Get all booleans.
+     *
      * @return all booleans
      */
     public HashMap<String, Boolean> getBooleans()
@@ -60,7 +64,18 @@ public class CommandData
     }
 
     /**
+     * Set what the list is. Not used much.
+     *
+     * @param booleans List to override current one
+     */
+    public void setBooleans(HashMap<String, Boolean> booleans)
+    {
+        this.booleans = booleans;
+    }
+
+    /**
      * Add a boolean.
+     *
      * @param k key
      * @param v to add
      */
@@ -70,16 +85,8 @@ public class CommandData
     }
 
     /**
-     * Set what the list is. Not used much.
-     * @param booleans List to override current one
-     */
-    public void setBooleans(HashMap<String, Boolean> booleans)
-    {
-        this.booleans = booleans;
-    }
-
-    /**
      * Get all floats
+     *
      * @return all floats
      */
     public HashMap<String, Float> getFloats()
@@ -88,22 +95,24 @@ public class CommandData
     }
 
     /**
+     * Set what the list is. Not used much.
+     *
+     * @param floats List to override current one
+     */
+    public void setFloats(HashMap<String, Float> floats)
+    {
+        this.floats = floats;
+    }
+
+    /**
      * Adds a float
+     *
      * @param k key
      * @param f to add
      */
     public void addFloat(String k, float f)
     {
         floats.put(k, f);
-    }
-
-    /**
-     * Set what the list is. Not used much.
-     * @param floats List to override current one
-     */
-    public void setFloats(HashMap<String, Float> floats)
-    {
-        this.floats = floats;
     }
 
     /**
