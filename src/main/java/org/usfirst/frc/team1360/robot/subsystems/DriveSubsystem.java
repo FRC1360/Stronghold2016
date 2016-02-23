@@ -52,9 +52,25 @@ public class DriveSubsystem extends Subsystem
      * @param encoder enc
      * @return distance
      */
-    public double distance(double encoder)
+    public double returnMetric(double encoder){return encoder * FRCMath.ENCODER_TICK_RATIO;
+    }
+
+    /**
+     *  Easy method to return left encoder values
+     * @return
+     */
+    public double getLeft()
     {
-        return encoder * FRCMath.ENCODER_TICK_RATIO;
+        return DRIVE_LEFT.getRaw();
+    }
+
+    /**
+     * Easy method to return right encoder values
+     * @return
+     */
+    public double getRight()
+    {
+        return DRIVE_RIGHT.getRaw();
     }
 
     /**
@@ -93,5 +109,37 @@ public class DriveSubsystem extends Subsystem
     public void changePosition(boolean state)
     {
         SOLENOID_BACK.set(state);
+    }
+
+    /**
+     * Halts all motors
+     */
+    public void zeroDrive()
+    {
+        DRIVE_LEFT_1.set(0);
+        DRIVE_LEFT_2.set(0);
+        DRIVE_RIGHT_1.set(0);
+        DRIVE_RIGHT_2.set(0);
+    }
+    /**
+     * coast is used to drive a set distance in a straight line
+     * uses the distance method to compare to a set metric distance by the user
+     * will drive the robot to said set distance
+     * @param distance
+     */
+    public void coast(double distance)
+    {
+        if(returnMetric(getLeft()) < distance + 10 && returnMetric(getLeft()) > distance - 10)
+        {
+            zeroDrive();
+        }
+
+        else if(returnMetric(getLeft()) > distance + 10 && returnMetric(getLeft()) < distance - 10 )
+        {
+            tankDrive(FRCMath.motorDampening(getLeft(),distance),FRCMath.motorDampening(getRight(),distance));
+        }
+
+
+
     }
 }
