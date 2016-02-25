@@ -29,11 +29,21 @@ public class RobotMap
      */
     public static final int DRIVESUBSYSTEM_RIGHT_2 = 3;
 
-
+    /**
+     * IntakeMotor on the shintake
+     * CAN: No
+     */
     public static final int INTAKESUBSYSTEM_INTAKE_1 = 4;
+    /**
+     * PivotMotor on the base of the shintake
+     * CAN: No
+     */
+    public static final int PIVOTSUBSYSTEM_TILTER = 5;
 
-    public static final int SHOOTERSUBSYSTEM_TILTER = 5;
-
+    /**
+     * ShooterMotor on the shintake
+     * CAN: No
+     */
     public static final int SHOOTERSUBSYSTEM_SHOOTER_1 = 6;
 
 
@@ -47,13 +57,8 @@ public class RobotMap
 
     public static final int DRIVESUBSYSTEM_ENCODERRB = 1;
 
-    public static final int INTAKESUBSYSTEM_ENCODERA = 0;
-
-    public static final int SHOOTERSUBSYSTEM_ENCODERA = INTAKESUBSYSTEM_ENCODERA;
-
-    public static final int INTAKESUBSYSTEM_ENCODERB = 1;
-
-    public static final int SHOOTERSUBSYSTEM_ENCODERB = INTAKESUBSYSTEM_ENCODERB;
+    //Potentiometers
+    public static final int PIVOTSUBSYSTEM_POT = 0;
 
     // Solenoids
 
