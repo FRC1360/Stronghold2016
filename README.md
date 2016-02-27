@@ -10,14 +10,14 @@ Please see the Travis-CI status of the project.
 Releases of the project (Codebases which are stable) will be made after a milestone. (Complete a segment, bug testing, or other events deemed appropriate.)
 
 How to use GradleRIO:
-
+```
   Note: Make sure your terminal/command prompt is in the
   same directory as the gradlew/gradlew.bat files...
 
   1) To run gradle, type:
     gradlew               (Windows)
     ./gradlew             (Mac/Linux/UNIX)
-
+    
     Not working? Try gradlew.bat for Windows.
 
   2) To setup WPILib, run:
@@ -65,3 +65,4 @@ How to use GradleRIO:
     on the RIO. This is useful for debugging. To do so, run:
       gradlew     cleanRIO  (Windows)
       ./gradlew   cleanRIO  (Mac/Linux/UNIX)
+```
