@@ -53,12 +53,17 @@ public class RobotMap
 
     public static final int DRIVESUBSYSTEM_ENCODERLB = 1;
 
-    public static final int DRIVESUBSYSTEM_ENCODERRA = 0;
+    public static final int DRIVESUBSYSTEM_ENCODERRA = 2;
 
-    public static final int DRIVESUBSYSTEM_ENCODERRB = 1;
+    public static final int DRIVESUBSYSTEM_ENCODERRB = 3;
 
     //Potentiometers
-    public static final int PIVOTSUBSYSTEM_POT = 0;
+
+    public static final int PIVOTSUBSYSTEM_POT = 4;
+
+    // Digital Input
+
+    public static final int SHOOTER_RPM = 5;
 
     // Solenoids
 

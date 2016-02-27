@@ -1,25 +1,19 @@
-package org.usfirst.frc.team1360.robot.commands;
+package org.usfirst.frc.team1360.robot.autonomous.actions;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team1360.robot.OI;
-import org.usfirst.frc.team1360.robot.util.Subsystems;
 
-/**
- * Shooter Command
- */
-public class ShooterCommand extends Command
+public class AutonomousPivotCommand extends Command
 {
     @Override
     protected void initialize()
     {
-        requires(Subsystems.SHOOTER_SUBSYSTEM);
+
     }
 
     @Override
     protected void execute()
     {
-        if(OI.getOperatorShootShoot())
-            Subsystems.SHOOTER_SUBSYSTEM.shoot();
+
     }
 
     @Override

@@ -1,16 +1,23 @@
 package org.usfirst.frc.team1360.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team1360.robot.RobotMap;
 
 /**
- * TODO: Needs to be properly done with PID. Currently just a hackey workaround.
+ * Shooter Subsystem.
  */
-public class ShooterSubsystem extends Subsystem
+public class ShooterSubsystem extends Subsystem implements PIDSource, PIDOutput
 {
+    private double P = 0;
+    private double I = 0;
+    private double D = 0;
 
+
+    /**
+     * Timer for shooting delay.
+     */
+    Timer timer = new Timer();
     /**
      * Shooter motor
      */
@@ -21,16 +28,56 @@ public class ShooterSubsystem extends Subsystem
      */
     Solenoid SHOOT_SOLENOID = new Solenoid(RobotMap.SHOOTERSUBSYSTEM_SHOOTER_SOLENOID);
 
+    /**
+     * Assuming geartooth to make my life easier.
+     */
+    GearTooth encoder = new GearTooth(RobotMap.SHOOTER_RPM);
 
-    public void shoot(boolean pressed, double speed)
+    /**
+     * Clean way to manage PID from within a class.
+     */
+    PIDController shooterPIDLoop = new PIDController(P, I ,D, this, this);
+
+
+    public void shoot()
     {
-        SHOOTER_1.set(speed);
-        SHOOT_SOLENOID.set(pressed);
+        if(shooterPIDLoop.onTarget())
+        {
+            timer.start();
+            SHOOT_SOLENOID.set(true);
+            if(timer.hasPeriodPassed(0.15))
+                SHOOT_SOLENOID.set(false);
+        }
+        timer.reset();
     }
 
     public void initDefaultCommand()
     {
 
+    }
+
+    @Override
+    public void pidWrite(double output)
+    {
+        SHOOTER_1.set(output);
+    }
+
+    @Override
+    public void setPIDSourceType(PIDSourceType pidSource)
+    {
+    }
+
+    @Override
+    public PIDSourceType getPIDSourceType()
+    {
+        return PIDSourceType.kRate;
+    }
+
+    @Override
+    public double pidGet()
+    {
+        // TODO: Need to find out conversion between RPM and wheel.
+        return (30/encoder.getPeriod());
     }
 }
 

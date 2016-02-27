@@ -6,7 +6,7 @@ import org.usfirst.frc.team1360.robot.util.CommandData;
 import org.usfirst.frc.team1360.robot.util.Subsystems;
 
 /**
- * Autonomouse Drive Command
+ * Autonomous Drive Command
  */
 public class AutonomousDriveCommand extends Command
 {

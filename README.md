@@ -1,13 +1,67 @@
+# Stronghold2016 [![Build Status](https://travis-ci.org/FRC1360/Stronghold2016.svg)](https://travis-ci.org/FRC1360/Stronghold2016)
 
-# Stronghold2016 [![Build Status](https://travis-ci.org/FRC1360/Stronghold2016.svg)](https://travis-ci.org/FRC1360/Stronghold2016) [![Stories in Ready](https://badge.waffle.io/FRC1360/Stronghold2016.png?label=ready&title=Ready)](https://waffle.io/FRC1360/Stronghold2016)
-
-If using Eclipse: Import the Eclipse project or the Gradle project.
-
-If using IntelliJ: Import the Gradle project.
+Import the Gradle Project with IntelliJ -> Make sure that you have your JAVA_HOME ENV variable set.
 
 Please only commit to the branch that you are working on, and submit a pull request when you are ready to merge into master. 
-@Megapead, @JamieSinn, @Karenkozma, or @Jackson9987 must approve it.
+
 
 Please see the Travis-CI status of the project.
 
 Releases of the project (Codebases which are stable) will be made after a milestone. (Complete a segment, bug testing, or other events deemed appropriate.)
+
+How to use GradleRIO:
+
+  Note: Make sure your terminal/command prompt is in the
+  same directory as the gradlew/gradlew.bat files...
+
+  1) To run gradle, type:
+    gradlew               (Windows)
+    ./gradlew             (Mac/Linux/UNIX)
+
+    Not working? Try gradlew.bat for Windows.
+
+  2) To setup WPILib, run:
+    gradlew       wpi     (Windows)
+    ./gradlew     wpi     (Mac/Linux/UNIX)
+
+  3) To setup your workspace, do the following:
+    -for IntelliJ IDEA:
+      gradlew     idea    (Windows)
+      ./gradlew   idea    (Mac/Linux/UNIX)
+
+      Open the .ipr file in IntelliJ, or double click to open it
+    -for Eclipse:
+      gradlew     eclipse (Windows)
+      ./gradlew   eclipse (Mac/Linux/UNIX)
+
+      Point your eclipse workspace to this directory
+
+    Dependencies aren't loaded?
+      Dependencies are located in ${USERHOME}/wpilib/extracted/library/
+      Try adding them manually.
+
+  4) To deploy code to the RoboRIO, do the following:
+    -Check all settings in build.gradle are accurate
+    -Make sure you are connected to the same network as the RIO
+    -Run the following command
+      gradlew     deploy  (Windows)
+      ./gradlew   deploy  (Mac/Linux/UNIX)
+
+  5) To restart robot code:
+    Restarting Robot Code is to restart the user program on the RoboRIO without
+    turning off the RoboRIO itself. This is handy for deploys.
+    To do so, run:
+      gradlew     restart  (Windows)
+      ./gradlew   restart  (Mac/Linux/UNIX)
+
+  6) To reboot the RoboRIO:
+    Rebooting means to completely restart the RoboRIO, not just the code on
+    it. To do so, run:
+      gradlew     reboot  (Windows)
+      ./gradlew   reboot  (Mac/Linux/UNIX)
+
+  7) To clean the code on the RoboRIO:
+    To clean the code on the RIO means to remove the java file already present
+    on the RIO. This is useful for debugging. To do so, run:
+      gradlew     cleanRIO  (Windows)
+      ./gradlew   cleanRIO  (Mac/Linux/UNIX)
