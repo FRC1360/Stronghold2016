@@ -48,27 +48,47 @@ public class RobotMap
 
 
     // Encoders
-
+    /**
+     * Encoder on the left side of the drivetrain
+     * USED:NO
+     */
     public static final int DRIVESUBSYSTEM_ENCODERLA = 0;
-
+    /**
+     *Encoder on the left side of the drivetrain
+     * USED:NO
+     */
     public static final int DRIVESUBSYSTEM_ENCODERLB = 1;
-
+    /**
+     *Encoder on the right side of the drivetrain
+     * USED:NO
+     */
     public static final int DRIVESUBSYSTEM_ENCODERRA = 2;
-
+    /**
+     *Encoder on the right side of the drivetrain
+     * USED:NO
+     */
     public static final int DRIVESUBSYSTEM_ENCODERRB = 3;
 
     //Potentiometers
-
+    /**
+     *Pivot Potentiometer
+     */
     public static final int PIVOTSUBSYSTEM_POT = 4;
 
     // Digital Input
-
+    /**
+     * Banner Sensor for shooter RPM
+     */
     public static final int SHOOTER_RPM = 5;
 
     // Solenoids
-
+    /**
+     * Solenoid for actuating drivetrain
+     */
     public static final int DRIVESUBSYSTEM_SOLENOID_BACK = 0;
-
+    /**
+     *Solenoid for actuating the shooter
+     */
     public static final int SHOOTERSUBSYSTEM_SHOOTER_SOLENOID = 1;
 
 
