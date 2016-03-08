@@ -9,10 +9,14 @@ import org.usfirst.frc.team1360.robot.util.Subsystems;
  */
 public class ShooterCommand extends Command
 {
+    public ShooterCommand()
+    {
+        requires(Subsystems.SHOOTER_SUBSYSTEM);
+    }
     @Override
     protected void initialize()
     {
-        requires(Subsystems.SHOOTER_SUBSYSTEM);
+
     }
 
     @Override

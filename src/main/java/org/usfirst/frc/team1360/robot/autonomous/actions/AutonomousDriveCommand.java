@@ -15,17 +15,20 @@ public class AutonomousDriveCommand extends Command
     private double auto_drive_time;
     private Timer delay = new Timer();
 
+    //TODO: NPE Check for variables.
     public AutonomousDriveCommand(CommandData data)
     {
-        requires(Subsystems.DRIVE_SUBSYSTEM);
-        this.auto_drive_throttle = data.getDoubles().get("auto_drive_throttle");
-        this.auto_drive_turn = data.getDoubles().get("auto_drive_turn");
-        this.auto_drive_time = data.getDoubles().get("auto_drive_time");
+    }
+
+    public AutonomousDriveCommand()
+    {
+
     }
 
     @Override
     protected void initialize()
     {
+        requires(Subsystems.DRIVE_SUBSYSTEM);
         delay.reset();
         delay.start();
     }

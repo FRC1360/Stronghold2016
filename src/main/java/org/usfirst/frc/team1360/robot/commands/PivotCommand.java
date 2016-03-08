@@ -5,10 +5,14 @@ import org.usfirst.frc.team1360.robot.util.Subsystems;
 
 public class PivotCommand extends Command
 {
+    public PivotCommand()
+    {
+        requires(Subsystems.PIVOT_SUBSYSTEM);
+    }
     @Override
     protected void initialize()
     {
-        requires(Subsystems.PIVOT_SUBSYSTEM);
+
     }
 
     @Override

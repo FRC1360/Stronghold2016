@@ -8,6 +8,11 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import org.usfirst.frc.team1360.robot.autonomous.AutonomousGroupBuilder;
 import org.usfirst.frc.team1360.robot.autonomous.actions.AutonomousDriveCommand;
+import org.usfirst.frc.team1360.robot.autonomous.actions.AutonomousShooterCommand;
+import org.usfirst.frc.team1360.robot.commands.DriveCommand;
+import org.usfirst.frc.team1360.robot.commands.IntakeCommand;
+import org.usfirst.frc.team1360.robot.commands.PivotCommand;
+import org.usfirst.frc.team1360.robot.commands.ShooterCommand;
 import org.usfirst.frc.team1360.robot.util.CommandData;
 
 import java.util.ArrayList;
@@ -22,7 +27,12 @@ import java.util.List;
  */
 public class Robot extends IterativeRobot
 {
-    public static OI oi;
+    private static DriveCommand driveCommand = new DriveCommand();
+    private static IntakeCommand intakeCommand = new IntakeCommand();
+    private static PivotCommand pivotCommand = new PivotCommand();
+    private static ShooterCommand shooterCommand = new ShooterCommand();
+
+
     private List<SendableChooser> choices = new ArrayList<>();
     private List<SendableChooser> variables = new ArrayList<>();
     private Command autonomousCommand;
@@ -33,16 +43,17 @@ public class Robot extends IterativeRobot
      */
     public void robotInit()
     {
-        for (int i = 0; i < 3; i++)
+
+        /*for (int i = 0; i < 3; i++)
         {
             SendableChooser c = new SendableChooser();
             choices.add(c);
         }
-        oi = new OI();
+        */
 
-        LiveWindow.addActuator("IntakeSubsystem", "INTAKE_1", new Victor(1));
+        //LiveWindow.addActuator("IntakeSubsystem", "INTAKE_1", new Victor(1));
 
-        initAutonomousActions();
+        //initAutonomousActions();
     }
 
     public void disabledPeriodic()
@@ -71,6 +82,14 @@ public class Robot extends IterativeRobot
         return data;
     }
 
+    private void init()
+    {
+        driveCommand.start();
+        shooterCommand.start();
+        intakeCommand.start();
+        shooterCommand.start();
+    }
+
     /**
      * This function is called periodically during autonomous
      */
@@ -86,6 +105,7 @@ public class Robot extends IterativeRobot
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        init();
     }
 
     /**
@@ -119,19 +139,18 @@ public class Robot extends IterativeRobot
 
         CommandData data = new CommandData();
         data = populateCommandData(data);
-
-        Command nothing = new AutonomousDriveCommand(data);
+        //Command nothing = new AutonomousDriveCommand();
         Command[] section1 =
                 {
-                        nothing
+
                 };
         Command[] section2 =
                 {
-                        nothing
+
                 };
         Command[] section3 =
                 {
-                        nothing
+
                 };
 
         sections.add(section1);
@@ -151,9 +170,12 @@ public class Robot extends IterativeRobot
 
     private Command getAutonomousChoice()
     {
+        return new AutonomousShooterCommand();
+        /*
         List<Command> actions = new ArrayList<>();
         for (SendableChooser s : choices)
             actions.add((Command) s.getSelected());
         return new AutonomousGroupBuilder(actions);
+        */
     }
 }
