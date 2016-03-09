@@ -80,6 +80,10 @@ public class RobotMap
      * Banner Sensor for shooter RPM
      */
     public static final int SHOOTER_RPM = 5;
+    public static final int POSITION_LOW = 7;
+    public static final int POSITION_HIGH = 6 ;
+
+
 
     // Solenoids
     /**
