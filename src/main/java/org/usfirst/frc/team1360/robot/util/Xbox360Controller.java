@@ -80,52 +80,52 @@ public class Xbox360Controller extends Joystick
 
     public boolean getButtonA()
     {
-        return this.getRawButton(0);
+        return this.getRawButton(1);
     }
 
     public boolean getButtonB()
     {
-        return this.getRawButton(1);
+        return this.getRawButton(2);
     }
 
     public boolean getButtonX()
     {
-        return this.getRawButton(2);
+        return this.getRawButton(3);
     }
 
     public boolean getButtonY()
     {
-        return this.getRawButton(3);
+        return this.getRawButton(4);
     }
 
     public boolean getButtonLB()
     {
-        return this.getRawButton(4);
+        return this.getRawButton(5);
     }
 
     public boolean getButtonRB()
     {
-        return this.getRawButton(5);
+        return this.getRawButton(6);
     }
 
     public boolean getButtonBack()
     {
-        return this.getRawButton(6);
+        return this.getRawButton(7);
     }
 
     public boolean getButtonStart()
     {
-        return this.getRawButton(7);
+        return this.getRawButton(8);
     }
 
     public boolean getClickLeftStick()
     {
-        return this.getRawButton(8);
+        return this.getRawButton(9);
     }
 
     public boolean getClickRightStick()
     {
-        return this.getRawButton(9);
+        return this.getRawButton(10);
     }
 
     private double deadzone(double in, double deadzone)
