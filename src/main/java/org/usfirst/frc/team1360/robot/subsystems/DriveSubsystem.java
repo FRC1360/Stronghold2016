@@ -60,7 +60,7 @@ public class DriveSubsystem extends Subsystem
     /**
      * Easy method to return left encoder values
      *
-     * @return
+     * @return value
      */
     public double getLeft()
     {
@@ -70,7 +70,7 @@ public class DriveSubsystem extends Subsystem
     /**
      * Easy method to return right encoder values
      *
-     * @return
+     * @return value
      */
     public double getRight()
     {
@@ -97,10 +97,10 @@ public class DriveSubsystem extends Subsystem
      * @param speed Port for speed
      * @param turn  Port for turn
      */
-    public void arcadeDrive(double speed, double turn)
+    public void arcadeDrive(double turn, double speed)
     {
-        double left = (-turn) - speed;
-        double right = (-turn) + speed;
+        double left = (-speed) - turn;
+        double right = (-speed) + turn;
 
         tankDrive(left, right);
     }
@@ -131,7 +131,7 @@ public class DriveSubsystem extends Subsystem
      * uses the distance method to compare to a set metric distance by the user
      * will drive the robot to said set distance
      *
-     * @param distance
+     * @param distance distance
      */
     public void coast(double distance)
     {

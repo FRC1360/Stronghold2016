@@ -8,8 +8,8 @@ import org.usfirst.frc.team1360.robot.util.Xbox360Controller;
  */
 public class OI
 {
-    private static final Xbox360Controller JS_DRIVER = new Xbox360Controller(RobotMap.JOYSTICK_DRIVER, 0.15);
-    private static final Xbox360Controller JS_OPERATOR = new Xbox360Controller(RobotMap.JOYSTICK_OPERATOR, 0.15);
+    private static final Xbox360Controller JS_DRIVER = new Xbox360Controller(RobotMap.JOYSTICK_DRIVER, 0.25);
+    private static final Xbox360Controller JS_OPERATOR = new Xbox360Controller(RobotMap.JOYSTICK_OPERATOR, 0.25);
 
     public static double getDriverThrottle()
     {
@@ -45,6 +45,5 @@ public class OI
     {
         return JS_OPERATOR.getRightYAxis();
     }
-
 }
 
