@@ -36,6 +36,8 @@ public class OI
         return JS_OPERATOR.getButtonLB();
     }
 
+    public static double tempPivot(){return JS_OPERATOR.getRightYAxis();}
+
     public static boolean getOperatorShootShoot()
     {
         return JS_OPERATOR.getButtonA();

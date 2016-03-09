@@ -84,6 +84,7 @@ public class Robot extends IterativeRobot
 
     private void init()
     {
+        pivotCommand.start();
         driveCommand.start();
         shooterCommand.start();
         intakeCommand.start();
