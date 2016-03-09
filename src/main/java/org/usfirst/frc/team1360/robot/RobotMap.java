@@ -73,7 +73,7 @@ public class RobotMap
     /**
      *Pivot Potentiometer
      */
-    public static final int PIVOTSUBSYSTEM_POT = 4;
+    public static final int PIVOTSUBSYSTEM_POT = 0;
 
     // Digital Input
     /**
@@ -94,6 +94,17 @@ public class RobotMap
      *Solenoid for actuating the shooter
      */
     public static final int SHOOTERSUBSYSTEM_SHOOTER_SOLENOID = 1;
+
+
+    /**
+     *
+     */
+    public static final int SHOOTERSUBSYSTEM_SWITCH_DOWN = 0;
+
+    /**
+     * 
+     */
+    public static final int SHOOTERSUBSYSTEM_SWITCH_UP = 1;
 
 
     /**
