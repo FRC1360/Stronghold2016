@@ -27,9 +27,9 @@ public class DriveSubsystem extends Subsystem
     private final Victor DRIVE_RIGHT_2 = new Victor(RobotMap.DRIVESUBSYSTEM_RIGHT_2);
 
 
-    private final Encoder DRIVE_RIGHT = new Encoder(RobotMap.DRIVESUBSYSTEM_ENCODERRA, RobotMap.DRIVESUBSYSTEM_ENCODERRB, true);
+    //private final Encoder DRIVE_RIGHT = new Encoder(RobotMap.DRIVESUBSYSTEM_ENCODERRA, RobotMap.DRIVESUBSYSTEM_ENCODERRB, true);
 
-    private final Encoder DRIVE_LEFT = new Encoder(RobotMap.DRIVESUBSYSTEM_ENCODERLA, RobotMap.DRIVESUBSYSTEM_ENCODERLB, false);
+    //private final Encoder DRIVE_LEFT = new Encoder(RobotMap.DRIVESUBSYSTEM_ENCODERLA, RobotMap.DRIVESUBSYSTEM_ENCODERLB, false);
 
 
     /**
@@ -64,7 +64,7 @@ public class DriveSubsystem extends Subsystem
      */
     public double getLeft()
     {
-        return DRIVE_LEFT.getRaw();
+        return 0;
     }
 
     /**
@@ -74,7 +74,7 @@ public class DriveSubsystem extends Subsystem
      */
     public double getRight()
     {
-        return DRIVE_RIGHT.getRaw();
+        return 0;
     }
 
     /**

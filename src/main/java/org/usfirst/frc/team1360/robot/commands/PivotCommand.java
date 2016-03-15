@@ -14,13 +14,13 @@ public class PivotCommand extends Command
     @Override
     protected void initialize()
     {
-        requires(Subsystems.PIVOT_SUBSYSTEM);
+
     }
 
     @Override
     protected void execute()
     {
-        Subsystems.PIVOT_SUBSYSTEM.setPivot(OI.tempPivot());
+        Subsystems.PIVOT_SUBSYSTEM.setPivot(OI.getOperatorPivot());
     }
 
     @Override

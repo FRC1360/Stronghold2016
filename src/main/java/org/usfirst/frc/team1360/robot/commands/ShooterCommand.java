@@ -22,8 +22,7 @@ public class ShooterCommand extends Command
     @Override
     protected void execute()
     {
-        if(OI.getOperatorShootShoot())
-            Subsystems.SHOOTER_SUBSYSTEM.shoot();
+        Subsystems.SHOOTER_SUBSYSTEM.shoot(OI.getOperatorShootRaw());
     }
 
     @Override

@@ -69,7 +69,7 @@ public class RobotMap
      */
     public static final int DRIVESUBSYSTEM_ENCODERRB = 3;
 
-    //Potentiometers
+    // Anolog Input
     /**
      *Pivot Potentiometer
      */
@@ -79,9 +79,16 @@ public class RobotMap
     /**
      * Banner Sensor for shooter RPM
      */
-    public static final int SHOOTER_RPM = 5;
-    public static final int POSITION_LOW = 7;
-    public static final int POSITION_HIGH = 6 ;
+    public static final int SHOOTER_RPM = 0;
+    /**
+     *
+     */
+    public static final int SHOOTERSUBSYSTEM_SWITCH_DOWN = 1;
+
+    /**
+     *
+     */
+    public static final int SHOOTERSUBSYSTEM_SWITCH_UP = 2;
 
 
 
@@ -96,15 +103,7 @@ public class RobotMap
     public static final int SHOOTERSUBSYSTEM_SHOOTER_SOLENOID = 1;
 
 
-    /**
-     *
-     */
-    public static final int SHOOTERSUBSYSTEM_SWITCH_DOWN = 0;
 
-    /**
-     * 
-     */
-    public static final int SHOOTERSUBSYSTEM_SWITCH_UP = 1;
 
 
     /**

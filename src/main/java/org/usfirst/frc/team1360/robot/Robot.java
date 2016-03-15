@@ -14,6 +14,7 @@ import org.usfirst.frc.team1360.robot.commands.IntakeCommand;
 import org.usfirst.frc.team1360.robot.commands.PivotCommand;
 import org.usfirst.frc.team1360.robot.commands.ShooterCommand;
 import org.usfirst.frc.team1360.robot.util.CommandData;
+import org.usfirst.frc.team1360.robot.util.Subsystems;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,22 +28,35 @@ import java.util.List;
  */
 public class Robot extends IterativeRobot
 {
-    private static DriveCommand driveCommand = new DriveCommand();
-    private static IntakeCommand intakeCommand = new IntakeCommand();
-    private static PivotCommand pivotCommand = new PivotCommand();
-    private static ShooterCommand shooterCommand = new ShooterCommand();
+    private static DriveCommand driveCommand;
+    private static IntakeCommand intakeCommand;
+    private static PivotCommand pivotCommand;
+    private static ShooterCommand shooterCommand;
 
 
     private List<SendableChooser> choices = new ArrayList<>();
     private List<SendableChooser> variables = new ArrayList<>();
     private Command autonomousCommand;
 
+
+    public void debug()
+    {
+        System.out.println("Shooter RPM encoder: " + Subsystems.SHOOTER_SUBSYSTEM.encoder.get());
+        System.out.println("Pivot Down: " + Subsystems.PIVOT_SUBSYSTEM.minSwitch.get());
+        System.out.println("Pivot Up: " + Subsystems.PIVOT_SUBSYSTEM.maxSwitch.get());
+        System.out.println("Pivot Poten: " + Subsystems.PIVOT_SUBSYSTEM.pot.getValue());
+    }
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit()
     {
+        new Subsystems();
+        driveCommand= new DriveCommand();
+        intakeCommand = new IntakeCommand();
+        shooterCommand = new ShooterCommand();
+        pivotCommand = new PivotCommand();
 
         /*for (int i = 0; i < 3; i++)
         {
@@ -107,6 +121,7 @@ public class Robot extends IterativeRobot
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         init();
+
     }
 
     /**
@@ -124,6 +139,7 @@ public class Robot extends IterativeRobot
     public void teleopPeriodic()
     {
         Scheduler.getInstance().run();
+        debug();
     }
 
     /**

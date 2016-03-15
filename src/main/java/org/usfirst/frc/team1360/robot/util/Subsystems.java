@@ -8,8 +8,16 @@ import org.usfirst.frc.team1360.robot.subsystems.ShooterSubsystem;
 
 public class Subsystems
 {
-    public static final DriveSubsystem DRIVE_SUBSYSTEM = new DriveSubsystem();
-    public static final ShooterSubsystem SHOOTER_SUBSYSTEM = new ShooterSubsystem();
-    public static final IntakeSubsystem INTAKE_SUBSYSTEM = new IntakeSubsystem();
-    public static final PivotSubsystem PIVOT_SUBSYSTEM = new PivotSubsystem();
+    public static DriveSubsystem DRIVE_SUBSYSTEM;
+    public static ShooterSubsystem SHOOTER_SUBSYSTEM;
+    public static IntakeSubsystem INTAKE_SUBSYSTEM;
+    public static PivotSubsystem PIVOT_SUBSYSTEM;
+
+    public Subsystems()
+    {
+        PIVOT_SUBSYSTEM= new PivotSubsystem();
+        INTAKE_SUBSYSTEM= new IntakeSubsystem();
+        SHOOTER_SUBSYSTEM= new ShooterSubsystem();
+        DRIVE_SUBSYSTEM= new DriveSubsystem();
+    }
 }
