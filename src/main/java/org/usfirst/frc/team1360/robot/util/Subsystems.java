@@ -15,9 +15,9 @@ public class Subsystems
 
     public Subsystems()
     {
-        PIVOT_SUBSYSTEM= new PivotSubsystem();
-        INTAKE_SUBSYSTEM= new IntakeSubsystem();
-        SHOOTER_SUBSYSTEM= new ShooterSubsystem();
-        DRIVE_SUBSYSTEM= new DriveSubsystem();
+        PIVOT_SUBSYSTEM = new PivotSubsystem();
+        INTAKE_SUBSYSTEM = new IntakeSubsystem();
+        SHOOTER_SUBSYSTEM = new ShooterSubsystem();
+        DRIVE_SUBSYSTEM = new DriveSubsystem();
     }
 }
