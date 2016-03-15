@@ -20,7 +20,8 @@ public class PivotCommand extends Command
     @Override
     protected void execute()
     {
-        Subsystems.PIVOT_SUBSYSTEM.setPivot(OI.getOperatorPivot());
+        Subsystems.PIVOT_SUBSYSTEM.manualPivot(OI.getOperatorPivot());
+        Subsystems.PIVOT_SUBSYSTEM.currentSetpoint(OI.getOperatorShooterSetpointDown(),OI.getOperatorShooterSetpointUp());
     }
 
     @Override

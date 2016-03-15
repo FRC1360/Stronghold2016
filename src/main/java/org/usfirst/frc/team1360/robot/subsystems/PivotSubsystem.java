@@ -11,7 +11,7 @@ import org.usfirst.frc.team1360.robot.RobotMap;
 
 public class PivotSubsystem extends PIDSubsystem
 {
-    private double setpoint = 466;
+    private double setpoint = 0;
     private Victor pivot = new Victor(RobotMap.PIVOTSUBSYSTEM_TILTER);
     public AnalogInput pot = new AnalogInput(RobotMap.PIVOTSUBSYSTEM_POT);
 
@@ -23,31 +23,31 @@ public class PivotSubsystem extends PIDSubsystem
     public double value;
     public int current = 0;
 
-    public PivotSubsystem(boolean a,boolean y)
+
+    public PivotSubsystem()
     {
         super("Pivot",2.0,0.1,0.001);
         getPIDController().setContinuous(false);
-        setSetpoint(currentSetpoint(a,y));
+        setSetpoint(setpoint);
 
     }
-    public double currentSetpoint(boolean a,boolean y)
+    public void currentSetpoint(boolean x,boolean y)
     {
-        if (a == true && current > 0){current--;}
+        if (x == true && current > 0){current--;}
         else if(y == true && current < 2){current++;}
-        if(current == 2){return TOP;}
-        else if(current == 1){return MID;}
-        else {return BOTTOM;}
+        if(current == 2){setpoint = TOP;}
+        else if(current == 1){setpoint = MID;}
+        else {setpoint = BOTTOM;}
     }
     public boolean aboutZero(double value, int real)
     {
-        if(value > real - 5 && value < real + 5){return true;}
-        else {return false;}
+        return value > real - 5 && value < real + 5;
     }
     public double returnRealPOT()
     {
-         value = (pot.getValue() - 1220)/-1;
+         value = -(pot.getValue() - 1220);
 
-        if(aboutZero(value,0) == true){return 0;}
+        if(aboutZero(value, 0)){return 0;}
         else{return value;}
 
     }
@@ -57,8 +57,8 @@ public class PivotSubsystem extends PIDSubsystem
     }
     public int returnLimit()
     {
-        if(maxSwitch.get() == false){return 1;}
-        if(minSwitch.get() == false){return -1;}
+        if(!maxSwitch.get()){return 1;}
+        if(!minSwitch.get()){return -1;}
         else{return 0;}
     }
     public void setPivot(double speed)
@@ -67,7 +67,10 @@ public class PivotSubsystem extends PIDSubsystem
         if(returnLimit() == 1 && speed > 0 || returnLimit() == -1 && speed < 0) {pivot.set(0);}
         else{pivot.set(speed);}
     }
-
+    public void manualPivot(double speed)
+    {
+        pivot.set(speed);
+    }
     @Override
     protected double returnPIDInput()
     {
