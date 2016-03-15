@@ -124,4 +124,14 @@ public class CommandData
         booleans.clear();
         doubles.clear();
     }
+
+    /**
+     * DataTypes
+     */
+    public enum DataType
+    {
+        DOUBLE,
+        BOOLEAN,
+        FLOAT
+    }
 }

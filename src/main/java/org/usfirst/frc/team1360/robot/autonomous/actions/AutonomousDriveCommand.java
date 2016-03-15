@@ -2,27 +2,31 @@ package org.usfirst.frc.team1360.robot.autonomous.actions;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team1360.robot.autonomous.IAutoCommand;
 import org.usfirst.frc.team1360.robot.util.CommandData;
 import org.usfirst.frc.team1360.robot.util.Subsystems;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Autonomous Drive Command
  */
-public class AutonomousDriveCommand extends Command
+public class AutonomousDriveCommand extends Command implements IAutoCommand
 {
     private double auto_drive_throttle;
     private double auto_drive_turn;
     private double auto_drive_time;
     private Timer delay = new Timer();
+    private CommandData commandData;
 
-    //TODO: NPE Check for variables.
     public AutonomousDriveCommand(CommandData data)
     {
-    }
-
-    public AutonomousDriveCommand()
-    {
-
+        commandData = data;
+        auto_drive_throttle = data.getDoubles().get("auto_drive_throttle");
+        auto_drive_turn = data.getDoubles().get("auto_drive_turn");
+        auto_drive_time = data.getDoubles().get("auto_drive_time");
     }
 
     @Override
@@ -56,5 +60,21 @@ public class AutonomousDriveCommand extends Command
     {
         delay.reset();
         delay.stop();
+    }
+
+    @Override
+    public CommandData getCommandData()
+    {
+        return commandData;
+    }
+
+    @Override
+    public HashMap<String, CommandData.DataType> getCommandDataArguments()
+    {
+        HashMap<String, CommandData.DataType> args = new HashMap<>();
+        args.put("auto_drive_throttle", CommandData.DataType.DOUBLE);
+        args.put("auto_drive_turn", CommandData.DataType.DOUBLE);
+        args.put("auto_drive_time", CommandData.DataType.DOUBLE);
+        return args;
     }
 }
