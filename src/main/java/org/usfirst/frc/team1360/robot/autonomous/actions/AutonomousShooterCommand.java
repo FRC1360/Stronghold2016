@@ -62,4 +62,10 @@ public class AutonomousShooterCommand extends Command implements IAutoCommand
     {
         return null;
     }
+
+    @Override
+    public AutonomousShooterCommand newCommandDataInstance(CommandData data)
+    {
+        return new AutonomousShooterCommand(data);
+    }
 }

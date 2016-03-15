@@ -10,39 +10,56 @@ import org.usfirst.frc.team1360.robot.autonomous.actions.AutonomousPivotCommand;
 import org.usfirst.frc.team1360.robot.autonomous.actions.AutonomousShooterCommand;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DriverstationDashboard
 {
     private static List<SendableChooser> choices = new ArrayList<>();
 
-    /**
-     * Populate the command data for autonomous
-     *
-     * @param data   to populate
-     * @param choice what argument in the list.
-     * @return populated
-     */
-    private CommandData populateCommandData(CommandData data, int choice)
+    private static HashMap<String, CommandData.DataType> getCommandDataArgs(Command command)
     {
-        Command command = (Command) choices.get(choice).getSelected();
+        HashMap<String, CommandData.DataType> data = new HashMap<>();
         if (command instanceof AutonomousDriveCommand)
         {
-            data = ((AutonomousDriveCommand) command).getCommandData();
+            data = ((AutonomousDriveCommand) command).getCommandDataArguments();
         }
         else if (command instanceof AutonomousIntakeCommand)
         {
-            data = ((AutonomousIntakeCommand) command).getCommandData();
+            data = ((AutonomousIntakeCommand) command).getCommandDataArguments();
         }
         else if (command instanceof AutonomousPivotCommand)
         {
-            data = ((AutonomousPivotCommand) command).getCommandData();
+            data = ((AutonomousPivotCommand) command).getCommandDataArguments();
         }
         else if (command instanceof AutonomousShooterCommand)
         {
-            data = ((AutonomousShooterCommand) command).getCommandData();
+            data = ((AutonomousShooterCommand) command).getCommandDataArguments();
         }
         return data;
+    }
+
+    private static CommandData populateCommandData(Command command)
+    {
+        CommandData output = new CommandData();
+        HashMap<String, CommandData.DataType> data = getCommandDataArgs(command);
+        for(String s : data.keySet())
+        {
+            CommandData.DataType dataType = data.get(s);
+            switch(dataType)
+            {
+                case DOUBLE:
+                    output.addDouble(s, 0);
+                    break;
+                case BOOLEAN:
+                    output.addBoolean(s, false);
+                    break;
+                case FLOAT:
+                    output.addFloat(s, 0f);
+                    break;
+            }
+        }
+        return output;
     }
 
     private static void addSendables()
@@ -54,13 +71,14 @@ public class DriverstationDashboard
         }
     }
 
-    private void initAutonomousActions()
+    private static void initAutonomousActions()
     {
         List<Command[]> sections = new ArrayList<>();
 
+
         Command[] section1 =
                 {
-
+                    new AutonomousDriveCommand()
                 };
         Command[] section2 =
                 {
@@ -85,6 +103,51 @@ public class DriverstationDashboard
                     s.addObject(c.getName(), c);
         }
     }
+    private static HashMap<String, CommandData.DataType> getAllCommandDataArgs()
+    {
+        AutonomousDriveCommand driveCommand = new AutonomousDriveCommand();
+        AutonomousPivotCommand pivotCommand = new AutonomousPivotCommand();
+        AutonomousShooterCommand shooterCommand = new AutonomousShooterCommand();
+        AutonomousIntakeCommand intakeCommand = new AutonomousIntakeCommand();
+        HashMap<String, CommandData.DataType> data = new HashMap<>();
+
+        data.putAll(driveCommand.getCommandDataArguments());
+        data.putAll(pivotCommand.getCommandDataArguments());
+        data.putAll(shooterCommand.getCommandDataArguments());
+        data.putAll(intakeCommand.getCommandDataArguments());
+        return data;
+    }
+
+
+    private static void putValues()
+    {
+        HashMap<String, CommandData.DataType> data = getAllCommandDataArgs();
+
+        for(String s : data.keySet())
+        {
+            CommandData.DataType dataType = data.get(s);
+            switch (dataType)
+            {
+                case BOOLEAN:
+                    SmartDashboard.putBoolean(s, false);
+                    break;
+                case DOUBLE:
+                case FLOAT:
+                    SmartDashboard.putNumber(s, 0);
+                    break;
+            }
+        }
+    }
+
+    private static HashMap<String,Double> getValues()
+    {
+        HashMap<String, Double> values = new HashMap<>();
+
+        HashMap<String, CommandData.DataType> data = getAllCommandDataArgs();
+        for(String s : data.keySet())
+            values.put(s, SmartDashboard.getNumber(s));
+        return values;
+    }
 
     public static void init()
     {
@@ -94,7 +157,8 @@ public class DriverstationDashboard
             choices.add(c);
         }
         addSendables();
-
+        putValues();
+        initAutonomousActions();
     }
 
     public static Command getAutonomousChoice()

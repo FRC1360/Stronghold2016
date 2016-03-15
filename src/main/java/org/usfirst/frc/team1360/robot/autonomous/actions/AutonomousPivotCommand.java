@@ -8,6 +8,14 @@ import java.util.HashMap;
 
 public class AutonomousPivotCommand extends Command implements IAutoCommand
 {
+    public AutonomousPivotCommand(CommandData data)
+    {
+
+    }
+    public AutonomousPivotCommand()
+    {
+
+    }
     @Override
     protected void initialize()
     {
@@ -48,5 +56,11 @@ public class AutonomousPivotCommand extends Command implements IAutoCommand
     public HashMap<String, CommandData.DataType> getCommandDataArguments()
     {
         return null;
+    }
+
+    @Override
+    public AutonomousPivotCommand newCommandDataInstance(CommandData data)
+    {
+        return new AutonomousPivotCommand(data);
     }
 }

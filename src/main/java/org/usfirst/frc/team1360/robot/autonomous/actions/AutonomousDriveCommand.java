@@ -21,6 +21,10 @@ public class AutonomousDriveCommand extends Command implements IAutoCommand
     private Timer delay = new Timer();
     private CommandData commandData;
 
+    public AutonomousDriveCommand()
+    {
+
+    }
     public AutonomousDriveCommand(CommandData data)
     {
         commandData = data;
@@ -77,4 +81,11 @@ public class AutonomousDriveCommand extends Command implements IAutoCommand
         args.put("auto_drive_time", CommandData.DataType.DOUBLE);
         return args;
     }
+
+    @Override
+    public AutonomousDriveCommand newCommandDataInstance(CommandData data)
+    {
+        return new AutonomousDriveCommand(data);
+    }
+
 }

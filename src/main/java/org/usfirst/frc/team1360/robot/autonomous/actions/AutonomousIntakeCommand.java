@@ -64,4 +64,10 @@ public class AutonomousIntakeCommand extends Command implements IAutoCommand
         output.put("auto_intake_speed", CommandData.DataType.DOUBLE);
         return output;
     }
+
+    @Override
+    public AutonomousIntakeCommand newCommandDataInstance(CommandData data)
+    {
+        return new AutonomousIntakeCommand(data);
+    }
 }
