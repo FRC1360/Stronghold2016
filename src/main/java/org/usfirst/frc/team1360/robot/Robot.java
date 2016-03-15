@@ -73,19 +73,11 @@ public class Robot extends IterativeRobot
 
     public void teleopInit()
     {
-        // This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to 
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
         init();
 
     }
 
-    /**
-     * This function is called when the disabled button is hit.
-     * You can use it to reset subsystems before shutting down.
-     */
     @Override
     public void disabledInit()
     {

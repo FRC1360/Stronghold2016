@@ -8,6 +8,8 @@ import java.util.HashMap;
 
 public class AutonomousIntakeCommand extends Command implements IAutoCommand
 {
+    private double auto_intake_speed;
+    private CommandData commandData;
     public AutonomousIntakeCommand()
     {
 
@@ -15,7 +17,8 @@ public class AutonomousIntakeCommand extends Command implements IAutoCommand
 
     public AutonomousIntakeCommand(CommandData data)
     {
-
+        commandData = data;
+        data.getDoubles().get("auto_intake_speed");
     }
 
     @Override
@@ -51,12 +54,14 @@ public class AutonomousIntakeCommand extends Command implements IAutoCommand
     @Override
     public CommandData getCommandData()
     {
-        return null;
+        return commandData;
     }
 
     @Override
     public HashMap<String, CommandData.DataType> getCommandDataArguments()
     {
-        return null;
+        HashMap<String, CommandData.DataType> output = new HashMap<>();
+        output.put("auto_intake_speed", CommandData.DataType.DOUBLE);
+        return output;
     }
 }
