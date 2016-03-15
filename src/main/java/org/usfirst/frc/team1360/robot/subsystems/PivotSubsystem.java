@@ -23,9 +23,15 @@ public class PivotSubsystem extends Subsystem
     {
 
     }
-
+    public int returnLimit()
+    {
+        if(maxSwitch.get() == false){return 1;}
+        if(minSwitch.get() == false){return -1;}
+        else{return 0;}
+    }
     public void setPivot(double speed)
     {
-        pivot.set(speed);
+        if(returnLimit() == 1 && speed > 0 || returnLimit() == -1 && speed < 0) {pivot.set(0);}
+        else{pivot.set(speed);}
     }
 }
