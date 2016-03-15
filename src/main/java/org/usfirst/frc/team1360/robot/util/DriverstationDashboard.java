@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1360.robot.util;
 
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -139,14 +140,28 @@ public class DriverstationDashboard
         }
     }
 
-    private static HashMap<String,Double> getValues()
+    private static CommandData getValues()
     {
         HashMap<String, Double> values = new HashMap<>();
-
+        CommandData cdata = new CommandData();
         HashMap<String, CommandData.DataType> data = getAllCommandDataArgs();
         for(String s : data.keySet())
             values.put(s, SmartDashboard.getNumber(s));
-        return values;
+
+        cdata.setDoubles(values);
+        return cdata;
+    }
+    private static SendableChooser sendableChooser = new SendableChooser();
+    public static void initSimpleChooser()
+    {
+        sendableChooser.addDefault("Drive", new AutonomousDriveCommand(getValues()));
+        sendableChooser.addObject("Shoot", new AutonomousShooterCommand(getValues()));
+        SmartDashboard.putData("SimpleAuto", sendableChooser);
+    }
+
+    public static Command getSimpleChooser()
+    {
+        return (Command)sendableChooser.getSelected();
     }
 
     public static void init()
@@ -156,9 +171,9 @@ public class DriverstationDashboard
             SendableChooser c = new SendableChooser();
             choices.add(c);
         }
-        addSendables();
+        //addSendables();
         putValues();
-        initAutonomousActions();
+        //initAutonomousActions();
     }
 
     public static Command getAutonomousChoice()
