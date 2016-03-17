@@ -7,8 +7,10 @@ import org.usfirst.frc.team1360.robot.util.Subsystems;
 
 public class PivotCommand extends Command
 {
+    double m_setpoint;
     public PivotCommand()
     {
+        //m_setpoint = setpoint;
         requires(Subsystems.PIVOT_SUBSYSTEM);
     }
     @Override
@@ -20,14 +22,14 @@ public class PivotCommand extends Command
     @Override
     protected void execute()
     {
-        Subsystems.PIVOT_SUBSYSTEM.manualPivot(OI.getOperatorPivot());
-        //Subsystems.PIVOT_SUBSYSTEM.currentSetpoint(OI.getOperatorShooterSetpointDown(),OI.getOperatorShooterSetpointUp());
+        Subsystems.PIVOT_SUBSYSTEM.enable();
+        //Subsystems.PIVOT_SUBSYSTEM.setSetpoint(m_setpoint);
     }
 
     @Override
     protected boolean isFinished()
     {
-        return false;
+        return Subsystems.PIVOT_SUBSYSTEM.onTarget();
     }
 
     @Override

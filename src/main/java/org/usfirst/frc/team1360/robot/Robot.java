@@ -18,7 +18,7 @@ public class Robot extends IterativeRobot
     private static PivotCommand pivotCommand;
     private static ShooterCommand shooterCommand;
 
-    private Command autonomousCommand;
+//    private Command autonomousCommand;
 
 
     public void debug()
@@ -26,7 +26,7 @@ public class Robot extends IterativeRobot
         System.out.println("Shooter RPM encoder: " + Subsystems.SHOOTER_SUBSYSTEM.encoder.get());
         System.out.println("Pivot Down: " + Subsystems.PIVOT_SUBSYSTEM.minSwitch.get());
         System.out.println("Pivot Up: " + Subsystems.PIVOT_SUBSYSTEM.maxSwitch.get());
-        System.out.println("Pivot Poten: " + Subsystems.PIVOT_SUBSYSTEM.pot.getValue());
+        System.out.println("Pivot Poten: " + Subsystems.PIVOT_SUBSYSTEM.pot.get());
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Robot extends IterativeRobot
         shooterCommand = new ShooterCommand();
         pivotCommand = new PivotCommand();
 
-        DriverstationDashboard.init();
+        //DriverstationDashboard.init();
     }
 
     @Override
@@ -50,8 +50,8 @@ public class Robot extends IterativeRobot
     @Override
     public void autonomousInit()
     {
-        autonomousCommand = DriverstationDashboard.getAutonomousChoice();
-        autonomousCommand.start();
+       // autonomousCommand = DriverstationDashboard.getAutonomousChoice();
+        //autonomousCommand.start();
     }
 
     private void init()
@@ -73,7 +73,7 @@ public class Robot extends IterativeRobot
 
     public void teleopInit()
     {
-        if (autonomousCommand != null) autonomousCommand.cancel();
+        //if (autonomousCommand != null) autonomousCommand.cancel();
         init();
 
     }
