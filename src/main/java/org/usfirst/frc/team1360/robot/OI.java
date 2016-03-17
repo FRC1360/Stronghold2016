@@ -41,16 +41,17 @@ public class OI
 
     public static double getOperatorIntake()
     {
-        return JS_OPERATOR.getRightYAxis();
+        return -JS_OPERATOR.getLeftTrigger();
     }
     public static double getOperatorShootRaw()
     {
-        return JS_OPERATOR.getLeftYAxis();
+        return JS_OPERATOR.getLeftTrigger()-JS_OPERATOR.getRightTrigger();
     }
+    public static boolean getOperatorOuttake(){return JS_OPERATOR.getButtonRB();}
 
     public static double getOperatorPivot()
     {
-        return 0.25*(JS_OPERATOR.getLeftTrigger() -JS_OPERATOR.getRightTrigger());
+        return -(0.25*JS_OPERATOR.getRightYAxis());
     }
 }
 

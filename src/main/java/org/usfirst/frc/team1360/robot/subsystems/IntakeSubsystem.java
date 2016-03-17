@@ -26,5 +26,6 @@ public class IntakeSubsystem extends Subsystem
     public void intakeBoulder(double speed)
     {
         INTAKE_1.set(speed);
+
     }
 }

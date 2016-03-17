@@ -69,7 +69,9 @@ public class PivotSubsystem extends PIDSubsystem
     }
     public void manualPivot(double speed)
     {
-        pivot.set(speed);
+        if(returnLimit() == 1 && speed > 0 || returnLimit() == -1 && speed < 0) {pivot.set(0);}
+        else{pivot.set(speed);}
+
     }
     @Override
     protected double returnPIDInput()

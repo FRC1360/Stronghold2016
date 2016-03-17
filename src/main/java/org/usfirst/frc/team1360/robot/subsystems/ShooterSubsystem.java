@@ -58,9 +58,21 @@ public class ShooterSubsystem extends Subsystem implements PIDSource, PIDOutput
         }
         timer.reset();
     }
-    public void shoot(double in)
+    public void shoot(boolean act)
     {
-        SHOOTER_1.set(in);
+
+            SHOOT_SOLENOID.set(act);
+
+
+
+    }
+    public void shoot(double in,boolean out)
+    {
+        if(out == true){SHOOTER_1.set(0.25);}
+        else
+        {
+            SHOOTER_1.set(in);
+        }
     }
 
     public void initDefaultCommand()
