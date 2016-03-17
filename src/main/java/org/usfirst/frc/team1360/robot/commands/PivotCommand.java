@@ -8,9 +8,9 @@ import org.usfirst.frc.team1360.robot.util.Subsystems;
 public class PivotCommand extends Command
 {
     double m_setpoint;
-    public PivotCommand()
+    public PivotCommand(double setpoint)
     {
-        //m_setpoint = setpoint;
+        m_setpoint = setpoint;
         requires(Subsystems.PIVOT_SUBSYSTEM);
     }
     @Override
@@ -23,7 +23,7 @@ public class PivotCommand extends Command
     protected void execute()
     {
         Subsystems.PIVOT_SUBSYSTEM.enable();
-        //Subsystems.PIVOT_SUBSYSTEM.setSetpoint(m_setpoint);
+        Subsystems.PIVOT_SUBSYSTEM.setSetpoint(m_setpoint);
     }
 
     @Override

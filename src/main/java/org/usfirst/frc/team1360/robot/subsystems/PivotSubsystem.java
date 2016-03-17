@@ -12,7 +12,7 @@ import org.usfirst.frc.team1360.robot.RobotMap;
 public class PivotSubsystem extends PIDSubsystem
 {
     private Victor pivot = new Victor(RobotMap.PIVOTSUBSYSTEM_TILTER);
-    public AnalogPotentiometer pot = new AnalogPotentiometer(RobotMap.PIVOTSUBSYSTEM_POT,1220,-1220);
+    public AnalogPotentiometer pot = new AnalogPotentiometer(RobotMap.PIVOTSUBSYSTEM_POT,1220);
 
     public DigitalInput maxSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_UP);
     public DigitalInput minSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_DOWN);
@@ -24,13 +24,21 @@ public class PivotSubsystem extends PIDSubsystem
         setAbsoluteTolerance(5.0);
         getPIDController().setContinuous(false);
         LiveWindow.addActuator("PivotSubsystem", "PIDSubsystem Controller", getPIDController());
-        getPIDController().setInputRange(0.0, 754.0);
+        getPIDController().setInputRange(0, 754);
 
     }
 
     public boolean aboutZero(double value, int real)
     {
-        return value > real - 5 && value < real + 5;
+        if(value > real - 5 && value < real + 5)
+        {
+            return true;
+
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void initDefaultCommand()
@@ -43,16 +51,16 @@ public class PivotSubsystem extends PIDSubsystem
         if(!minSwitch.get()){return -1;}
         else{return 0;}
     }
-
-    public void manualPivot(double speed)
+    public double realValue()
     {
 
-
+        return -(pot.get()-1220);
     }
+
     @Override
     protected double returnPIDInput()
     {
-        return pot.get();
+        return realValue();
     }
 
     @Override

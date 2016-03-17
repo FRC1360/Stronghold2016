@@ -9,6 +9,7 @@ import org.usfirst.frc.team1360.robot.commands.IntakeCommand;
 import org.usfirst.frc.team1360.robot.commands.PivotCommand;
 import org.usfirst.frc.team1360.robot.commands.ShooterCommand;
 import org.usfirst.frc.team1360.robot.util.DriverstationDashboard;
+import org.usfirst.frc.team1360.robot.util.PIDHelp;
 import org.usfirst.frc.team1360.robot.util.Subsystems;
 
 public class Robot extends IterativeRobot
@@ -27,6 +28,7 @@ public class Robot extends IterativeRobot
         System.out.println("Pivot Down: " + Subsystems.PIVOT_SUBSYSTEM.minSwitch.get());
         System.out.println("Pivot Up: " + Subsystems.PIVOT_SUBSYSTEM.maxSwitch.get());
         System.out.println("Pivot Poten: " + Subsystems.PIVOT_SUBSYSTEM.pot.get());
+        System.out.println("Setpoint: " + PIDHelp.pivotSetpoint());
     }
 
     @Override
@@ -36,7 +38,7 @@ public class Robot extends IterativeRobot
         driveCommand= new DriveCommand();
         intakeCommand = new IntakeCommand();
         shooterCommand = new ShooterCommand();
-        pivotCommand = new PivotCommand();
+        pivotCommand = new PivotCommand(PIDHelp.pivotSetpoint());
 
         //DriverstationDashboard.init();
     }
