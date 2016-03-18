@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team1360.robot.commands.DriveCommand;
 import org.usfirst.frc.team1360.robot.commands.IntakeCommand;
 import org.usfirst.frc.team1360.robot.commands.PivotCommand;
@@ -24,11 +25,15 @@ public class Robot extends IterativeRobot
 
     public void debug()
     {
-        System.out.println("Shooter RPM encoder: " + Subsystems.SHOOTER_SUBSYSTEM.encoder.get());
-        System.out.println("Pivot Down: " + Subsystems.PIVOT_SUBSYSTEM.minSwitch.get());
-        System.out.println("Pivot Up: " + Subsystems.PIVOT_SUBSYSTEM.maxSwitch.get());
-        System.out.println("Pivot Poten: " + Subsystems.PIVOT_SUBSYSTEM.pot.get());
+       // System.out.println("Shooter RPM encoder: " + Subsystems.SHOOTER_SUBSYSTEM.encoder.getRate());
+        //System.out.println("Pivot Down: " + Subsystems.PIVOT_SUBSYSTEM.minSwitch.get());
+        //System.out.println("Pivot Up: " + Subsystems.PIVOT_SUBSYSTEM.maxSwitch.get());
+        System.out.println("Real: " + Subsystems.PIVOT_SUBSYSTEM.realValue());
+        System.out.println("POT: "+ Subsystems.PIVOT_SUBSYSTEM.pot.getValue());
         System.out.println("Setpoint: " + PIDHelp.pivotSetpoint());
+        System.out.println("PID Setpoint: "+ Subsystems.PIVOT_SUBSYSTEM.getSetpoint());
+        System.out.println("On Target: "+Subsystems.PIVOT_SUBSYSTEM.onTarget());
+
     }
 
     @Override
@@ -38,7 +43,7 @@ public class Robot extends IterativeRobot
         driveCommand= new DriveCommand();
         intakeCommand = new IntakeCommand();
         shooterCommand = new ShooterCommand();
-        pivotCommand = new PivotCommand(PIDHelp.pivotSetpoint());
+        pivotCommand = new PivotCommand();
 
         //DriverstationDashboard.init();
     }
@@ -90,6 +95,8 @@ public class Robot extends IterativeRobot
     {
         Scheduler.getInstance().run();
         debug();
+        SmartDashboard.putNumber("PID: ",Subsystems.PIVOT_SUBSYSTEM.shitSticks());
+        SmartDashboard.putData("PID Controller",Subsystems.PIVOT_SUBSYSTEM.getPIDController());
     }
 
     @Override

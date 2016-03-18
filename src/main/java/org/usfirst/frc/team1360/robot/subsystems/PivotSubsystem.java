@@ -1,7 +1,8 @@
 package org.usfirst.frc.team1360.robot.subsystems;
 
 
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.AnalogInput;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
@@ -12,25 +13,31 @@ import org.usfirst.frc.team1360.robot.RobotMap;
 public class PivotSubsystem extends PIDSubsystem
 {
     private Victor pivot = new Victor(RobotMap.PIVOTSUBSYSTEM_TILTER);
-    public AnalogPotentiometer pot = new AnalogPotentiometer(RobotMap.PIVOTSUBSYSTEM_POT,1220);
+    public AnalogInput pot = new AnalogInput(RobotMap.PIVOTSUBSYSTEM_POT);
 
     public DigitalInput maxSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_UP);
     public DigitalInput minSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_DOWN);
 
     public PivotSubsystem()
     {
-
-        super("PivotSubsystem", 1.0, 0.0, 0.0);
-        setAbsoluteTolerance(5.0);
+        super("Pivot",6.0,0.0,16.0,1.0);
+        setAbsoluteTolerance(50);
         getPIDController().setContinuous(false);
         LiveWindow.addActuator("PivotSubsystem", "PIDSubsystem Controller", getPIDController());
-        getPIDController().setInputRange(0, 754);
+        getPIDController().setInputRange(0, 690);
+
+
+
 
     }
-
-    public boolean aboutZero(double value, int real)
+    public double shitSticks()
     {
-        if(value > real - 5 && value < real + 5)
+        return this.getPIDController().get();
+
+    }
+    public boolean aboutZero(double value, double real)
+    {
+        if(value > real - 20 && value < real + 20)
         {
             return true;
 
@@ -54,7 +61,9 @@ public class PivotSubsystem extends PIDSubsystem
     public double realValue()
     {
 
-        return -(pot.get()-1220);
+              if(aboutZero(-(pot.getValue()-1220),0)==true){return 0;}
+            else{return -(pot.getValue()-1220);}
+
     }
 
     @Override
@@ -67,6 +76,6 @@ public class PivotSubsystem extends PIDSubsystem
     protected void usePIDOutput(double output)
     {
         if(returnLimit() == 1 && output > 0 || returnLimit() == -1 && output < 0) {pivot.set(0);}
-        else{pivot.pidWrite(output*0.25);}
+       // else{pivot.pidWrite(output*0.3);}
     }
 }
