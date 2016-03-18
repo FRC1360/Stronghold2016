@@ -76,6 +76,6 @@ public class PivotSubsystem extends PIDSubsystem
     protected void usePIDOutput(double output)
     {
         if(returnLimit() == 1 && output > 0 || returnLimit() == -1 && output < 0) {pivot.set(0);}
-       // else{pivot.pidWrite(output*0.3);}
+        else{pivot.pidWrite(output*0.3);}
     }
 }
