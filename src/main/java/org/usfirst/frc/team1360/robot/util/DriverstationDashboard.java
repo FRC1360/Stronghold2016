@@ -1,6 +1,5 @@
 package org.usfirst.frc.team1360.robot.util;
 
-import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,6 +16,7 @@ import java.util.List;
 public class DriverstationDashboard
 {
     private static List<SendableChooser> choices = new ArrayList<>();
+    private static SendableChooser sendableChooser = new SendableChooser();
 
     private static HashMap<String, CommandData.DataType> getCommandDataArgs(Command command)
     {
@@ -44,10 +44,10 @@ public class DriverstationDashboard
     {
         CommandData output = new CommandData();
         HashMap<String, CommandData.DataType> data = getCommandDataArgs(command);
-        for(String s : data.keySet())
+        for (String s : data.keySet())
         {
             CommandData.DataType dataType = data.get(s);
-            switch(dataType)
+            switch (dataType)
             {
                 case DOUBLE:
                     output.addDouble(s, 0);
@@ -79,7 +79,7 @@ public class DriverstationDashboard
 
         Command[] section1 =
                 {
-                    new AutonomousDriveCommand()
+                        new AutonomousDriveCommand()
                 };
         Command[] section2 =
                 {
@@ -104,6 +104,7 @@ public class DriverstationDashboard
                     s.addObject(c.getName(), c);
         }
     }
+
     private static HashMap<String, CommandData.DataType> getAllCommandDataArgs()
     {
         AutonomousDriveCommand driveCommand = new AutonomousDriveCommand();
@@ -119,12 +120,11 @@ public class DriverstationDashboard
         return data;
     }
 
-
     private static void putValues()
     {
         HashMap<String, CommandData.DataType> data = getAllCommandDataArgs();
 
-        for(String s : data.keySet())
+        for (String s : data.keySet())
         {
             CommandData.DataType dataType = data.get(s);
             switch (dataType)
@@ -145,13 +145,13 @@ public class DriverstationDashboard
         HashMap<String, Double> values = new HashMap<>();
         CommandData cdata = new CommandData();
         HashMap<String, CommandData.DataType> data = getAllCommandDataArgs();
-        for(String s : data.keySet())
+        for (String s : data.keySet())
             values.put(s, SmartDashboard.getNumber(s));
 
         cdata.setDoubles(values);
         return cdata;
     }
-    private static SendableChooser sendableChooser = new SendableChooser();
+
     public static void initSimpleChooser()
     {
         sendableChooser.addDefault("Drive", new AutonomousDriveCommand(getValues()));
@@ -161,7 +161,7 @@ public class DriverstationDashboard
 
     public static Command getSimpleChooser()
     {
-        return (Command)sendableChooser.getSelected();
+        return (Command) sendableChooser.getSelected();
     }
 
     public static void init()

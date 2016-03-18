@@ -10,6 +10,7 @@ public class AutonomousIntakeCommand extends Command implements IAutoCommand
 {
     private double auto_intake_speed;
     private CommandData commandData;
+
     public AutonomousIntakeCommand()
     {
 
@@ -18,7 +19,7 @@ public class AutonomousIntakeCommand extends Command implements IAutoCommand
     public AutonomousIntakeCommand(CommandData data)
     {
         commandData = data;
-        data.getDoubles().get("auto_intake_speed");
+        auto_intake_speed = data.getDoubles().get("auto_intake_speed");
     }
 
     @Override

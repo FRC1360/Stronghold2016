@@ -10,10 +10,10 @@ public class PIDHelp
 
     public static double pivotSetpoint()
     {
-        adder = OI.getOperatorPivot()*10;
-        if(setpoint > 0 || setpoint < 754){setpoint = setpoint+adder;}
-        else if(setpoint > 754 && adder > 0){setpoint = 754;}
-        else if(setpoint < 0 && adder < 0){setpoint = 0;}
+        adder = OI.getOperatorPivot() * 10;
+        if (setpoint > 0 || setpoint < 754) {setpoint = setpoint + adder;}
+        else if (setpoint > 754 && adder > 0) {setpoint = 754;}
+        else if (setpoint < 0 && adder < 0) {setpoint = 0;}
         return setpoint;
     }
 }

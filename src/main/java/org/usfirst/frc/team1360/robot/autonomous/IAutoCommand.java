@@ -8,6 +8,8 @@ import java.util.HashMap;
 public interface IAutoCommand
 {
     CommandData getCommandData();
+
     HashMap<String, CommandData.DataType> getCommandDataArguments();
+
     Command newCommandDataInstance(CommandData data);
 }

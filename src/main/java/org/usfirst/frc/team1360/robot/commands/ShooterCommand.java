@@ -9,21 +9,24 @@ import org.usfirst.frc.team1360.robot.util.Subsystems;
  */
 public class ShooterCommand extends Command
 {
+    private double setpoint;
+
     public ShooterCommand()
     {
         requires(Subsystems.SHOOTER_SUBSYSTEM);
     }
+
     @Override
     protected void initialize()
     {
-
+        Subsystems.SHOOTER_SUBSYSTEM.setSpeed(setpoint = 5000);
     }
 
     @Override
     protected void execute()
     {
-        Subsystems.SHOOTER_SUBSYSTEM.shoot(OI.getOperatorShootRaw(),OI.getOperatorOuttake());
-        Subsystems.SHOOTER_SUBSYSTEM.shoot(OI.getOperatorShootShoot());
+        Subsystems.SHOOTER_SUBSYSTEM.shoot(OI.getOperatorFire());
+        Subsystems.SHOOTER_SUBSYSTEM.setSpeed((OI.getOperatorShooterRPM() >= 0.9 ? setpoint : 0));
     }
 
     @Override

@@ -1,7 +1,6 @@
 package org.usfirst.frc.team1360.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.usfirst.frc.team1360.robot.OI;
 import org.usfirst.frc.team1360.robot.util.Subsystems;
 
@@ -22,7 +21,7 @@ public class DriveCommand extends Command
     protected void execute()
     {
         //System.out.println("Drive Controller: " +  OI.getDriverThrottle());
-        Subsystems.DRIVE_SUBSYSTEM.arcadeDrive( OI.getDriverTurn(), OI.getDriverThrottle());
+        Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(OI.getDriverTurn(), OI.getDriverThrottle());
         Subsystems.DRIVE_SUBSYSTEM.changePosition(OI.getDriverRearTilt());
     }
 

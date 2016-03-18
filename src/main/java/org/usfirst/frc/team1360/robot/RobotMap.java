@@ -47,31 +47,11 @@ public class RobotMap
     public static final int SHOOTERSUBSYSTEM_SHOOTER_1 = 6;
 
 
-    // Encoders
-    /**
-     * Encoder on the left side of the drivetrain
-     * USED:NO
-     */
-    public static final int DRIVESUBSYSTEM_ENCODERLA = 0;
-    /**
-     *Encoder on the left side of the drivetrain
-     * USED:NO
-     */
-    public static final int DRIVESUBSYSTEM_ENCODERLB = 1;
-    /**
-     *Encoder on the right side of the drivetrain
-     * USED:NO
-     */
-    public static final int DRIVESUBSYSTEM_ENCODERRA = 2;
-    /**
-     *Encoder on the right side of the drivetrain
-     * USED:NO
-     */
-    public static final int DRIVESUBSYSTEM_ENCODERRB = 3;
+
 
     // Anolog Input
     /**
-     *Pivot Potentiometer
+     * Pivot Potentiometer
      */
     public static final int PIVOTSUBSYSTEM_POT = 0;
 
@@ -81,16 +61,36 @@ public class RobotMap
      */
     public static final int SHOOTER_RPM = 0;
     /**
-     *
+     * Proxy Sensor
      */
     public static final int SHOOTERSUBSYSTEM_SWITCH_DOWN = 1;
 
     /**
-     *
+     * Proxy Sensor
      */
     public static final int SHOOTERSUBSYSTEM_SWITCH_UP = 2;
 
-
+    // Encoders
+    /**
+     * Encoder on the left side of the drivetrain
+     * USED:NO
+     */
+    public static final int DRIVESUBSYSTEM_ENCODERLA = 3;
+    /**
+     * Encoder on the left side of the drivetrain
+     * USED:NO
+     */
+    public static final int DRIVESUBSYSTEM_ENCODERLB = 4;
+    /**
+     * Encoder on the right side of the drivetrain
+     * USED:NO
+     */
+    public static final int DRIVESUBSYSTEM_ENCODERRA = 5;
+    /**
+     * Encoder on the right side of the drivetrain
+     * USED:NO
+     */
+    public static final int DRIVESUBSYSTEM_ENCODERRB = 6;
 
     // Solenoids
     /**
@@ -98,12 +98,9 @@ public class RobotMap
      */
     public static final int DRIVESUBSYSTEM_SOLENOID_BACK = 0;
     /**
-     *Solenoid for actuating the shooter
+     * Solenoid for actuating the shooter
      */
     public static final int SHOOTERSUBSYSTEM_SHOOTER_SOLENOID = 1;
-
-
-
 
 
     /**

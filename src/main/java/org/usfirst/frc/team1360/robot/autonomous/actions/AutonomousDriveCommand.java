@@ -6,9 +6,7 @@ import org.usfirst.frc.team1360.robot.autonomous.IAutoCommand;
 import org.usfirst.frc.team1360.robot.util.CommandData;
 import org.usfirst.frc.team1360.robot.util.Subsystems;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Autonomous Drive Command
@@ -25,6 +23,7 @@ public class AutonomousDriveCommand extends Command implements IAutoCommand
     {
 
     }
+
     public AutonomousDriveCommand(CommandData data)
     {
         commandData = data;

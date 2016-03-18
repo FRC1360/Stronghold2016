@@ -13,7 +13,7 @@ public class OI
 
     public static double getDriverThrottle()
     {
-        return JS_DRIVER.getRightTrigger()-JS_DRIVER.getLeftTrigger();
+        return JS_DRIVER.getRightTrigger() - JS_DRIVER.getLeftTrigger();
     }
 
     public static double getDriverTurn()
@@ -34,24 +34,29 @@ public class OI
     }
 
 
-    public static boolean getOperatorShootShoot()
-    {
-        return JS_OPERATOR.getButtonA();
-    }
-
     public static double getOperatorIntake()
     {
         return -JS_OPERATOR.getLeftTrigger();
     }
-    public static double getOperatorShootRaw()
+
+    public static double getOperatorShooterRPM()
     {
-        return JS_OPERATOR.getLeftTrigger()-JS_OPERATOR.getRightTrigger();
+        return JS_OPERATOR.getRightTrigger();
     }
-    public static boolean getOperatorOuttake(){return JS_OPERATOR.getButtonRB();}
+
+    public static boolean getOperatorFire()
+    {
+        return JS_OPERATOR.getButtonA();
+    }
+
+    public static boolean getOperatorIntakeToggle()
+    {
+        return JS_OPERATOR.getButtonStart();
+    }
 
     public static double getOperatorPivot()
     {
-        return -(0.25*JS_OPERATOR.getRightYAxis());
+        return -(0.25 * JS_OPERATOR.getRightYAxis());
     }
 }
 

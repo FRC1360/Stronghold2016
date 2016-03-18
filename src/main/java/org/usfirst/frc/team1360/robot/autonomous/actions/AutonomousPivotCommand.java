@@ -12,10 +12,12 @@ public class AutonomousPivotCommand extends Command implements IAutoCommand
     {
 
     }
+
     public AutonomousPivotCommand()
     {
 
     }
+
     @Override
     protected void initialize()
     {

@@ -1,7 +1,6 @@
 package org.usfirst.frc.team1360.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -9,7 +8,6 @@ import org.usfirst.frc.team1360.robot.commands.DriveCommand;
 import org.usfirst.frc.team1360.robot.commands.IntakeCommand;
 import org.usfirst.frc.team1360.robot.commands.PivotCommand;
 import org.usfirst.frc.team1360.robot.commands.ShooterCommand;
-import org.usfirst.frc.team1360.robot.util.DriverstationDashboard;
 import org.usfirst.frc.team1360.robot.util.PIDHelp;
 import org.usfirst.frc.team1360.robot.util.Subsystems;
 
@@ -40,7 +38,7 @@ public class Robot extends IterativeRobot
     public void robotInit()
     {
         new Subsystems();
-        driveCommand= new DriveCommand();
+        driveCommand = new DriveCommand();
         intakeCommand = new IntakeCommand();
         shooterCommand = new ShooterCommand();
         pivotCommand = new PivotCommand();
@@ -57,7 +55,7 @@ public class Robot extends IterativeRobot
     @Override
     public void autonomousInit()
     {
-       // autonomousCommand = DriverstationDashboard.getAutonomousChoice();
+        // autonomousCommand = DriverstationDashboard.getAutonomousChoice();
         //autonomousCommand.start();
     }
 
@@ -90,6 +88,7 @@ public class Robot extends IterativeRobot
     {
 
     }
+
     @Override
     public void teleopPeriodic()
     {
