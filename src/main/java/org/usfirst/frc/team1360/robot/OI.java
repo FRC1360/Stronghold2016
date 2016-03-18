@@ -26,9 +26,9 @@ public class OI
         return JS_DRIVER.getButtonA();
     }
 
-    public static boolean getOperatorShooterSetpointUp() {return JS_OPERATOR.getButtonX();}
+    public static boolean getOperatorPivotSetpointUp() {return JS_OPERATOR.getButtonX();}
 
-    public static boolean getOperatorShooterSetpointDown()
+    public static boolean getOperatorPivotSetpointDown()
     {
         return JS_OPERATOR.getButtonY();
     }
@@ -41,7 +41,7 @@ public class OI
 
     public static double getOperatorShooterRPM()
     {
-        return JS_OPERATOR.getRightTrigger();
+        return JS_OPERATOR.getRightTrigger()-JS_OPERATOR.getLeftTrigger();
     }
 
     public static boolean getOperatorFire()
@@ -56,7 +56,10 @@ public class OI
 
     public static double getOperatorPivot()
     {
-        return -(0.25 * JS_OPERATOR.getRightYAxis());
+
+
+        return -(JS_OPERATOR.getRightYAxis()*10);
+
     }
 }
 

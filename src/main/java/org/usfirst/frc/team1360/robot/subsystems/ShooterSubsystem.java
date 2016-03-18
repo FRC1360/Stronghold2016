@@ -59,6 +59,8 @@ public class ShooterSubsystem extends Subsystem
         {
             shooterSolenoid.set(state);
         }
+        else
+            shooterSolenoid.set(state);
     }
 }
 

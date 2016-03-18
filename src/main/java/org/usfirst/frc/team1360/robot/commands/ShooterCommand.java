@@ -26,7 +26,8 @@ public class ShooterCommand extends Command
     protected void execute()
     {
         Subsystems.SHOOTER_SUBSYSTEM.shoot(OI.getOperatorFire());
-        Subsystems.SHOOTER_SUBSYSTEM.setSpeed((OI.getOperatorShooterRPM() >= 0.9 ? setpoint : 0));
+        //Subsystems.SHOOTER_SUBSYSTEM.setSpeed((OI.getOperatorShooterRPM() >= 0.9 ? setpoint : 0));
+        Subsystems.SHOOTER_SUBSYSTEM.raw(OI.getOperatorShooterRPM());
     }
 
     @Override

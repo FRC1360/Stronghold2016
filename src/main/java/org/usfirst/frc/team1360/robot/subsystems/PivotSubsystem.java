@@ -20,21 +20,27 @@ public class PivotSubsystem extends PIDSubsystem
 
     public PivotSubsystem()
     {
-        super("Pivot",6.0,0.0,16.0,1.0);
+        super("Pivot",0.027,0.000,0.020,0);
         setAbsoluteTolerance(50);
         getPIDController().setContinuous(false);
         LiveWindow.addActuator("PivotSubsystem", "PIDSubsystem Controller", getPIDController());
         getPIDController().setInputRange(0, 690);
 
+        enable();
 
 
 
+    }
+    public double adder(double increment)
+    {
+        return increment+getSetpoint();
     }
     public double shitSticks()
     {
         return this.getPIDController().get();
 
     }
+
     public boolean aboutZero(double value, double real)
     {
         if(value > real - 20 && value < real + 20)
@@ -76,6 +82,6 @@ public class PivotSubsystem extends PIDSubsystem
     protected void usePIDOutput(double output)
     {
         if(returnLimit() == 1 && output > 0 || returnLimit() == -1 && output < 0) {pivot.set(0);}
-        else{pivot.pidWrite(output*0.3);}
+        else{pivot.pidWrite(output*0.4);}
     }
 }
