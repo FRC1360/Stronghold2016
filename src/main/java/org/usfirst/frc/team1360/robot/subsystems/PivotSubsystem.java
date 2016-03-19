@@ -31,9 +31,10 @@ public class PivotSubsystem extends PIDSubsystem
 
 
     }
-    public double adder(double increment)
+    public double adder(double increment,boolean x)
     {
-        return increment+getSetpoint();
+        if(x == true){return 580;}
+        else{return increment+getSetpoint();}
     }
     public double shitSticks()
     {

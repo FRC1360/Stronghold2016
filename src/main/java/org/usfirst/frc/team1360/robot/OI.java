@@ -26,11 +26,11 @@ public class OI
         return JS_DRIVER.getButtonA();
     }
 
-    public static boolean getOperatorPivotSetpointUp() {return JS_OPERATOR.getButtonX();}
+    public static boolean getOperatorPivotSetpointUp() {return JS_OPERATOR.getButtonY();}
 
     public static boolean getOperatorPivotSetpointDown()
     {
-        return JS_OPERATOR.getButtonY();
+        return JS_OPERATOR.getButtonX();
     }
 
 
