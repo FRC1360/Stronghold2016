@@ -19,7 +19,7 @@ public class ShooterCommand extends Command
     @Override
     protected void initialize()
     {
-        Subsystems.SHOOTER_SUBSYSTEM.setSpeed(setpoint = 5000);
+
     }
 
     @Override
@@ -28,6 +28,8 @@ public class ShooterCommand extends Command
         Subsystems.SHOOTER_SUBSYSTEM.shoot(OI.getOperatorFire());
         //Subsystems.SHOOTER_SUBSYSTEM.setSpeed((OI.getOperatorShooterRPM() >= 0.9 ? setpoint : 0));
         Subsystems.SHOOTER_SUBSYSTEM.raw(OI.getOperatorShooterRPM());
+        //Subsystems.SHOOTER_SUBSYSTEM.PIDsetpoint(OI.getOperatorShooterRPM());
+
     }
 
     @Override

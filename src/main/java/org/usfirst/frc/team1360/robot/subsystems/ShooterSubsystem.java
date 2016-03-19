@@ -1,66 +1,55 @@
 package org.usfirst.frc.team1360.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Counter;
-import edu.wpi.first.wpilibj.PIDController;
-import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team1360.robot.RobotMap;
 
 /**
  * Shooter Subsystem.
  */
-public class ShooterSubsystem extends Subsystem
-{
-    private static double Kp = 0;
-    private static double Ki = 0;
-    private static double Kd = 0;
+public class ShooterSubsystem extends Subsystem {
 
     private Counter encoder = new Counter(RobotMap.SHOOTER_RPM);
 
     private VictorSP shooterM = new VictorSP(RobotMap.SHOOTERSUBSYSTEM_SHOOTER_1);
-    private final PIDController pid = new PIDController(Kp, Ki, Kd, encoder, shooterM, 15);
+
     private Solenoid shooterSolenoid = new Solenoid(RobotMap.SHOOTERSUBSYSTEM_SHOOTER_SOLENOID);
 
-    public ShooterSubsystem()
-    {
+    public ShooterSubsystem() {
 
-        pid.setInputRange(0, 7000);
 
-        pid.setOutputRange(0, 1);
+        encoder.setDistancePerPulse(1);
+        encoder.setMaxPeriod(60);
 
-        encoder.reset();
-        encoder.setMaxPeriod(1);
-
-        pid.setAbsoluteTolerance(50);
-        pid.enable();
 
     }
 
     @Override
-    protected void initDefaultCommand()
-    {
+    protected void initDefaultCommand() {
 
     }
 
-    public void raw(double speed)
-    {
-        shooterM.set(speed);
+    double realRate() {
+        return encoder.getRate() / 0.01 / 2;
     }
 
-    public void setSpeed(double rpm)
-    {
-        pid.setSetpoint(rpm);
-    }
+    public void raw(double speed) {
 
-    public void shoot(boolean state)
-    {
-        if (pid.onTarget())
+        if (realRate() < 7000)
         {
-            shooterSolenoid.set(state);
+            shooterM.set(speed);
         }
         else
-            shooterSolenoid.set(state);
-    }
-}
+        shooterM.set(0);
+        System.out.println(realRate());
 
+
+    }
+    public void shoot(boolean arg)
+    {
+        if (realRate() > 6800 || realRate() < 7200){shooterSolenoid.set(arg);}
+    }
+
+}
