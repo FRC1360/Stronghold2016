@@ -8,7 +8,5 @@ public class FRCMath
     public static final double ENCODER_TICK_RATIO = (20 * Math.PI) / (1064);
     public static final double MAX = 754, MIN = 0;
 
-    /**
-     * TODO: Potentiometer ratio.
-     */
+
 }

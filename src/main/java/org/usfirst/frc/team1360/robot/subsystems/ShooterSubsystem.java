@@ -20,8 +20,8 @@ public class ShooterSubsystem extends Subsystem {
     public ShooterSubsystem() {
 
 
-        encoder.setDistancePerPulse(1);
-        encoder.setMaxPeriod(60);
+        encoder.setDistancePerPulse(1); //rate is set per rotation
+        encoder.setMaxPeriod(.1);
 
 
     }
@@ -31,14 +31,26 @@ public class ShooterSubsystem extends Subsystem {
 
     }
 
-
+    /**
+     * returns the value of encoder.getRate(), divided by the period to multiply the number to RPM's
+     * then divided by two as every rotations has two pulses, a high pulse and a low pulse.
+     * @return
+     */
     double realRate() {
-        return encoder.getRate() / 0.01 / 2;
+        return encoder.getRate() / encoder.getPeriod() / 2;
     }
 
-    public void raw(double speed) {
+    /**
+     * shooterRPM will allow for direct input from an RPM controller
+     * such as a joystick or a trigger, as long as the RPM of the wheel
+     * is lower then 7000, as determined by realRate(). Otherwise the motor
+     * cuts power to return to firing target RPMs
+     * @param speed
+     */
+    public void shooterRPM(double speed) {
 
-        if (realRate() < 7000)
+        //slight buffer in RPMs to stay near the shooting target RPM
+        if (realRate() < 7100)
         {
             shooterM.set(speed);
         }
@@ -48,6 +60,13 @@ public class ShooterSubsystem extends Subsystem {
 
 
     }
+
+    /**
+     * Shoot actuates the shooting piton only when in the range of shooting
+     * target RPMs, it allows for driver error and will prime the shooter when RPMs are
+     * at 0 incase the driver failed to keep RPMs for the shooter to reprime
+     * @param arg
+     */
     public void shoot(boolean arg)
     {
         if (realRate() > 6800 && realRate() < 7200 || realRate() == 0){shooterSolenoid.set(arg);}
