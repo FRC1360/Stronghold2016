@@ -65,18 +65,9 @@ public class DriveSubsystem extends PIDSubsystem
     {
         return this.getPIDController().get();
 
-<<<<<<< HEAD
     }
-    /**
-     * Returns the value of an inputted encoder, multiplied by the tick ratio.
-     * USE:
-     * Distance(DRIVE_LEFT.getRaw());
-     *
-     */
 
 
-=======
->>>>>>> origin/master
 
     /**
      * Easy method to return left encoder values
@@ -150,7 +141,7 @@ public class DriveSubsystem extends PIDSubsystem
         DRIVE_RIGHT_2.set(0);
     }
 
-<<<<<<< HEAD
+
     /**
      * coast is used to drive a set distance in a straight line
      * uses the distance method to compare to a set metric distance by the user
@@ -168,9 +159,7 @@ public class DriveSubsystem extends PIDSubsystem
     @Override
     protected void usePIDOutput(double output)
     {
-        tankDrive(output,output);
+        //tankDrive(output,output);
     }
-=======
 
->>>>>>> origin/master
 }

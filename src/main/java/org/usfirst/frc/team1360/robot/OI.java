@@ -49,9 +49,13 @@ public class OI
         return JS_OPERATOR.getButtonA();
     }
 
-    public static boolean getOperatorIntakeToggle()
+    public static boolean getOverideDrive()
     {
-        return JS_OPERATOR.getButtonStart();
+        return JS_OPERATOR.getButtonRB();
+    }
+    public static boolean getOveridePivot()
+    {
+        return JS_OPERATOR.getButtonB();
     }
 
     public static double getOperatorPivot()

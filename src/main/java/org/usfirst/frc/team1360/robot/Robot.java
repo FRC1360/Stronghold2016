@@ -4,12 +4,9 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team1360.robot.commands.DriveCommand;
-import org.usfirst.frc.team1360.robot.commands.IntakeCommand;
-import org.usfirst.frc.team1360.robot.commands.PivotCommand;
-import org.usfirst.frc.team1360.robot.commands.ShooterCommand;
-import org.usfirst.frc.team1360.robot.util.DriverstationDashboard;
-import org.usfirst.frc.team1360.robot.util.PIDHelp;
+import org.usfirst.frc.team1360.robot.commands.*;
+
+
 import org.usfirst.frc.team1360.robot.util.Subsystems;
 
 public class Robot extends IterativeRobot
@@ -18,6 +15,7 @@ public class Robot extends IterativeRobot
     private static IntakeCommand intakeCommand;
     private static PivotCommand pivotCommand;
     private static ShooterCommand shooterCommand;
+    private static PIDOveridesCommand overideCommand;
 
 
 //    private Command autonomousCommand;
@@ -30,7 +28,6 @@ public class Robot extends IterativeRobot
         //System.out.println("Pivot Up: " + Subsystems.PIVOT_SUBSYSTEM.maxSwitch.get());
         //System.out.println("Real: " + Subsystems.PIVOT_SUBSYSTEM.realValue());
         //System.out.println("POT: "+ Subsystems.PIVOT_SUBSYSTEM.pot.getValue());
-        //System.out.println("Setpoint: " + PIDHelp.pivotSetpoint());
         //System.out.println("PID Setpoint: "+ Subsystems.PIVOT_SUBSYSTEM.getSetpoint());
         //System.out.println("On Target: "+Subsystems.PIVOT_SUBSYSTEM.onTarget());
 
@@ -44,8 +41,9 @@ public class Robot extends IterativeRobot
         intakeCommand = new IntakeCommand();
         shooterCommand = new ShooterCommand();
         pivotCommand = new PivotCommand();
+        overideCommand = new PIDOveridesCommand();
 
-        //DriverstationDashboard.init();
+
     }
 
     @Override
@@ -68,6 +66,7 @@ public class Robot extends IterativeRobot
         shooterCommand.start();
         intakeCommand.start();
         shooterCommand.start();
+        overideCommand.start();
     }
 
     /**
