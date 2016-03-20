@@ -96,8 +96,9 @@ public class Robot extends IterativeRobot
     {
         Scheduler.getInstance().run();
         debug();
-        //SmartDashboard.putNumber("PID: ",Subsystems.PIVOT_SUBSYSTEM.shitSticks());
-        //SmartDashboard.putData("PID Controller",Subsystems.PIVOT_SUBSYSTEM.getPIDController());
+        SmartDashboard.putNumber("PID: ",Subsystems.DRIVE_SUBSYSTEM.shitSticks());
+        SmartDashboard.putData("PID Controller",Subsystems.PIVOT_SUBSYSTEM.getPIDController());
+        SmartDashboard.putData("DriveSubsystem Controller", Subsystems.DRIVE_SUBSYSTEM.getPIDController());
 
     }
 

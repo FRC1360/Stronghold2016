@@ -1,12 +1,15 @@
 package org.usfirst.frc.team1360.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team1360.robot.RobotMap;
 import org.usfirst.frc.team1360.robot.util.FRCMath;
 
-public class DriveSubsystem extends Subsystem
+public class DriveSubsystem extends PIDSubsystem
 {
     /**
      * LeftMotor Front on the Drive Subsystem
@@ -26,35 +29,51 @@ public class DriveSubsystem extends Subsystem
     private final Victor DRIVE_RIGHT_2 = new Victor(RobotMap.DRIVESUBSYSTEM_RIGHT_2);
 
 
-    //private final Encoder DRIVE_RIGHT = new Encoder(RobotMap.DRIVESUBSYSTEM_ENCODERRA, RobotMap.DRIVESUBSYSTEM_ENCODERRB, true);
+    private final Encoder DRIVE_RIGHT = new Encoder(RobotMap.DRIVESUBSYSTEM_ENCODERRA, RobotMap.DRIVESUBSYSTEM_ENCODERRB, true);
 
-    //private final Encoder DRIVE_LEFT = new Encoder(RobotMap.DRIVESUBSYSTEM_ENCODERLA, RobotMap.DRIVESUBSYSTEM_ENCODERLB, false);
+    private final Encoder DRIVE_LEFT = new Encoder(RobotMap.DRIVESUBSYSTEM_ENCODERLA, RobotMap.DRIVESUBSYSTEM_ENCODERLB, true);
 
 
     /**
      * Back solenoid for the lowrider system.
      */
     private final Solenoid SOLENOID_BACK = new Solenoid(RobotMap.DRIVESUBSYSTEM_SOLENOID_BACK);
+    private double setpoint;
 
 
-    @Override
+    public DriveSubsystem()
+    {
+        super("DriveSubsystem",0.32,0.0,0.0);
+        LiveWindow.addActuator("DriveSubsystem", "DriveSubsystem Controller", getPIDController());
+        getPIDController().setAbsoluteTolerance(50);
+        getPIDController().setContinuous(true);
+        DRIVE_LEFT.setDistancePerPulse(0.0009765625);
+        DRIVE_LEFT.setMaxPeriod(0.1);
+        DRIVE_RIGHT.setDistancePerPulse(0.0009765625);
+        DRIVE_RIGHT.setMaxPeriod(0.1);
+        setSetpoint(setpoint);
+        enable();
+
+
+    }
+
     protected void initDefaultCommand()
     {
 
     }
+    public double shitSticks()
+    {
+        return this.getPIDController().get();
 
+    }
     /**
      * Returns the value of an inputted encoder, multiplied by the tick ratio.
      * USE:
      * Distance(DRIVE_LEFT.getRaw());
      *
-     * @param encoder enc
-     * @return distance
      */
-    public double returnMetric(double encoder)
-    {
-        return encoder * FRCMath.ENCODER_TICK_RATIO;
-    }
+
+
 
     /**
      * Easy method to return left encoder values
@@ -63,7 +82,8 @@ public class DriveSubsystem extends Subsystem
      */
     public double getLeft()
     {
-        return 0;
+        return DRIVE_LEFT.getRate()/2;
+
     }
 
     /**
@@ -73,7 +93,7 @@ public class DriveSubsystem extends Subsystem
      */
     public double getRight()
     {
-        return 0;
+        return DRIVE_RIGHT.getRate()/2;
     }
 
     /**
@@ -102,6 +122,8 @@ public class DriveSubsystem extends Subsystem
         double right = (-speed) + turn;
 
         tankDrive(left, right);
+        System.out.println("LEFT: "+getLeft());
+        System.out.println("RIGHT: "+getRight());
     }
 
     /**
@@ -130,18 +152,18 @@ public class DriveSubsystem extends Subsystem
      * uses the distance method to compare to a set metric distance by the user
      * will drive the robot to said set distance
      *
-     * @param distance distance
+     *
      */
-    public void coast(double distance)
-    {
-        if (returnMetric(getLeft()) < distance + 10 && returnMetric(getLeft()) > distance - 10)
-        {
-            zeroDrive();
-        }
 
-        else if (returnMetric(getLeft()) > distance + 10 && returnMetric(getLeft()) < distance - 10)
-        {
-            tankDrive(FRCMath.motorDampening(getLeft(), distance), FRCMath.motorDampening(getRight(), distance));
-        }
+
+    @Override
+    protected double returnPIDInput() {
+        return (getLeft()+getRight())/2;
+    }
+
+    @Override
+    protected void usePIDOutput(double output)
+    {
+        tankDrive(output,output);
     }
 }
