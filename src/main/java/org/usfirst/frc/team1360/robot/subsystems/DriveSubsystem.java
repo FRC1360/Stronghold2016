@@ -43,18 +43,6 @@ public class DriveSubsystem extends Subsystem
 
     }
 
-    /**
-     * Returns the value of an inputted encoder, multiplied by the tick ratio.
-     * USE:
-     * Distance(DRIVE_LEFT.getRaw());
-     *
-     * @param encoder enc
-     * @return distance
-     */
-    public double returnMetric(double encoder)
-    {
-        return encoder * FRCMath.ENCODER_TICK_RATIO;
-    }
 
     /**
      * Easy method to return left encoder values
@@ -125,23 +113,5 @@ public class DriveSubsystem extends Subsystem
         DRIVE_RIGHT_2.set(0);
     }
 
-    /**
-     * coast is used to drive a set distance in a straight line
-     * uses the distance method to compare to a set metric distance by the user
-     * will drive the robot to said set distance
-     *
-     * @param distance distance
-     */
-    public void coast(double distance)
-    {
-        if (returnMetric(getLeft()) < distance + 10 && returnMetric(getLeft()) > distance - 10)
-        {
-            zeroDrive();
-        }
 
-        else if (returnMetric(getLeft()) > distance + 10 && returnMetric(getLeft()) < distance - 10)
-        {
-            tankDrive(FRCMath.motorDampening(getLeft(), distance), FRCMath.motorDampening(getRight(), distance));
-        }
-    }
 }
