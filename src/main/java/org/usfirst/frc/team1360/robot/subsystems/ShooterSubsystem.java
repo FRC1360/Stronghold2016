@@ -31,6 +31,7 @@ public class ShooterSubsystem extends Subsystem {
 
     }
 
+
     double realRate() {
         return encoder.getRate() / 0.01 / 2;
     }
@@ -43,13 +44,13 @@ public class ShooterSubsystem extends Subsystem {
         }
         else
         shooterM.set(0);
-        System.out.println(realRate());
+
 
 
     }
     public void shoot(boolean arg)
     {
-        if (realRate() > 6800 || realRate() < 7200){shooterSolenoid.set(arg);}
+        if (realRate() > 6800 && realRate() < 7200 || realRate() == 0){shooterSolenoid.set(arg);}
     }
 
 }

@@ -9,25 +9,6 @@ public class FRCMath
     public static final double MAX = 754, MIN = 0;
 
     /**
-     * Used when dampening motors with a setpoint value
-     * The value returned will be linear
-     * Capable of handling 0 values however, will return 0
-     *
-     * @param input
-     * @param setpoint
-     * @return
-     */
-    public static double motorDampening(double input, double setpoint)
-    {
-        if (input == 0 || setpoint == 0)
-            return 0;
-        else if (input > setpoint)
-            return -(setpoint / input);
-        return input / setpoint;
-
-
-    }
-    /**
      * TODO: Potentiometer ratio.
      */
 }
