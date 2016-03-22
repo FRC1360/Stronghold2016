@@ -20,7 +20,7 @@ public class PivotSubsystem extends PIDSubsystem
 
     public PivotSubsystem()
     {
-        super("Pivot",0.027,0.000,0.020,0);
+        super("Pivot", 0.027, 0.000, 0.020, 0);
         setAbsoluteTolerance(50);
         getPIDController().setContinuous(false);
         LiveWindow.addActuator("PivotSubsystem", "PIDSubsystem Controller", getPIDController());
@@ -29,47 +29,40 @@ public class PivotSubsystem extends PIDSubsystem
         enable();
 
 
-
     }
 
     /**
      * Adder moves the setpoint of the PID based off of it's parameters
      * Increment for example would be a joystick or a trigger
      * While booleans would be their associated buttons such as x and y
+     *
      * @param increment
      * @param x
-     * @return
+     * @return add
      */
-    public double adder(double increment,boolean x,boolean y)
+    public double adder(double increment, boolean x, boolean y)
     {
-        if(x){return 600;}
-        else if(y){return 0;}
-        else{return increment+getSetpoint();}
+        if (x) return 600;
+        else if (y) return 0;
+        else return increment + getSetpoint();
     }
+
     public double shitSticks()
     {
         return this.getPIDController().get();
-
     }
 
     /**
      * Buffers the potentiometer value to read it's around zero in the PID
      * and the driver station
-     * @param value
-     * @param real
-     * @return
+     *
+     * @param value v
+     * @param real  r
+     * @return is it
      */
     public boolean aboutZero(double value, double real)
     {
-        if(value > real - 20 && value < real + 20)
-        {
-            return true;
-
-        }
-        else
-        {
-            return false;
-        }
+        return value > real - 20 && value < real + 20;
     }
 
     public void initDefaultCommand()
@@ -82,13 +75,12 @@ public class PivotSubsystem extends PIDSubsystem
      * 1 represents you've reached the max value
      * -1 represents the minimum value
      * 0 represents no return from the proxy sensors
+     *
      * @return
      */
     public int returnLimit()
     {
-        if(!maxSwitch.get()){return 1;}
-        if(!minSwitch.get()){return -1;}
-        else{return 0;}
+        return ((!maxSwitch.get() ? 1 : (!minSwitch.get() ? -1 : 0)));
     }
 
     /**
@@ -97,14 +89,12 @@ public class PivotSubsystem extends PIDSubsystem
      * return from the potentiometer while in the low pivot position
      * it then take the negative reciprocal of that number to make it positive
      * as the potentiometer decreases in value as the pivot goes up
+     *
      * @return
      */
     public double realValue()
     {
-
-              if(aboutZero(-(pot.getValue()-1220),0)==true){return 0;}
-            else{return -(pot.getValue()-1220);}
-
+        return (aboutZero(-(pot.getValue() - 1220), 0) ? 0 : -(pot.getValue() - 1220));
     }
 
     @Override
@@ -117,11 +107,13 @@ public class PivotSubsystem extends PIDSubsystem
     protected void usePIDOutput(double output)
     {
 
-            if (returnLimit() == 1 && output > 0 || returnLimit() == -1 && output < 0) {
-                pivot.set(0);
-            } else {
-                pivot.pidWrite(output * 0.45);
-            }
+        if (returnLimit() == 1 && output > 0 || returnLimit() == -1 && output < 0)
+        {
+            pivot.set(0);
+        } else
+        {
+            pivot.pidWrite(output * 0.45);
+        }
 
     }
 }

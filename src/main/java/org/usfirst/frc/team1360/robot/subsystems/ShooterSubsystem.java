@@ -9,14 +9,15 @@ import org.usfirst.frc.team1360.robot.RobotMap;
 /**
  * Shooter Subsystem.
  */
-public class ShooterSubsystem extends Subsystem {
+public class ShooterSubsystem extends Subsystem
+{
 
     private Counter encoder = new Counter(RobotMap.SHOOTER_RPM);
 
     private VictorSP shooterM = new VictorSP(RobotMap.SHOOTERSUBSYSTEM_SHOOTER_1);
 
     private Solenoid shooterSolenoid = new Solenoid(RobotMap.SHOOTERSUBSYSTEM_SHOOTER_SOLENOID);
-    boolean trigger;
+
 
     public ShooterSubsystem()
     {
@@ -29,17 +30,20 @@ public class ShooterSubsystem extends Subsystem {
     }
 
     @Override
-    protected void initDefaultCommand() {
+    protected void initDefaultCommand()
+    {
 
     }
 
     /**
      * returns the value of encoder.getRate(), divided by the period to multiply the number to RPM's
      * then divided by two as every rotations has two pulses, a high pulse and a low pulse.
-     * @return
+     *
+     * @return rate
      */
-    double realRate() {
-        return encoder.getRate() / encoder.getPeriod() / 2;
+    private double realRate()
+    {
+        return encoder.getRate() / encoder.getPeriod();
     }
 
     /**
@@ -47,23 +51,22 @@ public class ShooterSubsystem extends Subsystem {
      * such as a joystick or a trigger, as long as the RPM of the wheel
      * is lower then 7000, as determined by realRate(). Otherwise the motor
      * cuts power to return to firing target RPMs
-     * @param speed
+     *
+     * @param speed input
      */
-    public void shooterRPM(double speed) {
+    public void shooterRPM(double speed)
+    {
 
         //slight buffer in RPMs to stay near the shooting target RPM
-        if (realRate() < 11000 )
+        if (realRate() < 11000)
         {
             shooterM.set(speed);
 
-        }
-        else {
+        } else
+        {
             shooterM.set(0);
 
         }
-        if(speed > 0 || speed < 0){trigger = true;}
-        else if(speed == 0){trigger = false;}
-
 
 
     }
@@ -72,11 +75,11 @@ public class ShooterSubsystem extends Subsystem {
      * Shoot actuates the shooting piton only when in the range of shooting
      * target RPMs, it allows for driver error and will prime the shooter when RPMs are
      * at 0 incase the driver failed to keep RPMs for the shooter to reprime
-     *
+     * @param arg to shoot or not to shoot
      */
     public void shoot(boolean arg)
     {
-        if (realRate() > 6800 && realRate() < 11000|| !arg && !trigger)
+        if (realRate() > 10000 && realRate() < 11000 || !arg)
         {
             shooterSolenoid.set(arg);
 

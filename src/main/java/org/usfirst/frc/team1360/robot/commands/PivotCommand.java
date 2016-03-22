@@ -26,7 +26,9 @@ public class PivotCommand extends Command
     protected void execute()
     {
 
-        Subsystems.PIVOT_SUBSYSTEM.setSetpoint(Subsystems.PIVOT_SUBSYSTEM.adder(OI.getOperatorPivot(),OI.getOperatorPivotSetpointUp(),OI.getOperatorPivotSetpointDown()));
+        Subsystems.PIVOT_SUBSYSTEM.setSetpoint(Subsystems.PIVOT_SUBSYSTEM.adder(OI.getOperatorPivot(),
+                OI.getOperatorPivotSetpointUp(),
+                OI.getOperatorPivotSetpointDown()));
 
     }
 
