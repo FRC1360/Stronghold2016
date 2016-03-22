@@ -116,9 +116,11 @@ public class DriveSubsystem extends PIDSubsystem
         double right = (-speed) + turn;
 
         tankDrive(left, right);
-        System.out.println("LEFT: "+getLeft());
-        System.out.println("RIGHT: "+getRight());
+        System.out.println("PID setpoint: ");
+        System.out.println("PID Input: "+returnPIDInput());
     }
+
+
 
     /**
      * Set up/down state of lowrider.
@@ -159,7 +161,7 @@ public class DriveSubsystem extends PIDSubsystem
     @Override
     protected void usePIDOutput(double output)
     {
-        //tankDrive(output,output);
+        tankDrive(output,output);
     }
 
 }

@@ -16,8 +16,10 @@ public class ShooterSubsystem extends Subsystem {
     private VictorSP shooterM = new VictorSP(RobotMap.SHOOTERSUBSYSTEM_SHOOTER_1);
 
     private Solenoid shooterSolenoid = new Solenoid(RobotMap.SHOOTERSUBSYSTEM_SHOOTER_SOLENOID);
+    boolean trigger;
 
-    public ShooterSubsystem() {
+    public ShooterSubsystem()
+    {
 
 
         encoder.setDistancePerPulse(1); //rate is set per rotation
@@ -50,12 +52,17 @@ public class ShooterSubsystem extends Subsystem {
     public void shooterRPM(double speed) {
 
         //slight buffer in RPMs to stay near the shooting target RPM
-        if (realRate() < 7100)
+        if (realRate() < 11000 )
         {
             shooterM.set(speed);
+
         }
-        else
-        shooterM.set(0);
+        else {
+            shooterM.set(0);
+
+        }
+        if(speed > 0 || speed < 0){trigger = true;}
+        else if(speed == 0){trigger = false;}
 
 
 
@@ -65,11 +72,16 @@ public class ShooterSubsystem extends Subsystem {
      * Shoot actuates the shooting piton only when in the range of shooting
      * target RPMs, it allows for driver error and will prime the shooter when RPMs are
      * at 0 incase the driver failed to keep RPMs for the shooter to reprime
-     * @param arg
+     *
      */
     public void shoot(boolean arg)
     {
-        if (realRate() > 6800 && realRate() < 7200 || realRate() == 0){shooterSolenoid.set(arg);}
+        if (realRate() > 6800 && realRate() < 11000|| !arg && !trigger)
+        {
+            shooterSolenoid.set(arg);
+
+
+        }
     }
 
 }

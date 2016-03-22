@@ -15,7 +15,7 @@ public class Robot extends IterativeRobot
     private static IntakeCommand intakeCommand;
     private static PivotCommand pivotCommand;
     private static ShooterCommand shooterCommand;
-    private static PIDOveridesCommand overideCommand;
+
 
 
 //    private Command autonomousCommand;
@@ -41,7 +41,7 @@ public class Robot extends IterativeRobot
         intakeCommand = new IntakeCommand();
         shooterCommand = new ShooterCommand();
         pivotCommand = new PivotCommand();
-        overideCommand = new PIDOveridesCommand();
+
 
 
     }
@@ -66,7 +66,7 @@ public class Robot extends IterativeRobot
         shooterCommand.start();
         intakeCommand.start();
         shooterCommand.start();
-        overideCommand.start();
+
     }
 
     /**
@@ -96,7 +96,7 @@ public class Robot extends IterativeRobot
         Scheduler.getInstance().run();
         debug();
         SmartDashboard.putNumber("PID: ",Subsystems.DRIVE_SUBSYSTEM.shitSticks());
-        SmartDashboard.putData("PID Controller",Subsystems.PIVOT_SUBSYSTEM.getPIDController());
+        //SmartDashboard.putData("PID Controller",Subsystems.PIVOT_SUBSYSTEM.getPIDController());
         SmartDashboard.putData("DriveSubsystem Controller", Subsystems.DRIVE_SUBSYSTEM.getPIDController());
 
     }

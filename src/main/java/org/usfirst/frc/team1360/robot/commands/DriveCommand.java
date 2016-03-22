@@ -21,8 +21,8 @@ public class DriveCommand extends Command
     protected void execute()
     {
         //System.out.println("Drive Controller: " +  OI.getDriverThrottle());
-        //Subsystems.DRIVE_SUBSYSTEM.returnSetpoint(OI.getDriverThrottle());
-        Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(OI.getDriverTurn(), OI.getDriverThrottle());
+        Subsystems.DRIVE_SUBSYSTEM.setSetpoint(OI.getDriverThrottle());
+        //Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(OI.getDriverTurn(), OI.getDriverThrottle());
         Subsystems.DRIVE_SUBSYSTEM.changePosition(OI.getDriverRearTilt());
     }
 

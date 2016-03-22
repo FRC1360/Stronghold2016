@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team1360.robot.RobotMap;
-import org.usfirst.frc.team1360.robot.util.PIDOveride;
 
 
 public class PivotSubsystem extends PIDSubsystem
@@ -43,8 +42,8 @@ public class PivotSubsystem extends PIDSubsystem
      */
     public double adder(double increment,boolean x,boolean y)
     {
-        if(y == true){return 600;}
-        else if(x == true){return 0;}
+        if(x){return 600;}
+        else if(y){return 0;}
         else{return increment+getSetpoint();}
     }
     public double shitSticks()
@@ -92,15 +91,6 @@ public class PivotSubsystem extends PIDSubsystem
         else{return 0;}
     }
 
-    public void rawPivot(double speed)
-    {
-        if(PIDOveride.pivot == true)
-        {
-            pivot.set(speed);
-
-        }
-    }
-
     /**
      * real value is fed into the PID and is checked against aboutZero()
      * It takes the potentiometer values and subtracts it by 1220 which is the
@@ -126,13 +116,12 @@ public class PivotSubsystem extends PIDSubsystem
     @Override
     protected void usePIDOutput(double output)
     {
-        if(PIDOveride.pivot == false)
-        {
+
             if (returnLimit() == 1 && output > 0 || returnLimit() == -1 && output < 0) {
                 pivot.set(0);
             } else {
-                pivot.pidWrite(output * 0.4);
+                pivot.pidWrite(output * 0.45);
             }
-        }
+
     }
 }
