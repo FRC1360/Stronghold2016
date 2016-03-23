@@ -22,6 +22,7 @@ public class DriveCommand extends Command
     {
         Subsystems.DRIVE_SUBSYSTEM.setSetpoint(OI.getDriverThrottle());
         Subsystems.DRIVE_SUBSYSTEM.changePosition(OI.getDriverRearTilt());
+        Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(OI.getDriverTurn(), OI.getDriverThrottle());
     }
 
 

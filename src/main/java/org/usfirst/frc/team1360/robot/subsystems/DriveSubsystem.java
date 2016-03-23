@@ -39,22 +39,28 @@ public class DriveSubsystem extends PIDSubsystem
      */
     private final Solenoid SOLENOID_BACK = new Solenoid(RobotMap.DRIVESUBSYSTEM_SOLENOID_BACK);
     private double setpoint;
+    private boolean overide;
 
 
     public DriveSubsystem()
     {
-        super("DriveSubsystem",0.32,0.0,0.0);
+        super("DriveSubsystem",0.32,0.001,0.0);
         LiveWindow.addActuator("DriveSubsystem", "DriveSubsystem Controller", getPIDController());
         getPIDController().setAbsoluteTolerance(50);
         getPIDController().setContinuous(true);
         DRIVE_LEFT.setDistancePerPulse(0.0009765625);
         DRIVE_LEFT.setMaxPeriod(0.1);
-        DRIVE_RIGHT.setDistancePerPulse(0.0009765625);
+        DRIVE_RIGHT.setDistancePerPulse((1/1024));
         DRIVE_RIGHT.setMaxPeriod(0.1);
         setSetpoint(setpoint);
         enable();
 
 
+    }
+
+    private static double encToJoystick(double enc)
+    {
+        return enc/4;
     }
 
     protected void initDefaultCommand()
@@ -76,7 +82,7 @@ public class DriveSubsystem extends PIDSubsystem
      */
     public double getLeft()
     {
-        return DRIVE_LEFT.getRate()/2;
+        return DRIVE_LEFT.getRate();
 
     }
 
@@ -87,7 +93,7 @@ public class DriveSubsystem extends PIDSubsystem
      */
     public double getRight()
     {
-        return DRIVE_RIGHT.getRate()/2;
+        return DRIVE_RIGHT.getRate();
     }
 
     /**
@@ -112,15 +118,25 @@ public class DriveSubsystem extends PIDSubsystem
      */
     public void arcadeDrive(double turn, double speed)
     {
-        double left = (-speed) - turn;
-        double right = (-speed) + turn;
 
-        tankDrive(left, right);
-        System.out.println("PID setpoint: ");
-        System.out.println("PID Input: "+returnPIDInput());
+        if(turn > 0 || turn < 0)
+        {
+            double left = (-speed) - turn;
+            double right = (-speed) + turn;
+            tankDrive(left, right);
+            overide = true;
+        }
+        else
+            overide = false;
+
+
+
     }
 
-
+    public double returnDrivePID()
+    {
+        return -(getLeft()+getRight())/6/1.5;
+    }
 
     /**
      * Set up/down state of lowrider.
@@ -155,13 +171,20 @@ public class DriveSubsystem extends PIDSubsystem
 
     @Override
     protected double returnPIDInput() {
-        return (getLeft()+getRight())/2;
+        return returnDrivePID();
     }
 
     @Override
     protected void usePIDOutput(double output)
     {
-        tankDrive(output,output);
+        if (output > 0.15 || output < -0.15 || !overide)
+        {
+
+            tankDrive(output * 4, output * 4);
+        }
+        else if(output < 0.15 || output > -0.15 || !overide){tankDrive(0,0);}
+        System.out.println("PID setpoint: " + getSetpoint());
+        System.out.println("PID Input: " + returnPIDInput());
     }
 
 }

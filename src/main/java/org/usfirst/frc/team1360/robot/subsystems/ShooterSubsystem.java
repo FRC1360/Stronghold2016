@@ -70,7 +70,15 @@ public class ShooterSubsystem extends Subsystem
 
 
     }
+    public void autoShoot(double speed)
+    {
+        boolean prime;
+        shooterRPM(speed);
+        prime = realRate() < 1100;
+        shoot(prime);
 
+
+    }
     /**
      * Shoot actuates the shooting piton only when in the range of shooting
      * target RPMs, it allows for driver error and will prime the shooter when RPMs are

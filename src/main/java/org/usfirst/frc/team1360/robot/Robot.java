@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team1360.robot.commands.*;
 
 
+import org.usfirst.frc.team1360.robot.util.DriverstationDashboard;
 import org.usfirst.frc.team1360.robot.util.Subsystems;
 
 public class Robot extends IterativeRobot
@@ -41,9 +42,7 @@ public class Robot extends IterativeRobot
         intakeCommand = new IntakeCommand();
         shooterCommand = new ShooterCommand();
         pivotCommand = new PivotCommand();
-
-
-
+        //DriverstationDashboard.init();
     }
 
     @Override

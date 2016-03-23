@@ -79,7 +79,7 @@ public class DriverstationDashboard
 
         Command[] section1 =
                 {
-                        new AutonomousDriveCommand()
+                        //new AutonomousDriveCommand()
                 };
         Command[] section2 =
                 {
@@ -107,6 +107,7 @@ public class DriverstationDashboard
 
     private static HashMap<String, CommandData.DataType> getAllCommandDataArgs()
     {
+        /*
         AutonomousDriveCommand driveCommand = new AutonomousDriveCommand();
         AutonomousPivotCommand pivotCommand = new AutonomousPivotCommand();
         AutonomousShooterCommand shooterCommand = new AutonomousShooterCommand();
@@ -117,7 +118,10 @@ public class DriverstationDashboard
         data.putAll(pivotCommand.getCommandDataArguments());
         data.putAll(shooterCommand.getCommandDataArguments());
         data.putAll(intakeCommand.getCommandDataArguments());
+
         return data;
+        */
+        return null;
     }
 
     private static void putValues()

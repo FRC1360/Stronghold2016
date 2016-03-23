@@ -1,19 +1,25 @@
 package org.usfirst.frc.team1360.robot.autonomous.actions;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team1360.robot.autonomous.IAutoCommand;
 import org.usfirst.frc.team1360.robot.util.CommandData;
+import org.usfirst.frc.team1360.robot.util.Subsystems;
 
 import java.util.HashMap;
 
 public class AutonomousIntakeCommand extends Command implements IAutoCommand
 {
     private double auto_intake_speed;
+    private double auto_intake_time;
+    private Timer delay = new Timer();
     private CommandData commandData;
 
-    public AutonomousIntakeCommand()
+    public AutonomousIntakeCommand(double auto_intake_speed, double auto_intake_time)
     {
-
+        requires(Subsystems.INTAKE_SUBSYSTEM);
+        this.auto_intake_speed = auto_intake_speed;
+        this.auto_intake_time = auto_intake_time;
     }
 
     public AutonomousIntakeCommand(CommandData data)
@@ -25,19 +31,20 @@ public class AutonomousIntakeCommand extends Command implements IAutoCommand
     @Override
     protected void initialize()
     {
-
+        delay.reset();
+        delay.start();
     }
 
     @Override
     protected void execute()
     {
-
+        Subsystems.INTAKE_SUBSYSTEM.intakeBoulder(auto_intake_speed);
     }
 
     @Override
     protected boolean isFinished()
     {
-        return false;
+        return delay.hasPeriodPassed(auto_intake_time);
     }
 
     @Override

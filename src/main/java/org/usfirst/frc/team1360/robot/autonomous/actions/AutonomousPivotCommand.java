@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 public class AutonomousPivotCommand extends Command implements IAutoCommand
 {
+
     public AutonomousPivotCommand(CommandData data)
     {
 

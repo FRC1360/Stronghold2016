@@ -19,8 +19,12 @@ public class AutonomousDriveCommand extends Command implements IAutoCommand
     private Timer delay = new Timer();
     private CommandData commandData;
 
-    public AutonomousDriveCommand()
+    public AutonomousDriveCommand(double auto_drive_throttle, double auto_drive_time, double auto_drive_turn)
     {
+        requires(Subsystems.DRIVE_SUBSYSTEM);
+        this.auto_drive_throttle = auto_drive_throttle;
+        this.auto_drive_time = auto_drive_time;
+        this.auto_drive_turn = auto_drive_turn;
 
     }
 
@@ -35,7 +39,6 @@ public class AutonomousDriveCommand extends Command implements IAutoCommand
     @Override
     protected void initialize()
     {
-        requires(Subsystems.DRIVE_SUBSYSTEM);
         delay.reset();
         delay.start();
     }
