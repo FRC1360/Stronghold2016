@@ -20,4 +20,9 @@ public class Subsystems
         SHOOTER_SUBSYSTEM = new ShooterSubsystem();
         DRIVE_SUBSYSTEM = new DriveSubsystem();
     }
+
+    public static void c(Object o)
+    {
+        System.out.println(o);
+    }
 }

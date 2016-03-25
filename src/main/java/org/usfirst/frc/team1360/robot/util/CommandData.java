@@ -12,15 +12,15 @@ public class CommandData
     /**
      * All doubles used.
      */
-    private HashMap<String, Double> doubles;
+    private HashMap<String, Double> doubles = new HashMap<>();
     /**
      * All booleans used.
      */
-    private HashMap<String, Boolean> booleans;
+    private HashMap<String, Boolean> booleans = new HashMap<>();
     /**
      * All floats used.
      */
-    private HashMap<String, Float> floats;
+    private HashMap<String, Float> floats = new HashMap<>();
 
     /**
      * Get the list of all doubles

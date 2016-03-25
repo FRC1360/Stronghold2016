@@ -177,14 +177,14 @@ public class DriveSubsystem extends PIDSubsystem
     @Override
     protected void usePIDOutput(double output)
     {
-        if (output > 0.15 || output < -0.15 || !overide)
+        if (output > 0.15 && !overide || output < -0.15 && !overide)
         {
 
             tankDrive(output * 4, output * 4);
         }
-        else if(output < 0.15 || output > -0.15 || !overide){tankDrive(0,0);}
-        System.out.println("PID setpoint: " + getSetpoint());
-        System.out.println("PID Input: " + returnPIDInput());
+        else if(!overide){tankDrive(0,0);}
+        System.out.println("LRAW:  " + getLeft());
+        System.out.println("RRAW " + getRight());
     }
 
 }

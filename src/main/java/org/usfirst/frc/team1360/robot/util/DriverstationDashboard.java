@@ -16,7 +16,11 @@ import java.util.List;
 public class DriverstationDashboard
 {
     private static List<SendableChooser> choices = new ArrayList<>();
-    private static SendableChooser sendableChooser = new SendableChooser();
+    private static SendableChooser sendableChooser;
+    public DriverstationDashboard()
+    {
+        sendableChooser = new SendableChooser();
+    }
 
     private static HashMap<String, CommandData.DataType> getCommandDataArgs(Command command)
     {
@@ -156,14 +160,14 @@ public class DriverstationDashboard
         return cdata;
     }
 
-    public static void initSimpleChooser()
+    public void initSimpleChooser(CommandData data)
     {
-        sendableChooser.addDefault("Drive", new AutonomousDriveCommand(getValues()));
-        sendableChooser.addObject("Shoot", new AutonomousShooterCommand(getValues()));
+        sendableChooser.addDefault("Drive", new AutonomousDriveCommand(data));
+        sendableChooser.addObject("Shoot", new AutonomousShooterCommand(data));
         SmartDashboard.putData("SimpleAuto", sendableChooser);
     }
 
-    public static Command getSimpleChooser()
+    public Command getSimpleChooser()
     {
         return (Command) sendableChooser.getSelected();
     }

@@ -1,12 +1,14 @@
 package org.usfirst.frc.team1360.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team1360.robot.commands.*;
 
 
+import org.usfirst.frc.team1360.robot.util.CommandData;
 import org.usfirst.frc.team1360.robot.util.DriverstationDashboard;
 import org.usfirst.frc.team1360.robot.util.Subsystems;
 
@@ -16,10 +18,11 @@ public class Robot extends IterativeRobot
     private static IntakeCommand intakeCommand;
     private static PivotCommand pivotCommand;
     private static ShooterCommand shooterCommand;
+    DriverstationDashboard ds;
 
 
 
-//    private Command autonomousCommand;
+    private Command autonomousCommand;
 
 
     public void debug()
@@ -34,15 +37,27 @@ public class Robot extends IterativeRobot
 
     }
 
+    private CommandData autoData()
+    {
+        CommandData data = new CommandData();
+        data.addDouble("auto_drive_throttle", 0.5D);
+        data.addDouble("auto_drive_turn", 0);
+        data.addDouble("auto_drive_time", 5);
+
+        return data;
+    }
+
     @Override
     public void robotInit()
     {
         new Subsystems();
+        ds = new DriverstationDashboard();
         driveCommand = new DriveCommand();
         intakeCommand = new IntakeCommand();
         shooterCommand = new ShooterCommand();
         pivotCommand = new PivotCommand();
-        //DriverstationDashboard.init();
+
+        ds.initSimpleChooser(autoData());
     }
 
     @Override
@@ -54,8 +69,8 @@ public class Robot extends IterativeRobot
     @Override
     public void autonomousInit()
     {
-        // autonomousCommand = DriverstationDashboard.getAutonomousChoice();
-        //autonomousCommand.start();
+        autonomousCommand = ds.getSimpleChooser();
+        autonomousCommand.start();
     }
 
     private void init()
@@ -80,7 +95,7 @@ public class Robot extends IterativeRobot
     {
         //if (autonomousCommand != null) autonomousCommand.cancel();
         init();
-
+        ds.initSimpleChooser(autoData());
     }
 
     @Override
