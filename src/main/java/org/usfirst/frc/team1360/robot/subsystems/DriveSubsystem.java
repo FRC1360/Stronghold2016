@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team1360.robot.RobotMap;
 import org.usfirst.frc.team1360.robot.util.FRCMath;
 
-public class DriveSubsystem extends PIDSubsystem
+public class DriveSubsystem extends Subsystem
 {
     /**
      * LeftMotor Front on the Drive Subsystem
@@ -44,17 +44,6 @@ public class DriveSubsystem extends PIDSubsystem
 
     public DriveSubsystem()
     {
-        super("DriveSubsystem",0.32,0.001,0.0);
-        LiveWindow.addActuator("DriveSubsystem", "DriveSubsystem Controller", getPIDController());
-        getPIDController().setAbsoluteTolerance(50);
-        getPIDController().setContinuous(true);
-        DRIVE_LEFT.setDistancePerPulse(0.0009765625);
-        DRIVE_LEFT.setMaxPeriod(0.1);
-        DRIVE_RIGHT.setDistancePerPulse((1/1024));
-        DRIVE_RIGHT.setMaxPeriod(0.1);
-        setSetpoint(setpoint);
-        enable();
-
 
     }
 
@@ -67,34 +56,7 @@ public class DriveSubsystem extends PIDSubsystem
     {
 
     }
-    public double shitSticks()
-    {
-        return this.getPIDController().get();
 
-    }
-
-
-
-    /**
-     * Easy method to return left encoder values
-     *
-     * @return value
-     */
-    public double getLeft()
-    {
-        return DRIVE_LEFT.getRate();
-
-    }
-
-    /**
-     * Easy method to return right encoder values
-     *
-     * @return value
-     */
-    public double getRight()
-    {
-        return DRIVE_RIGHT.getRate();
-    }
 
     /**
      * sets speeds of left and right motors
@@ -133,11 +95,6 @@ public class DriveSubsystem extends PIDSubsystem
 
     }
 
-    public double returnDrivePID()
-    {
-        return -(getLeft()+getRight())/6/1.5;
-    }
-
     /**
      * Set up/down state of lowrider.
      *
@@ -167,23 +124,4 @@ public class DriveSubsystem extends PIDSubsystem
      *
      *
      */
-
-
-    @Override
-    protected double returnPIDInput() {
-        return returnDrivePID();
-    }
-
-    @Override
-    protected void usePIDOutput(double output)
-    {
-        if (output > 0.15 && !overide || output < -0.15 && !overide)
-        {
-
-            tankDrive(output * 4, output * 4);
-        }
-        else if(!overide){tankDrive(0,0);}
-        System.out.println("LRAW:  " + getLeft());
-        System.out.println("RRAW " + getRight());
-    }
 }
