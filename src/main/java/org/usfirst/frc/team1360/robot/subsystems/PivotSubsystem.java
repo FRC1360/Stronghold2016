@@ -23,6 +23,7 @@ public class PivotSubsystem extends PIDSubsystem
     {
         super("Pivot", 0.027, 0.000, 0.020, 0);
         setAbsoluteTolerance(50);
+        setSetpoint(realValue());
         getPIDController().setContinuous(false);
         LiveWindow.addActuator("PivotSubsystem", "PIDSubsystem Controller", getPIDController());
         getPIDController().setInputRange(0, 690);
@@ -41,7 +42,7 @@ public class PivotSubsystem extends PIDSubsystem
      */
     public double adder(double increment, boolean x, boolean y)
     {
-        if (x) return 600;
+        if (x) return 650;
         else if (y) return 0;
         else return increment + getSetpoint();
     }

@@ -43,7 +43,7 @@ public class ShooterSubsystem extends Subsystem
      */
     private double realRate()
     {
-        return encoder.getRate() / encoder.getPeriod();
+        return encoder.getRate() / encoder.getPeriod()/2.95;
     }
 
     /**
@@ -58,7 +58,7 @@ public class ShooterSubsystem extends Subsystem
     {
 
         //slight buffer in RPMs to stay near the shooting target RPM
-        if (realRate() < 11000)
+        if (realRate() < 7100)
         {
             shooterM.set(speed);
 
@@ -67,6 +67,7 @@ public class ShooterSubsystem extends Subsystem
             shooterM.set(0);
 
         }
+        System.out.println("RPM: "+realRate());
 
 
     }
@@ -74,7 +75,7 @@ public class ShooterSubsystem extends Subsystem
     {
         boolean prime;
         shooterRPM(speed);
-        prime = realRate() < 1100;
+        prime = realRate() < 7100;
         shoot(prime);
 
 
@@ -87,7 +88,7 @@ public class ShooterSubsystem extends Subsystem
      */
     public void shoot(boolean arg)
     {
-        if (realRate() > 10000 && realRate() < 11000 || !arg)
+        if (realRate() > 6900 && realRate() < 7100|| !arg)
         {
             shooterSolenoid.set(arg);
 

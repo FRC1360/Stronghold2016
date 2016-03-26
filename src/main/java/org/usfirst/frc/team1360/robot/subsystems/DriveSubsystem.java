@@ -81,16 +81,10 @@ public class DriveSubsystem extends Subsystem
     public void arcadeDrive(double turn, double speed)
     {
 
-        if(turn > 0 || turn < 0)
-        {
+
             double left = (-speed) - turn;
             double right = (-speed) + turn;
             tankDrive(left, right);
-            overide = true;
-        }
-        else
-            overide = false;
-
 
 
     }

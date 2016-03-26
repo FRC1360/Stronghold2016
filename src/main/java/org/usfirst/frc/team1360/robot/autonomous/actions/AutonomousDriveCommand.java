@@ -55,11 +55,11 @@ public class AutonomousDriveCommand extends Command implements IAutoCommand
 
         i+=1;
         System.out.println(i);
-        if(i > 50)
-        Subsystems.PIVOT_SUBSYSTEM.setAutoSetpoint(PivotSubsystem.Position.TOP);
+        if(i > 200)
+        Subsystems.PIVOT_SUBSYSTEM.setAutoSetpoint(PivotSubsystem.Position.INTAKE);
         if(i > 160) {
             Subsystems.DRIVE_SUBSYSTEM.tankDrive(0.85 * auto_drive_throttle, auto_drive_throttle);
-            Subsystems.DRIVE_SUBSYSTEM.changePosition(true);
+            Subsystems.DRIVE_SUBSYSTEM.changePosition(false);
         }
 
 
@@ -67,7 +67,7 @@ public class AutonomousDriveCommand extends Command implements IAutoCommand
 
     @Override
     protected boolean isFinished() {
-        return i > 750;
+        return i > 40*auto_drive_time;
     }
 
     @Override

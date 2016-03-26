@@ -42,7 +42,7 @@ public class Robot extends IterativeRobot
         CommandData data = new CommandData();
         data.addDouble("auto_drive_throttle", -0.75D);
         data.addDouble("auto_drive_turn", 0);
-        data.addDouble("auto_drive_time", 15);
+        data.addDouble("auto_drive_time", 9);
         data.addDouble("auto_intake_speed", 0.25);
         data.addDouble("auto_actuate_time", 1);
         return data;
