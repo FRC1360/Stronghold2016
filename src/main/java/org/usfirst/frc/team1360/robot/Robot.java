@@ -40,10 +40,11 @@ public class Robot extends IterativeRobot
     private CommandData autoData()
     {
         CommandData data = new CommandData();
-        data.addDouble("auto_drive_throttle", 0.5D);
+        data.addDouble("auto_drive_throttle", -0.75D);
         data.addDouble("auto_drive_turn", 0);
-        data.addDouble("auto_drive_time", 5);
-
+        data.addDouble("auto_drive_time", 15);
+        data.addDouble("auto_intake_speed", 0.25);
+        data.addDouble("auto_actuate_time", 1);
         return data;
     }
 
@@ -80,7 +81,6 @@ public class Robot extends IterativeRobot
         shooterCommand.start();
         intakeCommand.start();
         shooterCommand.start();
-
     }
 
     /**
@@ -109,8 +109,6 @@ public class Robot extends IterativeRobot
     {
         Scheduler.getInstance().run();
         debug();
-        SmartDashboard.putNumber("PID: ",Subsystems.DRIVE_SUBSYSTEM.shitSticks());
-        SmartDashboard.putData("DriveSubsystem Controller", Subsystems.DRIVE_SUBSYSTEM.getPIDController());
 
     }
 

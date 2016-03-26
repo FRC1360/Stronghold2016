@@ -15,7 +15,7 @@ public class AutonomousIntakeCommand extends Command implements IAutoCommand
     private Timer delay = new Timer();
     private CommandData commandData;
 
-    public AutonomousIntakeCommand(double auto_intake_speed, double auto_intake_time)
+    public AutonomousIntakeCommand(double auto_intake_speed)
     {
         requires(Subsystems.INTAKE_SUBSYSTEM);
         this.auto_intake_speed = auto_intake_speed;

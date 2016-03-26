@@ -3,6 +3,7 @@ package org.usfirst.frc.team1360.robot.autonomous.actions;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team1360.robot.autonomous.IAutoCommand;
+import org.usfirst.frc.team1360.robot.subsystems.PivotSubsystem;
 import org.usfirst.frc.team1360.robot.util.CommandData;
 import org.usfirst.frc.team1360.robot.util.Subsystems;
 
@@ -16,9 +17,11 @@ public class AutonomousDriveCommand extends Command implements IAutoCommand
     private double auto_drive_throttle;
     private double auto_drive_turn;
     private double auto_drive_time;
+    private Timer initdelay = new Timer();
     private Timer delay = new Timer();
     private CommandData commandData;
 
+    private int i = 0;
     public AutonomousDriveCommand(double auto_drive_throttle, double auto_drive_time, double auto_drive_turn)
     {
         requires(Subsystems.DRIVE_SUBSYSTEM);
@@ -40,31 +43,37 @@ public class AutonomousDriveCommand extends Command implements IAutoCommand
     @Override
     protected void initialize()
     {
+        initdelay.reset();
+        initdelay.start();
         delay.reset();
+        delay.start();
     }
 
     @Override
     protected void execute()
     {
-        if(delay.get() < auto_drive_time)
-            Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(auto_drive_throttle, auto_drive_turn);
-        else
-        {
-            Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(0, 0);
-            delay.stop();
+
+        i+=1;
+        System.out.println(i);
+        if(i > 50)
+        Subsystems.PIVOT_SUBSYSTEM.setAutoSetpoint(PivotSubsystem.Position.TOP);
+        if(i > 160) {
+            Subsystems.DRIVE_SUBSYSTEM.tankDrive(0.85 * auto_drive_throttle, auto_drive_throttle);
+            Subsystems.DRIVE_SUBSYSTEM.changePosition(true);
         }
+
 
     }
 
     @Override
-    protected boolean isFinished()
-    {
-        return true;
+    protected boolean isFinished() {
+        return i > 750;
     }
 
     @Override
     protected void end()
     {
+        Subsystems.DRIVE_SUBSYSTEM.zeroDrive();
         delay.stop();
     }
 

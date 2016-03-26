@@ -36,6 +36,7 @@ public class PivotSubsystem extends PIDSubsystem
      *
      * @param increment a
      * @param x         a
+     *                  @param y t
      * @return add
      */
     public double adder(double increment, boolean x, boolean y)
