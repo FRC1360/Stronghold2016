@@ -8,11 +8,8 @@ import org.usfirst.frc.team1360.robot.util.Subsystems;
 
 public class PivotCommand extends Command
 {
-
-
     public PivotCommand()
     {
-
         requires(Subsystems.PIVOT_SUBSYSTEM);
     }
     @Override
@@ -29,7 +26,6 @@ public class PivotCommand extends Command
         Subsystems.PIVOT_SUBSYSTEM.setSetpoint(Subsystems.PIVOT_SUBSYSTEM.adder(OI.getOperatorPivot(),
                 OI.getOperatorPivotSetpointUp(),
                 OI.getOperatorPivotSetpointDown()));
-
     }
 
     @Override

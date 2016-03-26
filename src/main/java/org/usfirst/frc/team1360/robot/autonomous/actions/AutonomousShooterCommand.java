@@ -10,27 +10,20 @@ import java.util.HashMap;
 
 public class AutonomousShooterCommand extends Command implements IAutoCommand
 {
-    private double time;
-    private double speed;
-    private Timer delay = new Timer();
-    public AutonomousShooterCommand(double speed, double time)
+
+    public AutonomousShooterCommand()
     {
         requires(Subsystems.SHOOTER_SUBSYSTEM);
-        this.time = time;
-        this.speed = speed;
-
     }
 
     public AutonomousShooterCommand(CommandData data)
     {
-
+        requires(Subsystems.SHOOTER_SUBSYSTEM);
     }
 
     @Override
     protected void initialize()
     {
-        delay.reset();
-        delay.start();
     }
 
     @Override
@@ -42,7 +35,7 @@ public class AutonomousShooterCommand extends Command implements IAutoCommand
     @Override
     protected boolean isFinished()
     {
-        return delay.hasPeriodPassed(time);
+        return false;
     }
 
     @Override

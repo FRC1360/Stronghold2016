@@ -30,6 +30,7 @@ public class AutonomousDriveCommand extends Command implements IAutoCommand
 
     public AutonomousDriveCommand(CommandData data)
     {
+        requires(Subsystems.DRIVE_SUBSYSTEM);
         commandData = data;
         auto_drive_throttle = data.getDoubles().get("auto_drive_throttle");
         auto_drive_turn = data.getDoubles().get("auto_drive_turn");
@@ -40,19 +41,25 @@ public class AutonomousDriveCommand extends Command implements IAutoCommand
     protected void initialize()
     {
         delay.reset();
-        delay.start();
     }
 
     @Override
     protected void execute()
     {
-        Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(auto_drive_throttle, auto_drive_turn);
+        if(delay.get() < auto_drive_time)
+            Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(auto_drive_throttle, auto_drive_turn);
+        else
+        {
+            Subsystems.DRIVE_SUBSYSTEM.arcadeDrive(0, 0);
+            delay.stop();
+        }
+
     }
 
     @Override
     protected boolean isFinished()
     {
-        return delay.hasPeriodPassed(auto_drive_time);
+        return true;
     }
 
     @Override

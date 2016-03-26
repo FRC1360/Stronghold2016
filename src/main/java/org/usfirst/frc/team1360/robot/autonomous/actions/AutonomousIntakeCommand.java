@@ -24,6 +24,7 @@ public class AutonomousIntakeCommand extends Command implements IAutoCommand
 
     public AutonomousIntakeCommand(CommandData data)
     {
+        requires(Subsystems.INTAKE_SUBSYSTEM);
         commandData = data;
         auto_intake_speed = data.getDoubles().get("auto_intake_speed");
     }
@@ -38,7 +39,13 @@ public class AutonomousIntakeCommand extends Command implements IAutoCommand
     @Override
     protected void execute()
     {
-        Subsystems.INTAKE_SUBSYSTEM.intakeBoulder(auto_intake_speed);
+        if(delay.get() < auto_intake_time)
+            Subsystems.INTAKE_SUBSYSTEM.intakeBoulder(auto_intake_speed);
+        else
+        {
+            Subsystems.INTAKE_SUBSYSTEM.intakeBoulder(0);
+            delay.stop();
+        }
     }
 
     @Override

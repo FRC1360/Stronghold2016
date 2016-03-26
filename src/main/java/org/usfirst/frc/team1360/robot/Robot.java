@@ -18,16 +18,16 @@ public class Robot extends IterativeRobot
     private static IntakeCommand intakeCommand;
     private static PivotCommand pivotCommand;
     private static ShooterCommand shooterCommand;
-    DriverstationDashboard ds;
+    private DriverstationDashboard ds;
 
 
 
     private Command autonomousCommand;
 
 
-    public void debug()
+    private void debug()
     {
-       // System.out.println("Shooter RPM encoder: " + Subsystems.SHOOTER_SUBSYSTEM.encoder.getRate());
+        //System.out.println("Shooter RPM encoder: " + Subsystems.SHOOTER_SUBSYSTEM.encoder.getRate());
         //System.out.println("Pivot Down: " + Subsystems.PIVOT_SUBSYSTEM.minSwitch.get());
         //System.out.println("Pivot Up: " + Subsystems.PIVOT_SUBSYSTEM.maxSwitch.get());
         //System.out.println("Real: " + Subsystems.PIVOT_SUBSYSTEM.realValue());
@@ -93,7 +93,7 @@ public class Robot extends IterativeRobot
 
     public void teleopInit()
     {
-        //if (autonomousCommand != null) autonomousCommand.cancel();
+        if (autonomousCommand != null) autonomousCommand.cancel();
         init();
         ds.initSimpleChooser(autoData());
     }
@@ -110,7 +110,6 @@ public class Robot extends IterativeRobot
         Scheduler.getInstance().run();
         debug();
         SmartDashboard.putNumber("PID: ",Subsystems.DRIVE_SUBSYSTEM.shitSticks());
-        //SmartDashboard.putData("PID Controller",Subsystems.PIVOT_SUBSYSTEM.getPIDController());
         SmartDashboard.putData("DriveSubsystem Controller", Subsystems.DRIVE_SUBSYSTEM.getPIDController());
 
     }

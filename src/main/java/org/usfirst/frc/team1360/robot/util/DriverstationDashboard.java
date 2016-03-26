@@ -15,6 +15,9 @@ import java.util.List;
 
 public class DriverstationDashboard
 {
+    //TODO: Instead of a variable setup, have auto be additive per set. Use CommandGroupBuilder.
+
+
     private static List<SendableChooser> choices = new ArrayList<>();
     private static SendableChooser sendableChooser;
     public DriverstationDashboard()

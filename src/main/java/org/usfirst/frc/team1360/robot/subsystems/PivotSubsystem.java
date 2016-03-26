@@ -7,16 +7,17 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import javafx.geometry.Pos;
 import org.usfirst.frc.team1360.robot.RobotMap;
 
 
 public class PivotSubsystem extends PIDSubsystem
 {
     private Victor pivot = new Victor(RobotMap.PIVOTSUBSYSTEM_TILTER);
-    public AnalogInput pot = new AnalogInput(RobotMap.PIVOTSUBSYSTEM_POT);
+    private AnalogInput pot = new AnalogInput(RobotMap.PIVOTSUBSYSTEM_POT);
 
-    public DigitalInput maxSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_UP);
-    public DigitalInput minSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_DOWN);
+    private DigitalInput maxSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_UP);
+    private DigitalInput minSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_DOWN);
 
     public PivotSubsystem()
     {
@@ -25,10 +26,7 @@ public class PivotSubsystem extends PIDSubsystem
         getPIDController().setContinuous(false);
         LiveWindow.addActuator("PivotSubsystem", "PIDSubsystem Controller", getPIDController());
         getPIDController().setInputRange(0, 690);
-
         enable();
-
-
     }
 
     /**
@@ -36,8 +34,8 @@ public class PivotSubsystem extends PIDSubsystem
      * Increment for example would be a joystick or a trigger
      * While booleans would be their associated buttons such as x and y
      *
-     * @param increment
-     * @param x
+     * @param increment a
+     * @param x         a
      * @return add
      */
     public double adder(double increment, boolean x, boolean y)
@@ -47,9 +45,9 @@ public class PivotSubsystem extends PIDSubsystem
         else return increment + getSetpoint();
     }
 
-    public double shitSticks()
+    public void setAutoSetpoint(Position position)
     {
-        return this.getPIDController().get();
+        setSetpoint(position.getSetpoint());
     }
 
     /**
@@ -60,7 +58,7 @@ public class PivotSubsystem extends PIDSubsystem
      * @param real  r
      * @return is it
      */
-    public boolean aboutZero(double value, double real)
+    private boolean aboutZero(double value, double real)
     {
         return value > real - 20 && value < real + 20;
     }
@@ -76,9 +74,9 @@ public class PivotSubsystem extends PIDSubsystem
      * -1 represents the minimum value
      * 0 represents no return from the proxy sensors
      *
-     * @return
+     * @return l
      */
-    public int returnLimit()
+    private int returnLimit()
     {
         return ((!maxSwitch.get() ? 1 : (!minSwitch.get() ? -1 : 0)));
     }
@@ -90,9 +88,9 @@ public class PivotSubsystem extends PIDSubsystem
      * it then take the negative reciprocal of that number to make it positive
      * as the potentiometer decreases in value as the pivot goes up
      *
-     * @return
+     * @return v
      */
-    public double realValue()
+    private double realValue()
     {
         return (aboutZero(-(pot.getValue() - 1220), 0) ? 0 : -(pot.getValue() - 1220));
     }
@@ -110,10 +108,28 @@ public class PivotSubsystem extends PIDSubsystem
         if (returnLimit() == 1 && output > 0 || returnLimit() == -1 && output < 0)
         {
             pivot.set(0);
-        } else
+        }
+        else
         {
             pivot.pidWrite(output * 0.45);
         }
 
+    }
+
+    public enum Position
+    {
+        //TODO: Set these numbers to be actual.
+        TOP(600), SHOOT(300), INTAKE(0);
+
+        private double psetpoint;
+        Position(double csetpoint)
+        {
+            psetpoint = csetpoint;
+        }
+
+        double getSetpoint()
+        {
+            return psetpoint;
+        }
     }
 }

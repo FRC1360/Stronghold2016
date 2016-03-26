@@ -10,6 +10,10 @@ import java.util.HashMap;
 public class CommandData
 {
     /**
+     * All strings used.
+     */
+    private HashMap<String, String> strings = new HashMap<>();
+    /**
      * All doubles used.
      */
     private HashMap<String, Double> doubles = new HashMap<>();
@@ -123,6 +127,16 @@ public class CommandData
         floats.clear();
         booleans.clear();
         doubles.clear();
+    }
+
+    public HashMap<String, String> getStrings()
+    {
+        return strings;
+    }
+
+    public void setStrings(HashMap<String, String> strings)
+    {
+        this.strings = strings;
     }
 
     /**
