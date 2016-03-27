@@ -1,0 +1,67 @@
+package org.usfirst.frc.team1360.robot.autonomous.groups;
+
+import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc.team1360.robot.autonomous.AutonomousCommand;
+import org.usfirst.frc.team1360.robot.autonomous.actions.AutonomousDriveCommand;
+import org.usfirst.frc.team1360.robot.autonomous.actions.AutonomousPivotCommand;
+import org.usfirst.frc.team1360.robot.subsystems.PivotSubsystem;
+import org.usfirst.frc.team1360.robot.util.CommandData;
+
+public class AutonomousBreachGroup extends CommandGroup
+{
+    private CommandData data;
+
+    public AutonomousBreachGroup(Defense selection, CommandData data)
+    {
+        this.data = data;
+        handleDefenseSelection(selection);
+    }
+
+    private void handleDefenseSelection(Defense defense)
+    {
+        switch (defense)
+        {
+            /**
+             * Move to edge of defense, lower arm, reverse slightly, forward.
+             */
+            case CHIVAL_DE_FRISE:
+                //Move to defense, lower arm, reverse slightly, forward all over.
+                break;
+            /**
+             * These 4 are basically the same thing. Full speed gun it with actuated wheels and the arm
+             * being in the up position.
+             */
+            case MOAT:
+            case RAMPARTS:
+            case ROCK_WALL:
+            case ROUGH_TERRAIN:
+                addSequential(new AutonomousPivotCommand(data));
+                addParallel(new AutonomousDriveCommand(data));
+                break;
+            /**
+             * Move forward a bit, then drop arm to go under.
+             */
+            case LOW_BAR:
+                data.getObjects().put("auto_pivot_position", PivotSubsystem.Position.INTAKE);
+                addSequential(new AutonomousDriveCommand(data));
+                addParallel(new AutonomousPivotCommand(data));
+                break;
+            /**
+             * Really?
+             */
+            case NOTHING:
+                break;
+        }
+    }
+
+    public enum Defense
+    {
+        LOW_BAR,
+        CHIVAL_DE_FRISE,
+        RAMPARTS,
+        MOAT,
+        ROCK_WALL,
+        ROUGH_TERRAIN,
+        NOTHING
+    }
+}

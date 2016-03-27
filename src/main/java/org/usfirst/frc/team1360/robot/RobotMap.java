@@ -8,6 +8,18 @@ package org.usfirst.frc.team1360.robot;
  */
 public class RobotMap
 {
+
+    /**
+     * Driver Controller
+     */
+    static final int JOYSTICK_DRIVER = 0;
+    /**
+     * Operator Controller
+     */
+    static final int JOYSTICK_OPERATOR = 1;
+
+    //region PWM
+    //region Motors
     /**
      * LeftMotor Front on the Drive Subsystem
      * CAN: No
@@ -46,16 +58,17 @@ public class RobotMap
      */
     public static final int SHOOTERSUBSYSTEM_SHOOTER_1 = 6;
 
+    //endregion
+    //endregion
 
-
-
-    // Anolog Input
+    //region AnalogInput
     /**
      * Pivot Potentiometer
      */
     public static final int PIVOTSUBSYSTEM_POT = 0;
+    //endregion
 
-    // Digital Input
+    //region Digital Input
     /**
      * Banner Sensor for shooter RPM
      */
@@ -70,7 +83,7 @@ public class RobotMap
      */
     public static final int SHOOTERSUBSYSTEM_SWITCH_UP = 2;
 
-    // Encoders
+    //region Encoders
     /**
      * Encoder on the left side of the drivetrain
      * USED:NO
@@ -91,8 +104,10 @@ public class RobotMap
      * USED:NO
      */
     public static final int DRIVESUBSYSTEM_ENCODERRB = 6;
+    //endregion
+    //endregion
 
-    // Solenoids
+    //region Solenoids
     /**
      * Solenoid for actuating drivetrain
      */
@@ -101,14 +116,6 @@ public class RobotMap
      * Solenoid for actuating the shooter
      */
     public static final int SHOOTERSUBSYSTEM_SHOOTER_SOLENOID = 1;
+    //endregion
 
-
-    /**
-     * Driver Controller
-     */
-    public static final int JOYSTICK_DRIVER = 0;
-    /**
-     * Operator Controller
-     */
-    public static final int JOYSTICK_OPERATOR = 1;
 }

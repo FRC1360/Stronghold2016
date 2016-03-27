@@ -1,14 +1,11 @@
 package org.usfirst.frc.team1360.robot.autonomous.actions;
 
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team1360.robot.autonomous.IAutoCommand;
+import org.usfirst.frc.team1360.robot.autonomous.AutonomousCommand;
 import org.usfirst.frc.team1360.robot.util.CommandData;
 import org.usfirst.frc.team1360.robot.util.Subsystems;
 
-import java.util.HashMap;
-
-public class AutonomousIntakeCommand extends Command implements IAutoCommand
+public class AutonomousIntakeCommand extends AutonomousCommand
 {
     private double auto_intake_speed;
     private double auto_intake_time;
@@ -19,7 +16,6 @@ public class AutonomousIntakeCommand extends Command implements IAutoCommand
     {
         requires(Subsystems.INTAKE_SUBSYSTEM);
         this.auto_intake_speed = auto_intake_speed;
-        this.auto_intake_time = auto_intake_time;
     }
 
     public AutonomousIntakeCommand(CommandData data)
@@ -64,25 +60,5 @@ public class AutonomousIntakeCommand extends Command implements IAutoCommand
     protected void interrupted()
     {
 
-    }
-
-    @Override
-    public CommandData getCommandData()
-    {
-        return commandData;
-    }
-
-    @Override
-    public HashMap<String, CommandData.DataType> getCommandDataArguments()
-    {
-        HashMap<String, CommandData.DataType> output = new HashMap<>();
-        output.put("auto_intake_speed", CommandData.DataType.DOUBLE);
-        return output;
-    }
-
-    @Override
-    public AutonomousIntakeCommand newCommandDataInstance(CommandData data)
-    {
-        return new AutonomousIntakeCommand(data);
     }
 }

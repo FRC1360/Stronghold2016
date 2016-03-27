@@ -2,12 +2,13 @@ package org.usfirst.frc.team1360.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team1360.robot.commands.*;
 
 
+import org.usfirst.frc.team1360.robot.subsystems.PivotSubsystem;
 import org.usfirst.frc.team1360.robot.util.CommandData;
 import org.usfirst.frc.team1360.robot.util.DriverstationDashboard;
 import org.usfirst.frc.team1360.robot.util.Subsystems;
@@ -20,21 +21,15 @@ public class Robot extends IterativeRobot
     private static ShooterCommand shooterCommand;
     private DriverstationDashboard ds;
 
-
-
     private Command autonomousCommand;
 
-
-    private void debug()
+    private void init()
     {
-        //System.out.println("Shooter RPM encoder: " + Subsystems.SHOOTER_SUBSYSTEM.encoder.getRate());
-        //System.out.println("Pivot Down: " + Subsystems.PIVOT_SUBSYSTEM.minSwitch.get());
-        //System.out.println("Pivot Up: " + Subsystems.PIVOT_SUBSYSTEM.maxSwitch.get());
-        //System.out.println("Real: " + Subsystems.PIVOT_SUBSYSTEM.realValue());
-        //System.out.println("POT: "+ Subsystems.PIVOT_SUBSYSTEM.pot.getValue());
-        //System.out.println("PID Setpoint: "+ Subsystems.PIVOT_SUBSYSTEM.getSetpoint());
-        //System.out.println("On Target: "+Subsystems.PIVOT_SUBSYSTEM.onTarget());
-
+        pivotCommand.start();
+        driveCommand.start();
+        shooterCommand.start();
+        intakeCommand.start();
+        shooterCommand.start();
     }
 
     private CommandData autoData()
@@ -43,8 +38,9 @@ public class Robot extends IterativeRobot
         data.addDouble("auto_drive_throttle", -0.75D);
         data.addDouble("auto_drive_turn", 0);
         data.addDouble("auto_drive_time", 9);
-        data.addDouble("auto_intake_speed", 0.25);
-        data.addDouble("auto_actuate_time", 1);
+        data.addBoolean("auto_drive_actuated", false);
+
+        data.addObject("auto_pivot_position", PivotSubsystem.Position.TOP);
         return data;
     }
 
@@ -52,13 +48,13 @@ public class Robot extends IterativeRobot
     public void robotInit()
     {
         new Subsystems();
-        ds = new DriverstationDashboard();
+        ds = new DriverstationDashboard(autoData());
         driveCommand = new DriveCommand();
         intakeCommand = new IntakeCommand();
         shooterCommand = new ShooterCommand();
         pivotCommand = new PivotCommand();
 
-        ds.initSimpleChooser(autoData());
+        ds.initAutoSelection();
     }
 
     @Override
@@ -70,18 +66,10 @@ public class Robot extends IterativeRobot
     @Override
     public void autonomousInit()
     {
-        autonomousCommand = ds.getSimpleChooser();
+        autonomousCommand = ds.getAutoSelection();
         autonomousCommand.start();
     }
 
-    private void init()
-    {
-        pivotCommand.start();
-        driveCommand.start();
-        shooterCommand.start();
-        intakeCommand.start();
-        shooterCommand.start();
-    }
 
     /**
      * This function is called periodically during autonomous
@@ -95,7 +83,6 @@ public class Robot extends IterativeRobot
     {
         if (autonomousCommand != null) autonomousCommand.cancel();
         init();
-        ds.initSimpleChooser(autoData());
     }
 
     @Override
@@ -108,8 +95,6 @@ public class Robot extends IterativeRobot
     public void teleopPeriodic()
     {
         Scheduler.getInstance().run();
-        debug();
-
     }
 
     @Override

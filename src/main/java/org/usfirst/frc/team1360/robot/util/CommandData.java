@@ -26,6 +26,7 @@ public class CommandData
      */
     private HashMap<String, Float> floats = new HashMap<>();
 
+    private HashMap<String, Object> objects = new HashMap<>();
     /**
      * Get the list of all doubles
      *
@@ -127,25 +128,23 @@ public class CommandData
         floats.clear();
         booleans.clear();
         doubles.clear();
+        objects.clear();
     }
 
-    public HashMap<String, String> getStrings()
+
+    public HashMap<String, Object> getObjects()
     {
-        return strings;
+        return objects;
     }
 
-    public void setStrings(HashMap<String, String> strings)
+    public void addObject(String s, Object o)
     {
-        this.strings = strings;
+        objects.put(s, o);
     }
 
-    /**
-     * DataTypes
-     */
-    public enum DataType
+
+    public void setObjects(HashMap<String, Object> objects)
     {
-        DOUBLE,
-        BOOLEAN,
-        FLOAT
+        this.objects = objects;
     }
 }

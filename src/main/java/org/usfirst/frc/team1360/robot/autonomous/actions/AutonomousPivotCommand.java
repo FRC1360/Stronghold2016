@@ -1,21 +1,18 @@
 package org.usfirst.frc.team1360.robot.autonomous.actions;
 
-import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team1360.robot.autonomous.IAutoCommand;
+import org.usfirst.frc.team1360.robot.autonomous.AutonomousCommand;
 import org.usfirst.frc.team1360.robot.subsystems.PivotSubsystem;
 import org.usfirst.frc.team1360.robot.util.CommandData;
 import org.usfirst.frc.team1360.robot.util.Subsystems;
 
-import java.util.HashMap;
-
-public class AutonomousPivotCommand extends Command implements IAutoCommand
+public class AutonomousPivotCommand extends AutonomousCommand
 {
     private PivotSubsystem.Position position;
 
     public AutonomousPivotCommand(CommandData data)
     {
         requires(Subsystems.PIVOT_SUBSYSTEM);
-        position = PivotSubsystem.Position.valueOf(data.getStrings().get("auto_pivot_position"));
+        position = (PivotSubsystem.Position) data.getObjects().get("auto_pivot_position");
     }
 
     public AutonomousPivotCommand(PivotSubsystem.Position position)
@@ -52,23 +49,5 @@ public class AutonomousPivotCommand extends Command implements IAutoCommand
     protected void interrupted()
     {
 
-    }
-
-    @Override
-    public CommandData getCommandData()
-    {
-        return null;
-    }
-
-    @Override
-    public HashMap<String, CommandData.DataType> getCommandDataArguments()
-    {
-        return null;
-    }
-
-    @Override
-    public AutonomousPivotCommand newCommandDataInstance(CommandData data)
-    {
-        return new AutonomousPivotCommand(data);
     }
 }

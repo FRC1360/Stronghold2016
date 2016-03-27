@@ -1,14 +1,13 @@
 package org.usfirst.frc.team1360.robot.autonomous.actions;
 
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc.team1360.robot.autonomous.IAutoCommand;
+
+import org.usfirst.frc.team1360.robot.autonomous.AutonomousCommand;
 import org.usfirst.frc.team1360.robot.util.CommandData;
 import org.usfirst.frc.team1360.robot.util.Subsystems;
 
 import java.util.HashMap;
 
-public class AutonomousShooterCommand extends Command implements IAutoCommand
+public class AutonomousShooterCommand extends AutonomousCommand
 {
 
     public AutonomousShooterCommand()
@@ -48,23 +47,5 @@ public class AutonomousShooterCommand extends Command implements IAutoCommand
     protected void interrupted()
     {
 
-    }
-
-    @Override
-    public CommandData getCommandData()
-    {
-        return null;
-    }
-
-    @Override
-    public HashMap<String, CommandData.DataType> getCommandDataArguments()
-    {
-        return null;
-    }
-
-    @Override
-    public AutonomousShooterCommand newCommandDataInstance(CommandData data)
-    {
-        return new AutonomousShooterCommand(data);
     }
 }
