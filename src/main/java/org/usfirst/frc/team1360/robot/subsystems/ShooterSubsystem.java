@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team1360.robot.RobotMap;
+import org.usfirst.frc.team1360.robot.util.Subsystems;
 
 /**
  * Shooter Subsystem.
@@ -43,7 +44,7 @@ public class ShooterSubsystem extends Subsystem
      */
     private double realRate()
     {
-        return encoder.getRate() / encoder.getPeriod()/2.95;
+        return encoder.getRate() / encoder.getPeriod()/2;
     }
 
     /**
@@ -58,7 +59,7 @@ public class ShooterSubsystem extends Subsystem
     {
 
         //slight buffer in RPMs to stay near the shooting target RPM
-        if (realRate() < 7100)
+        if (realRate() < 8200)
         {
             shooterM.set(speed);
 
@@ -75,7 +76,7 @@ public class ShooterSubsystem extends Subsystem
     {
         boolean prime;
         shooterRPM(speed);
-        prime = realRate() < 7100;
+        prime = realRate() < 8000;
         shoot(prime);
 
 
@@ -88,7 +89,7 @@ public class ShooterSubsystem extends Subsystem
      */
     public void shoot(boolean arg)
     {
-        if (realRate() > 6900 && realRate() < 7100|| !arg)
+        if (realRate() > 8000 && realRate() < 8400|| !arg || Subsystems.PIVOT_SUBSYSTEM.getSetpoint() < 50)
         {
             shooterSolenoid.set(arg);
 
