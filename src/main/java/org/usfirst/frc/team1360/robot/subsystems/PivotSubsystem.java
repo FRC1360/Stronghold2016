@@ -21,15 +21,18 @@ public class PivotSubsystem extends PIDSubsystem
 
     public PivotSubsystem()
     {
-        super("Pivot", 0.027, 0.000, 0.020, 0);
+        super("Pivot", 0.010, 0.000, 0.020, 0);
         setAbsoluteTolerance(50);
         setSetpoint(realValue());
         getPIDController().setContinuous(false);
         LiveWindow.addActuator("PivotSubsystem", "PIDSubsystem Controller", getPIDController());
-        getPIDController().setInputRange(0, 690);
+        getPIDController().setInputRange(0, 705);
         enable();
     }
-
+    public double shitSticks()
+    {
+        return this.getPIDController().get();
+    }
     /**
      * Adder moves the setpoint of the PID based off of it's parameters
      * Increment for example would be a joystick or a trigger
@@ -94,8 +97,10 @@ public class PivotSubsystem extends PIDSubsystem
      */
     private double realValue()
     {
-        return (aboutZero(-(pot.getValue() - 1220), 0) ? 0 : -(pot.getValue() - 1220));
+        System.out.println("POT VALUE:  "+ pot.getValue());
+        return (aboutZero(-(pot.getValue() - 859), 0) ? 0 : -(pot.getValue() - 859));
     }
+
 
     @Override
     protected double returnPIDInput()
