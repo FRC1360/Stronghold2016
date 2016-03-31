@@ -54,6 +54,7 @@ public class AutonomousBreachGroup extends CommandGroup
         }
     }
 
+    // FIRST ITEM IS THE DEFAULT
     public enum Defense
     {
         LOW_BAR,

@@ -45,7 +45,7 @@ public class PivotSubsystem extends PIDSubsystem
      */
     public double adder(double increment, boolean x, boolean y)
     {
-        if (x) return 650;
+        if (x) return 665;
         else if (y) return 0;
         else return increment + getSetpoint();
     }
@@ -97,7 +97,7 @@ public class PivotSubsystem extends PIDSubsystem
      */
     private double realValue()
     {
-        System.out.println("POT VALUE:  "+ pot.getValue());
+
         return (aboutZero(-(pot.getValue() - 859), 0) ? 0 : -(pot.getValue() - 859));
     }
 
@@ -120,6 +120,7 @@ public class PivotSubsystem extends PIDSubsystem
         {
             pivot.pidWrite(output * 0.45);
         }
+        System.out.println("POT VALUE:  "+ returnPIDInput());
 
     }
 

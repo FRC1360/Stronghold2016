@@ -59,16 +59,9 @@ public class ShooterSubsystem extends Subsystem
     {
 
         //slight buffer in RPMs to stay near the shooting target RPM
-        if (realRate() < 9000)
-        {
-            shooterM.set(speed);
 
-        } else
-        {
-            shooterM.set(0);
-
-        }
-        //System.out.println("RPM: "+realRate());
+        shooterM.set(speed);
+        System.out.println("RPM: "+realRate());
 
 
     }
@@ -81,7 +74,10 @@ public class ShooterSubsystem extends Subsystem
 
 
     }
-    /**
+    /**3
+     *
+     *
+     *
      * Shoot actuates the shooting piton only when in the range of shooting
      * target RPMs, it allows for driver error and will prime the shooter when RPMs are
      * at 0 incase the driver failed to keep RPMs for the shooter to reprime
@@ -91,10 +87,11 @@ public class ShooterSubsystem extends Subsystem
     {
         if (realRate() > 8800 && realRate() < 9100|| !arg || Subsystems.PIVOT_SUBSYSTEM.getSetpoint() < 50)
         {
-            shooterSolenoid.set(arg);
+
 
 
         }
+        shooterSolenoid.set(arg);
     }
 
 }

@@ -84,7 +84,7 @@ public class DriveSubsystem extends Subsystem
 
             double left = (-speed) - turn;
             double right = (-speed) + turn;
-            tankDrive(left, right);
+            tankDrive(left*0.5, right*0.4);
 
 
     }

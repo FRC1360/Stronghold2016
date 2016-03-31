@@ -48,7 +48,7 @@ public class AutonomousDriveCommand extends AutonomousCommand
     protected void execute()
     {
         i+=1;
-        Subsystems.DRIVE_SUBSYSTEM.tankDrive(0.85 * auto_drive_throttle, auto_drive_throttle);
+        Subsystems.DRIVE_SUBSYSTEM.tankDrive(auto_drive_throttle, auto_drive_throttle);
         Subsystems.DRIVE_SUBSYSTEM.changePosition(auto_drive_actuated);
     }
 
