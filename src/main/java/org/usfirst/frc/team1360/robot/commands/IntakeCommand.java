@@ -23,6 +23,7 @@ public class IntakeCommand extends Command
     protected void execute()
     {
         Subsystems.INTAKE_SUBSYSTEM.intakeBoulder(OI.getOperatorIntake());
+        Subsystems.INTAKE_SUBSYSTEM.port(OI.getOperatorPort());
     }
 
 

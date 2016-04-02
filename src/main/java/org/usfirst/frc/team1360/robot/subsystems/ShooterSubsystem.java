@@ -59,12 +59,19 @@ public class ShooterSubsystem extends Subsystem
     {
 
         //slight buffer in RPMs to stay near the shooting target RPM
+        if (realRate() < 8500)
+        {
+            shooterM.set(speed);
+        }
+        else
+        {shooterM.set(0);}
 
-        shooterM.set(speed);
-        System.out.println("RPM: "+realRate());
+
+            System.out.println("RPM: " + realRate());
+        }
 
 
-    }
+
     public void autoShoot(double speed)
     {
         boolean prime;
@@ -85,13 +92,13 @@ public class ShooterSubsystem extends Subsystem
      */
     public void shoot(boolean arg)
     {
-        if (realRate() > 8800 && realRate() < 9100|| !arg || Subsystems.PIVOT_SUBSYSTEM.getSetpoint() < 50)
+        if (realRate() > 7000 && realRate() < 8200|| !arg || Subsystems.PIVOT_SUBSYSTEM.getSetpoint() < 50)
         {
 
-
+            shooterSolenoid.set(arg);
 
         }
-        shooterSolenoid.set(arg);
+
     }
 
 }

@@ -27,4 +27,8 @@ public class IntakeSubsystem extends Subsystem
     {
         INTAKE_1.set(speed);
     }
+    public void port(boolean b)
+    {
+        if (b){INTAKE_1.set(1);}
+    }
 }

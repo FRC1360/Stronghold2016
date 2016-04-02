@@ -18,6 +18,7 @@ public class PivotSubsystem extends PIDSubsystem
 
     private DigitalInput maxSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_UP);
     private DigitalInput minSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_DOWN);
+    private boolean REDBUTTON = false;
 
     public PivotSubsystem()
     {
@@ -33,6 +34,17 @@ public class PivotSubsystem extends PIDSubsystem
     {
         return this.getPIDController().get();
     }
+
+
+    public boolean override(boolean start)
+    {
+
+        if(start)
+        {
+            REDBUTTON = true;
+        }
+        return REDBUTTON;
+    }
     /**
      * Adder moves the setpoint of the PID based off of it's parameters
      * Increment for example would be a joystick or a trigger
@@ -45,7 +57,7 @@ public class PivotSubsystem extends PIDSubsystem
      */
     public double adder(double increment, boolean x, boolean y)
     {
-        if (x) return 665;
+        if (x) return 655;
         else if (y) return 0;
         else return increment + getSetpoint();
     }
@@ -67,7 +79,11 @@ public class PivotSubsystem extends PIDSubsystem
     {
         return value > real - 20 && value < real + 20;
     }
-
+    public void manual(double speed)
+    {
+        if(REDBUTTON)
+        pivot.set(speed);
+    }
     public void initDefaultCommand()
     {
 
@@ -98,7 +114,7 @@ public class PivotSubsystem extends PIDSubsystem
     private double realValue()
     {
 
-        return (aboutZero(-(pot.getValue() - 859), 0) ? 0 : -(pot.getValue() - 859));
+        return (aboutZero(-(pot.getValue() -196 ), 0) ? 0 : -(pot.getValue() - 196));
     }
 
 
@@ -116,11 +132,13 @@ public class PivotSubsystem extends PIDSubsystem
         {
             pivot.set(0);
         }
-        else
+        else if(!REDBUTTON)
         {
             pivot.pidWrite(output * 0.45);
+
         }
-        System.out.println("POT VALUE:  "+ returnPIDInput());
+        System.out.println("DANK: "+pot.getValue());
+        System.out.println("REAL: "+realValue());
 
     }
 

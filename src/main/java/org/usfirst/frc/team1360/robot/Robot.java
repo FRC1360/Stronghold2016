@@ -36,10 +36,10 @@ public class Robot extends IterativeRobot
     private CommandData autoData()
     {
         CommandData data = new CommandData();
-        data.addDouble("auto_drive_throttle", -0.5D);
+        data.addDouble("auto_drive_throttle", -0.75D);
         data.addDouble("auto_drive_turn", 0);
-        data.addDouble("auto_drive_time", 9);
-        data.addBoolean("auto_drive_actuated", false);
+        data.addDouble("auto_drive_time", 15);
+        data.addBoolean("auto_drive_actuated", true);
 
         data.addObject("auto_pivot_position", PivotSubsystem.Position.TOP);
         return data;

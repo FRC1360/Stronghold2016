@@ -32,11 +32,12 @@ public class OI
     {
         return JS_OPERATOR.getButtonX();
     }
+    public static boolean getOperatorPort(){return JS_OPERATOR.getButtonB();}
 
 
     public static double getOperatorIntake()
     {
-        return -JS_OPERATOR.getLeftTrigger();
+        return JS_OPERATOR.getRightTrigger()-JS_OPERATOR.getLeftTrigger();
     }
 
     public static double getOperatorShooterRPM()
@@ -48,6 +49,7 @@ public class OI
     {
         return JS_OPERATOR.getButtonA();
     }
+    public static boolean BIGREDBUTTON(){return JS_OPERATOR.getButtonStart();}
 
     public static boolean getOverideDrive()
     {
