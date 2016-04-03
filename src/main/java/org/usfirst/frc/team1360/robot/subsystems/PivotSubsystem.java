@@ -82,7 +82,7 @@ public class PivotSubsystem extends PIDSubsystem
     public void manual(double speed)
     {
         if(REDBUTTON)
-        pivot.set(speed);
+        pivot.set(speed*0.30);
     }
     public void initDefaultCommand()
     {

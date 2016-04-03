@@ -44,8 +44,8 @@ public class AutonomousBreachGroup extends CommandGroup
             case LOW_BAR:
                 data.getObjects().put("auto_pivot_position", PivotSubsystem.Position.INTAKE);
                 data.getBooleans().put("auto_drive_actuated", false);
-                addSequential(new AutonomousDriveCommand(data));
                 addParallel(new AutonomousPivotCommand(data));
+                addSequential(new AutonomousDriveCommand(data));
                 break;
             /**
              * Really?
