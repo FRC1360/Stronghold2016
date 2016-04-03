@@ -38,6 +38,8 @@ public class DriveSubsystem extends Subsystem
      * Back solenoid for the lowrider system.
      */
     private final Solenoid SOLENOID_BACK = new Solenoid(RobotMap.DRIVESUBSYSTEM_SOLENOID_BACK);
+    private double setpoint;
+    private boolean overide;
 
 
     public DriveSubsystem()
@@ -108,4 +110,12 @@ public class DriveSubsystem extends Subsystem
         DRIVE_RIGHT_2.set(0);
     }
 
+
+    /**
+     * coast is used to drive a set distance in a straight line
+     * uses the distance method to compare to a set metric distance by the user
+     * will drive the robot to said set distance
+     *
+     *
+     */
 }
