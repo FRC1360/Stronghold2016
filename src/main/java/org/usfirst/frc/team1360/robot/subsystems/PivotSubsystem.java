@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import javafx.geometry.Pos;
 import org.usfirst.frc.team1360.robot.RobotMap;
 
 
@@ -19,6 +18,8 @@ public class PivotSubsystem extends PIDSubsystem
     private DigitalInput maxSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_UP);
     private DigitalInput minSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_DOWN);
     private boolean REDBUTTON = false;
+    private double zeroValue = -196;
+    private double potResolution = 705;
 
     public PivotSubsystem()
     {
@@ -27,15 +28,26 @@ public class PivotSubsystem extends PIDSubsystem
         setSetpoint(realValue());
         getPIDController().setContinuous(false);
         LiveWindow.addActuator("PivotSubsystem", "PIDSubsystem Controller", getPIDController());
-        getPIDController().setInputRange(0, 705);
+        getPIDController().setInputRange(0, potResolution);
         enable();
     }
+
+    /**returns potentiometer values
+     *
+     * @return
+     */
+    public double returnPot(){return pot.getValue();}
     public double shitSticks()
     {
         return this.getPIDController().get();
     }
 
-
+    /**
+     * Overrides PID if potentiometer slips, and proxy sensors are unable to correct
+     * for new values
+     * @param start
+     * @return
+     */
     public boolean override(boolean start)
     {
 
@@ -62,6 +74,10 @@ public class PivotSubsystem extends PIDSubsystem
         else return increment + getSetpoint();
     }
 
+    /**
+     * Sets a setpoint in autonomous
+     * @param position
+     */
     public void setAutoSetpoint(Position position)
     {
         setSetpoint(position.getSetpoint());
@@ -77,12 +93,22 @@ public class PivotSubsystem extends PIDSubsystem
      */
     private boolean aboutZero(double value, double real)
     {
-        return value > real - 20 && value < real + 20;
+        return value > real - 10 && value < real + 10;
     }
+
+    /**
+     * Manual mode for last resort if inputted PID values are unable to correct
+     * in the event of potentiometer slip
+      * @param speed
+     */
     public void manual(double speed)
     {
         if(REDBUTTON)
-        pivot.set(speed*0.30);
+        {
+            pivot.set(speed*0.30);
+            System.out.println("PID OVERRIDED");
+        }
+
     }
     public void initDefaultCommand()
     {
@@ -103,6 +129,15 @@ public class PivotSubsystem extends PIDSubsystem
     }
 
     /**
+     * corrects for potentiometer slips
+     */
+    private void correctZero()
+    {
+        if(returnLimit() == 1){zeroValue = (returnPot() - potResolution);}
+        else if (returnLimit() == -1){zeroValue = returnPot();}
+    }
+
+    /**
      * real value is fed into the PID and is checked against aboutZero()
      * It takes the potentiometer values and subtracts it by 1220 which is the
      * return from the potentiometer while in the low pivot position
@@ -114,7 +149,8 @@ public class PivotSubsystem extends PIDSubsystem
     private double realValue()
     {
 
-        return (aboutZero(-(pot.getValue() -196 ), 0) ? 0 : -(pot.getValue() - 196));
+        correctZero();
+        return (aboutZero(-(returnPot() -zeroValue ), 0) ? 0 : -(returnPot() - zeroValue));
     }
 
 
@@ -128,24 +164,24 @@ public class PivotSubsystem extends PIDSubsystem
     protected void usePIDOutput(double output)
     {
 
-        if (returnLimit() == 1 && output > 0 || returnLimit() == -1 && output < 0)
+        if (returnLimit() == 1 && output > 0 || returnLimit() == -1 && output < 0) //if hitting any proxy sensors set value to 0
         {
             pivot.set(0);
         }
-        else if(!REDBUTTON)
+        else if(!REDBUTTON) //if override is false then use PID
         {
             pivot.pidWrite(output * 0.45);
 
         }
-        System.out.println("DANK: "+pot.getValue());
-        System.out.println("REAL: "+realValue());
+        //System.out.println("POT: "+returnPot());
+        //System.out.println("REAL: "+realValue());
 
     }
 
     public enum Position
     {
         //TODO: Set these numbers to be actual.
-        TOP(600), SHOOT(300), INTAKE(0);
+        TOP(710), SHOOT(655), INTAKE(0);
 
         private double psetpoint;
         Position(double csetpoint)

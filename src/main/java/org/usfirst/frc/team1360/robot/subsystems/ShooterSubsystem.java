@@ -50,7 +50,7 @@ public class ShooterSubsystem extends Subsystem
     /**
      * shooterRPM will allow for direct input from an RPM controller
      * such as a joystick or a trigger, as long as the RPM of the wheel
-     * is lower then 7000, as determined by realRate(). Otherwise the motor
+     * is lower then set value, as determined by realRate(). Otherwise the motor
      * cuts power to return to firing target RPMs
      *
      * @param speed input
@@ -71,7 +71,10 @@ public class ShooterSubsystem extends Subsystem
         }
 
 
-
+    /**
+     * Used to prime and fire shooter in auto
+     * @param speed
+     */
     public void autoShoot(double speed)
     {
         boolean prime;
@@ -92,7 +95,7 @@ public class ShooterSubsystem extends Subsystem
      */
     public void shoot(boolean arg)
     {
-        if (realRate() > 7000 && realRate() < 8200|| !arg || Subsystems.PIVOT_SUBSYSTEM.getSetpoint() < 50)
+        if (realRate() > 7400 && realRate() < 8200|| !arg || Subsystems.PIVOT_SUBSYSTEM.getSetpoint() < 50)
         {
 
             shooterSolenoid.set(arg);
