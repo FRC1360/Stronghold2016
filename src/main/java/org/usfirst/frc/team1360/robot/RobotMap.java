@@ -116,16 +116,6 @@ public class RobotMap
      * Solenoid for actuating the shooter
      */
     public static final int SHOOTERSUBSYSTEM_SHOOTER_SOLENOID = 1;
-
-    /**
-     * Solenoid for opening up the climber
-     */
-    public static final int CLIMBERSUBSYSTEM_CLIMBER_ENABLE = 2;
-
-    /**
-     * Solenoid for engaging the drivetrain.
-     */
-    public static final int CLIMBERSUBSYSTEM_CLIMBER_DRIVE = 3;
     //endregion
 
 }

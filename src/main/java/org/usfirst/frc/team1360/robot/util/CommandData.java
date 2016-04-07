@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 /**
  * CommandData - Used so that Commands can be used with reflection. This allows dynamic loading of the Autonomous Tasks
+ * All List's should be converted over to HashMaps to allow naming of the values. This allows future proofing. Was not done to allow a
+ * lesson to be taught on it.
  */
 public class CommandData
 {

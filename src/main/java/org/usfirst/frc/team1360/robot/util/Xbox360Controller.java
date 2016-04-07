@@ -7,6 +7,10 @@ public class Xbox360Controller extends Joystick
 
     private double deadzone = 0.15;
 
+    public Xbox360Controller(int port)
+    {
+        super(port);
+    }
 
     public Xbox360Controller(int port, double deadzone)
     {

@@ -26,30 +26,14 @@ public class OI
         return JS_DRIVER.getButtonA();
     }
 
-    public static boolean getDriverClimbClutch()
-    {
-        return JS_DRIVER.getButtonY();
-    }
-
-    public static boolean getDriverDeployClimb()
-    {
-        return JS_DRIVER.getButtonStart();
-    }
-
-    public static boolean getOperatorPivotSetpointUp()
-    {
-        return JS_OPERATOR.getButtonY();
-    }
+    public static boolean getOperatorPivotSetpointUp() {return JS_OPERATOR.getButtonY();}
 
     public static boolean getOperatorPivotSetpointDown()
     {
         return JS_OPERATOR.getButtonX();
     }
+    public static boolean getOperatorPort(){return JS_OPERATOR.getButtonB();}
 
-    public static boolean getOperatorPort()
-    {
-        return JS_OPERATOR.getButtonB();
-    }
 
     public static double getOperatorIntake()
     {
@@ -65,15 +49,23 @@ public class OI
     {
         return JS_OPERATOR.getButtonA();
     }
+    public static boolean BIGREDBUTTON(){return JS_OPERATOR.getButtonStart();}
 
-    public static boolean BIGREDBUTTON()
+    public static boolean getOverideDrive()
     {
-        return JS_OPERATOR.getButtonStart();
+        return JS_OPERATOR.getButtonRB();
+    }
+    public static boolean getOveridePivot()
+    {
+        return JS_OPERATOR.getButtonB();
     }
 
     public static double getOperatorPivot()
     {
+
+
         return -(JS_OPERATOR.getRightYAxis()*10);
+
     }
 }
 

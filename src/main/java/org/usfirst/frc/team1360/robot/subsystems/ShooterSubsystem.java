@@ -22,8 +22,12 @@ public class ShooterSubsystem extends Subsystem
 
     public ShooterSubsystem()
     {
+
+
         encoder.setDistancePerPulse(1); //rate is set per rotation
         encoder.setMaxPeriod(.1);
+
+
     }
 
     @Override
@@ -40,7 +44,7 @@ public class ShooterSubsystem extends Subsystem
      */
     private double realRate()
     {
-        return encoder.getRate() / encoder.getPeriod() / 2;
+        return encoder.getRate() / encoder.getPeriod()/2;
     }
 
     /**
@@ -53,21 +57,31 @@ public class ShooterSubsystem extends Subsystem
      */
     public void shooterRPM(double speed)
     {
+
         //slight buffer in RPMs to stay near the shooting target RPM
         if (realRate() < 8500)
+        {
             shooterM.set(speed);
+        }
         else
-            shooterM.set(0);
+        {shooterM.set(0);}
 
-        System.out.println("RPM: " + realRate());
-    }
+
+            System.out.println("RPM: " + realRate());
+        }
+
+
 
     public void autoShoot(double speed)
     {
+        boolean prime;
         shooterRPM(speed);
-        shoot(realRate() < 8000);
+        prime = realRate() < 8000;
+        shoot(prime);
+
+
     }
-    /**
+    /**3
      *
      *
      *
@@ -79,7 +93,12 @@ public class ShooterSubsystem extends Subsystem
     public void shoot(boolean arg)
     {
         if (realRate() > 7000 && realRate() < 8200|| !arg || Subsystems.PIVOT_SUBSYSTEM.getSetpoint() < 50)
+        {
+
             shooterSolenoid.set(arg);
+
+        }
+
     }
 
 }
