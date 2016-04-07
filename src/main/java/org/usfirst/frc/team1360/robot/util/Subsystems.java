@@ -1,9 +1,6 @@
 package org.usfirst.frc.team1360.robot.util;
 
-import org.usfirst.frc.team1360.robot.subsystems.DriveSubsystem;
-import org.usfirst.frc.team1360.robot.subsystems.IntakeSubsystem;
-import org.usfirst.frc.team1360.robot.subsystems.PivotSubsystem;
-import org.usfirst.frc.team1360.robot.subsystems.ShooterSubsystem;
+import org.usfirst.frc.team1360.robot.subsystems.*;
 
 
 public class Subsystems
@@ -12,6 +9,7 @@ public class Subsystems
     public static ShooterSubsystem SHOOTER_SUBSYSTEM;
     public static IntakeSubsystem INTAKE_SUBSYSTEM;
     public static PivotSubsystem PIVOT_SUBSYSTEM;
+    public static ClimberSubsystem CLIMBER_SUBSYSTEM;
 
     public Subsystems()
     {
@@ -19,10 +17,6 @@ public class Subsystems
         INTAKE_SUBSYSTEM = new IntakeSubsystem();
         SHOOTER_SUBSYSTEM = new ShooterSubsystem();
         DRIVE_SUBSYSTEM = new DriveSubsystem();
-    }
-
-    public static void c(Object o)
-    {
-        System.out.println(o);
+        CLIMBER_SUBSYSTEM = new ClimberSubsystem();
     }
 }

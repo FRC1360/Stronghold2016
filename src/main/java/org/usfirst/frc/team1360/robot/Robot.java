@@ -20,6 +20,8 @@ public class Robot extends IterativeRobot
     private static IntakeCommand intakeCommand;
     private static PivotCommand pivotCommand;
     private static ShooterCommand shooterCommand;
+    private static ClimbCommand climbCommand;
+
     private DriverstationDashboard ds;
 
     private Command autonomousCommand;
@@ -31,6 +33,7 @@ public class Robot extends IterativeRobot
         shooterCommand.start();
         intakeCommand.start();
         shooterCommand.start();
+        climbCommand.start();
     }
 
     private CommandData autoData()
@@ -54,6 +57,7 @@ public class Robot extends IterativeRobot
         intakeCommand = new IntakeCommand();
         shooterCommand = new ShooterCommand();
         pivotCommand = new PivotCommand();
+        climbCommand = new ClimbCommand();
 
         ds.initAutoSelection();
     }
@@ -70,7 +74,6 @@ public class Robot extends IterativeRobot
         autonomousCommand = ds.getAutoSelection();
         autonomousCommand.start();
     }
-
 
     /**
      * This function is called periodically during autonomous
@@ -98,7 +101,6 @@ public class Robot extends IterativeRobot
         Scheduler.getInstance().run();
         SmartDashboard.putNumber("PID: ",Subsystems.PIVOT_SUBSYSTEM.shitSticks());
         SmartDashboard.putData("DriveSubsystem Controller", Subsystems.PIVOT_SUBSYSTEM.getPIDController());
-
     }
 
     @Override

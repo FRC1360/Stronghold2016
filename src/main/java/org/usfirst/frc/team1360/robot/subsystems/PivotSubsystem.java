@@ -129,14 +129,10 @@ public class PivotSubsystem extends PIDSubsystem
     {
 
         if (returnLimit() == 1 && output > 0 || returnLimit() == -1 && output < 0)
-        {
             pivot.set(0);
-        }
         else if(!REDBUTTON)
-        {
             pivot.pidWrite(output * 0.45);
 
-        }
         System.out.println("DANK: "+pot.getValue());
         System.out.println("REAL: "+realValue());
 

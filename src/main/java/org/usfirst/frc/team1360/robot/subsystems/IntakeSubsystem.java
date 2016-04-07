@@ -29,6 +29,8 @@ public class IntakeSubsystem extends Subsystem
     }
     public void port(boolean b)
     {
-        if (b){INTAKE_1.set(1);}
+
+        if (b)
+            INTAKE_1.set(1);
     }
 }
