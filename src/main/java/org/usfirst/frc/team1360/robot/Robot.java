@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team1360.robot.autonomous.groups.AutonomousBreachGroup;
 import org.usfirst.frc.team1360.robot.commands.*;
 
 
@@ -39,9 +40,10 @@ public class Robot extends IterativeRobot
     private CommandData autoData()
     {
         CommandData data = new CommandData();
-        data.addDouble("auto_drive_throttle", -0.75D);
+        data.addDouble("auto_drive_throttle",
+                (ds.getAutoDirection() == AutonomousBreachGroup.Direction.FORWARDS ? -1 : 1) * 1D);
         data.addDouble("auto_drive_turn", 0);
-        data.addDouble("auto_drive_time", 15);
+        data.addDouble("auto_drive_time", 7);
         data.addBoolean("auto_drive_actuated", true);
 
         data.addObject("auto_pivot_position", PivotSubsystem.Position.TOP);
@@ -100,7 +102,7 @@ public class Robot extends IterativeRobot
     {
         Scheduler.getInstance().run();
         SmartDashboard.putNumber("PID: ",Subsystems.PIVOT_SUBSYSTEM.shitSticks());
-        SmartDashboard.putData("DriveSubsystem Controller", Subsystems.PIVOT_SUBSYSTEM.getPIDController());
+        SmartDashboard.putData("PivotSubsystem Controller", Subsystems.PIVOT_SUBSYSTEM.getPIDController());
     }
 
     @Override
