@@ -18,11 +18,13 @@ public class PivotSubsystem extends PIDSubsystem
 
     private DigitalInput maxSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_UP);
     private DigitalInput minSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_DOWN);
-    private boolean REDBUTTON = false;
+    private boolean REDBUTTON = true;
+    private double adjustment = -2478;
+    private double resolution = 705;
 
     public PivotSubsystem()
     {
-        super("Pivot", 0.010, 0.000, 0.020, 0);
+        super("Pivot", 0.005, 0.000, 0.020, 0);
         setAbsoluteTolerance(50);
         setSetpoint(realValue());
         getPIDController().setContinuous(false);
@@ -30,11 +32,23 @@ public class PivotSubsystem extends PIDSubsystem
         getPIDController().setInputRange(0, 705);
         enable();
     }
+
+    public void corrector()
+    {
+        if(returnLimit() == 1)
+        {
+            adjustment=-(returnPot()+resolution);
+        }
+        else if(returnLimit() == -1)
+        {
+            adjustment=-returnPot();
+        }
+    }
     public double shitSticks()
     {
         return this.getPIDController().get();
     }
-
+    public double returnPot(){return pot.getValue();}
 
     public boolean override(boolean start)
     {
@@ -82,7 +96,8 @@ public class PivotSubsystem extends PIDSubsystem
     public void manual(double speed)
     {
         if(REDBUTTON)
-        pivot.set(speed*0.30);
+        { pivot.set(speed*0.30);}
+        else if(returnLimit() == 1 && speed > 0 || returnLimit() == -1 && speed < 0){pivot.set(0);}
     }
     public void initDefaultCommand()
     {
@@ -114,7 +129,7 @@ public class PivotSubsystem extends PIDSubsystem
     private double realValue()
     {
 
-        return (aboutZero(-(pot.getValue() -196 ), 0) ? 0 : -(pot.getValue() - 196));
+        return (aboutZero(-(returnPot()  + adjustment ), 0) ? 0 : -(returnPot() + adjustment));
     }
 
 
@@ -127,14 +142,14 @@ public class PivotSubsystem extends PIDSubsystem
     @Override
     protected void usePIDOutput(double output)
     {
-
+        corrector();
         if (returnLimit() == 1 && output > 0 || returnLimit() == -1 && output < 0)
         {
             pivot.set(0);
         }
         else if(!REDBUTTON)
         {
-            pivot.pidWrite(output * 0.45);
+            pivot.pidWrite(output * 0.6);
 
         }
         System.out.println("DANK: "+pot.getValue());
