@@ -47,6 +47,12 @@ public class AutonomousBreachGroup extends CommandGroup
                 addParallel(new AutonomousPivotCommand(data));
                 addSequential(new AutonomousDriveCommand(data));
                 break;
+            case LOW_BAR_REVERSE:
+                data.getObjects().put("auto_pivot_position", PivotSubsystem.Position.INTAKE);
+                data.getBooleans().put("auto_drive_actuated", false);
+                data.getDoubles().put("auto_drive_throttle", -data.getDoubles().get("auto_drive_throttle"));
+                addParallel(new AutonomousPivotCommand(data));
+                addSequential(new AutonomousDriveCommand(data));
             /**
              * Really?
              */
@@ -59,6 +65,7 @@ public class AutonomousBreachGroup extends CommandGroup
     public enum Defense
     {
         LOW_BAR,
+        LOW_BAR_REVERSE,
         CHIVAL_DE_FRISE,
         RAMPARTS,
         MOAT,

@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot
     private CommandData autoData()
     {
 	CommandData data = new CommandData();
-	data.addDouble("auto_drive_throttle", 1D);
+	data.addDouble("auto_drive_throttle", -1D);
 	data.addDouble("auto_drive_turn", 0);
 	data.addDouble("auto_drive_time", 7);
 	data.addBoolean("auto_drive_actuated", true);

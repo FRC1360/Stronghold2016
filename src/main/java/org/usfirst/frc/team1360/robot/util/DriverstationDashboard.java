@@ -41,7 +41,7 @@ public class DriverstationDashboard
         directionChooser.addDefault("Forwards", AutonomousBreachGroup.Direction.FORWARDS);
         directionChooser.addObject("Reverse", AutonomousBreachGroup.Direction.REVERSE);
         SmartDashboard.putData("BreachAuto", sendableChooser);
-        SmartDashboard.putData("DirectionAuto", directionChooser);
+        //SmartDashboard.putData("DirectionAuto", directionChooser);
     }
 
     public CommandGroup getAutoSelection()
