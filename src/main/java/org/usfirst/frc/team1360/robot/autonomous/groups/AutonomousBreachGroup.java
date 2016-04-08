@@ -66,4 +66,10 @@ public class AutonomousBreachGroup extends CommandGroup
         ROUGH_TERRAIN,
         NOTHING
     }
+
+    public enum Direction
+    {
+        FORWARDS,
+        REVERSE
+    }
 }
