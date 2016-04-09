@@ -15,7 +15,6 @@ import java.util.List;
 public class DriverstationDashboard
 {
     private static SendableChooser sendableChooser = new SendableChooser();
-    private static SendableChooser directionChooser = new SendableChooser();
 
     private CommandData data;
 
@@ -38,10 +37,7 @@ public class DriverstationDashboard
             }
             sendableChooser.addObject(d.name().replaceAll("_", " "), d);
         }
-        directionChooser.addDefault("Forwards", AutonomousBreachGroup.Direction.FORWARDS);
-        directionChooser.addObject("Reverse", AutonomousBreachGroup.Direction.REVERSE);
         SmartDashboard.putData("BreachAuto", sendableChooser);
-        //SmartDashboard.putData("DirectionAuto", directionChooser);
     }
 
     public CommandGroup getAutoSelection()
@@ -49,8 +45,4 @@ public class DriverstationDashboard
         return new AutonomousBreachGroup((AutonomousBreachGroup.Defense) sendableChooser.getSelected(), data);
     }
 
-    public AutonomousBreachGroup.Direction getAutoDirection()
-    {
-        return (AutonomousBreachGroup.Direction) directionChooser.getSelected();
-    }
 }
