@@ -18,6 +18,7 @@ public class AutonomousDriveCommand extends AutonomousCommand
     private double auto_drive_turn_time;
     private double auto_drive_time;
     private boolean auto_drive_actuated;
+    private boolean auto_drive_lowgoal = false;
 
     private int i = 0;
 
@@ -37,7 +38,10 @@ public class AutonomousDriveCommand extends AutonomousCommand
         auto_drive_turn = (List<Double>) data.getObjects().get("auto_drive_turn");
         auto_drive_time = data.getDoubles().get("auto_drive_time");
         auto_drive_actuated = data.getBooleans().get("auto_drive_actuated");
-        auto_drive_turn_time = data.getDoubles().get("auto_drive_turn_time");
+        if (data.getDoubles().get("auto_drive_turn_time") != null)
+            auto_drive_turn_time = data.getDoubles().get("auto_drive_turn_time");
+        if (data.getBooleans().get("auto_drive_lowgoal") != null)
+            auto_drive_lowgoal = data.getBooleans().get("auto_drive_lowgoal");
     }
 
     @Override
@@ -50,12 +54,12 @@ public class AutonomousDriveCommand extends AutonomousCommand
     protected void execute()
     {
         i += 1;
-        if (!auto_drive_turn.isEmpty())
-            Subsystems.DRIVE_SUBSYSTEM.tankDrive(0.9 * auto_drive_turn.get(0), auto_drive_turn.get(1));
+        if (auto_drive_turn != null && !auto_drive_turn.isEmpty())
+            Subsystems.DRIVE_SUBSYSTEM.tankDrive(auto_drive_turn.get(0), auto_drive_turn.get(1));
+        else if (auto_drive_lowgoal)
+            Subsystems.DRIVE_SUBSYSTEM.tankDrive(auto_drive_throttle, 0.88 * auto_drive_throttle);
         else
-        {
-            Subsystems.DRIVE_SUBSYSTEM.tankDrive(0.9 * auto_drive_throttle, auto_drive_throttle);
-        }
+            Subsystems.DRIVE_SUBSYSTEM.tankDrive(auto_drive_throttle, auto_drive_throttle);
 
         Subsystems.DRIVE_SUBSYSTEM.changePosition(auto_drive_actuated);
 
@@ -64,7 +68,8 @@ public class AutonomousDriveCommand extends AutonomousCommand
     @Override
     protected boolean isFinished()
     {
-        return i >= 40 * (!auto_drive_turn.isEmpty() ? auto_drive_turn_time : auto_drive_time);
+        return i >= 40 *
+                ((auto_drive_turn != null && !auto_drive_turn.isEmpty()) ? auto_drive_turn_time : auto_drive_time);
     }
 
     @Override

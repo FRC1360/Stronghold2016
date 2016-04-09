@@ -57,17 +57,24 @@ public class AutonomousBreachGroup extends CommandGroup
                 addParallel(new AutonomousPivotCommand(data));
                 addSequential(new AutonomousDriveCommand(data));
                 break;
+
             case LOW_BAR_LOW_GOAL:
+                //Drop, drive 5s, turn, drive 3s, out
+                PivotSubsystem.REDBUTTON = false;
                 data = lowGoalTimings(data);
                 addParallel(new AutonomousPivotCommand(data));
                 addSequential(new AutonomousDriveCommand(data));
-                data.getObjects().put("auto_drive_turn", Arrays.asList(0.5, 0.5));
-                data.getDoubles().put("auto_drive_turn_time", 3D);
-                addSequential(new AutonomousDriveCommand(data));
+                // BACKWARDS! Invert L/R
+                data.getObjects().put("auto_drive_turn", Arrays.asList(-0.4, 0.5));
+                data.getDoubles().put("auto_drive_turn_time", 0.75);
                 addSequential(new AutonomousDriveCommand(data));
                 data.getObjects().remove("auto_drive_turn");
                 data.getDoubles().remove("auto_drive_turn_time");
+                data.getDoubles().put("auto_drive_time", 3D);
+                addSequential(new AutonomousDriveCommand(data));
                 addSequential(new AutonomousIntakeCommand(data));
+                break;
+
             /**
              * Really?
              */
@@ -78,10 +85,12 @@ public class AutonomousBreachGroup extends CommandGroup
 
     private CommandData lowGoalTimings(CommandData data)
     {
+        data.getBooleans().put("auto_drive_lowgoal", true);
         data.getObjects().put("auto_pivot_position", PivotSubsystem.Position.BATTER_CLEAR);
         data.getBooleans().put("auto_drive_actuated", false);
         data.getDoubles().put("auto_drive_throttle", 0.5);
-        data.getDoubles().put("auto_intake_speed", 0.25);
+        data.getDoubles().put("auto_drive_time", 7.5d);
+        data.getDoubles().put("auto_intake_speed", 1d);
         data.getDoubles().put("auto_intake_time", 2D);
         return data;
     }

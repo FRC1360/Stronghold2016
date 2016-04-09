@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot
         CommandData data = new CommandData();
         data.addDouble("auto_drive_throttle", -1D);
         data.addDouble("auto_drive_turn", 0);
-        data.addDouble("auto_drive_time", 7);
+        data.addDouble("auto_drive_time", 3.5D);
         data.addBoolean("auto_drive_actuated", true);
 
         data.addObject("auto_pivot_position", PivotSubsystem.Position.TOP);
@@ -67,7 +67,7 @@ public class Robot extends IterativeRobot
     public void autonomousInit()
     {
         autonomousCommand = ds.getAutoSelection();
-       PivotSubsystem.REDBUTTON = false;
+        //PivotSubsystem.REDBUTTON = false;
         autonomousCommand.start();
     }
 
