@@ -10,19 +10,19 @@ public class AutonomousIntakeCommand extends AutonomousCommand
     private double auto_intake_speed;
     private double auto_intake_time;
     private Timer delay = new Timer();
-    private CommandData commandData;
 
-    public AutonomousIntakeCommand(double auto_intake_speed)
+    public AutonomousIntakeCommand(double auto_intake_speed, double auto_intake_time)
     {
         requires(Subsystems.INTAKE_SUBSYSTEM);
         this.auto_intake_speed = auto_intake_speed;
+        this.auto_intake_time = auto_intake_time;
     }
 
     public AutonomousIntakeCommand(CommandData data)
     {
         requires(Subsystems.INTAKE_SUBSYSTEM);
-        commandData = data;
         auto_intake_speed = data.getDoubles().get("auto_intake_speed");
+        auto_intake_time = data.getDoubles().get("auto_intake_time");
     }
 
     @Override

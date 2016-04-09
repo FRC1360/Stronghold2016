@@ -18,7 +18,7 @@ public class PivotSubsystem extends PIDSubsystem
 
     private DigitalInput maxSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_UP);
     private DigitalInput minSwitch = new DigitalInput(RobotMap.SHOOTERSUBSYSTEM_SWITCH_DOWN);
-    private boolean REDBUTTON = true;
+    public static boolean REDBUTTON = true;
     private double adjustment = -2478;
     private double resolution = 705;
 
@@ -48,7 +48,8 @@ public class PivotSubsystem extends PIDSubsystem
     {
         return this.getPIDController().get();
     }
-    public double returnPot(){return pot.getValue();}
+
+    private double returnPot(){return pot.getValue();}
 
     public boolean override(boolean start)
     {
@@ -160,7 +161,7 @@ public class PivotSubsystem extends PIDSubsystem
     public enum Position
     {
         //TODO: Set these numbers to be actual.
-        TOP(600), SHOOT(300), INTAKE(0);
+        TOP(600), SHOOT(300), INTAKE(0), BATTER_CLEAR(50);
 
         private double psetpoint;
         Position(double csetpoint)
